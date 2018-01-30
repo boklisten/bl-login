@@ -5,11 +5,16 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoginService} from "./login.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {LocalLoginService} from "./local-login/local-login.service";
+import {LocalStorageModule} from "angular-2-local-storage";
 
 @NgModule({
 	imports: [
 		CommonModule,
-		NgbModule.forRoot()
+		NgbModule.forRoot(),
+		LocalStorageModule.withConfig({
+			prefix: 'bl',
+			storageType: "localStorage"
+		})
 	],
 	providers: [
 		LoginService,
