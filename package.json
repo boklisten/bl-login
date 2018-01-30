@@ -8,8 +8,17 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "pkg": "ng-packagr -p package.json"
   },
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    }
+  },
+  "typings": "./dist/bl-login.d.ts",
+  "main": "./dist/bl-login.js",
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.2.4",
