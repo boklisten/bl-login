@@ -2,14 +2,17 @@ import {TestBed, inject, ComponentFixture} from '@angular/core/testing';
 
 import {LocalLoginService} from './local-login.service';
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
+import {LocalStorageService} from "angular-2-local-storage";
+
 
 describe('LocalLoginService', () => {
 	let service: LocalLoginService;
 	beforeEach(() => {
 		
 		const fakeHttpClient = {};
+		const fakeLocalStorage = {};
 		
-		service = new LocalLoginService(fakeHttpClient as HttpClient);
+		service = new LocalLoginService(fakeHttpClient as HttpClient, fakeLocalStorage as LocalStorageService);
 		
 	});
 	
