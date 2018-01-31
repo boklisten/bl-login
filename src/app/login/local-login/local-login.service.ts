@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {LocalStorageService} from "angular-2-local-storage";
+import {TokenService} from "../../token/token.service";
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {StorageService} from "../../storage/storage.service";
 
 @Injectable()
 export class LocalLoginService {
 	private loginUrl: string;
 	
-	constructor(private _httpClient: HttpClient, private _localStorage: LocalStorageService) {
+	constructor(private _httpClient: HttpClient, private _storageService: StorageService, private _tokenService: TokenService) {
 		this.loginUrl = 'http://localhost:1337/api/v1/auth/local/login';
 	}
 	
@@ -32,17 +35,20 @@ export class LocalLoginService {
 				try {
 					const validatedTokens = this.validateTokens(response.data);
 					this.storeTokens(validatedTokens.accessToken, validatedTokens.refreshToken);
+					this._tokenService.isAccessTokenValid();
 				} catch (err) {
-					reject(new Error('could not validate the tokens'));
+					return reject(new Error('could not validate the tokens: ' + err));
 				}
 				
 				
-				console.log('the accessToken was stored "' + this._localStorage.get('accessToken') + '"');
-				console.log('the refreshToken was stored "' + this._localStorage.get('refreshToken') + '"');
+				console.log(this._tokenService.decodeAccessToken());
+				
+				console.log('the accessToken was stored "' + this._storageService.getAccessToken());
+				console.log('the refreshToken was stored "' + this._storageService.getRefreshToken());
 				
 				resolve(true);
 			}).catch((err) => {
-				reject(new Error('could not login'));
+				reject(new Error('could not login: ' + err));
 			});
 		
 			
@@ -88,8 +94,7 @@ export class LocalLoginService {
 			throw new Error('refresh token empty or undefined');
 		}
 		
-		this._localStorage.set('refreshToken', refreshToken);
-		this._localStorage.set('accessToken', accessToken);
+		this._storageService.store(accessToken, refreshToken);
 		
 		return true;
 	}

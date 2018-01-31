@@ -9,8 +9,8 @@ export class StorageService {
 	private _refreshTokenName: string;
 	
 	constructor(private _localStorage: LocalStorageService, private _cookieService: CookieService) {
-		this._accessTokenName = 'accessToken';
-		this._refreshTokenName = 'refreshToken';
+		this._accessTokenName = 'access_token';
+		this._refreshTokenName = 'refresh_token';
 	}
 	
 	public validate(accessToken: string, refreshToken: string): boolean {
@@ -84,7 +84,6 @@ export class StorageService {
 			this._cookieService.put(this._refreshTokenName, refreshTokenVal);
 			
 		} catch (err) {
-			console.log('the erro', err);
 			throw new Error('could not make accessToken cookie and refreshToken Cookie');
 		}
 		return true;
