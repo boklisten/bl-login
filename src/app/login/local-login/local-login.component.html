@@ -1,38 +1,44 @@
-
 <div class="row" *ngIf="warning">
 	<div class="col-12">
-		<ngb-alert (close)="clearWarning()">{{warningText}}</ngb-alert>
+		<ngb-alert (close)="clearWarning()">
+			<i class="fa fa-exclamation-triangle"></i> {{warningText}}
+		</ngb-alert>
 	</div>
 </div>
 
 
 <div class="row">
-    <div class="col-12">
-      <div class="bl-input input-group md-3">
-        <div class="bl-input-prepend input-group-prepend">
-          <span class="input-group-text">Email</span>
-        </div>
-        <input type="email" class="form-control" id="blEmail" [(ngModel)]="email" [email]="true" placeholder="email">
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-       <div class="bl-input input-group md-3">
-         <div class="bl-input-prepend input-group-prepend">
-           <span class="input-group-text">Password</span>
-         </div>
-        <input type="password" class="form-control" id="blPassword" [(ngModel)]="password" placeholder="password" (keyup.enter)="login()">
-         <div class="input-group-append">
-           <button [ngClass]="{'btn': true, 'btn-outline-secondary disabled': !showLoginButton(), 'btn-success': showLoginButton()}" type="button" (click)="login()">Login</button>
-         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <p class="bl-local-login-footer">
-        <a href="#">Forgot password?</a>
-      </p>
-    </div>
-  </div>
+	<div class="col-12">
+		<div class="bl-input input-group md-3">
+			<div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="Email">
+          <span class="input-group-text">
+			  <i class="fa  fa-at" alt="email"></i>
+		  </span>
+			</div>
+			<input type="email" class="form-control" id="blEmail" [(ngModel)]="email" [email]="true"
+				   placeholder="email">
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+		<div class="bl-input input-group md-3">
+			<div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="Password">
+           <span class="input-group-text">
+			   <i class="fa fa-key"></i>
+		   </span>
+			</div>
+			<input type="password" class="form-control" id="blPassword" [(ngModel)]="password" placeholder="password"
+				   (keyup.enter)="login()">
+			<div class="input-group-append">
+				<button
+					[ngClass]="{'btn': true, 'btn-outline-secondary disabled': !showLoginButton(), 'btn-success': showLoginButton()}"
+					type="button" (click)="login()">Login
+				</button>
+			</div>
+		</div>
+		<p class="bl-local-login-footer">
+			<a href="#">Forgot password?</a>
+		</p>
+	</div>
+</div>
