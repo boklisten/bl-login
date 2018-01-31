@@ -10,10 +10,13 @@ import {CookieModule} from 'ngx-cookie';
 import {JwtModule} from '@auth0/angular-jwt';
 import {TokenService} from "../token/token.service";
 import {StorageService} from "../storage/storage.service";
+import { LocalLoginComponent } from './local-login/local-login.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
 	imports: [
 		CommonModule,
+		FormsModule,
 		NgbModule.forRoot(),
 		LocalStorageModule.withConfig({
 			prefix: 'bl',
@@ -35,7 +38,10 @@ import {StorageService} from "../storage/storage.service";
 		TokenService,
 		StorageService
 	],
-	declarations: [LoginComponent],
+	declarations: [
+		LoginComponent,
+		LocalLoginComponent
+	],
 	exports: [
 		LoginComponent
 	]

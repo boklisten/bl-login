@@ -9,17 +9,11 @@ import {LocalLoginService} from "./local-login/local-login.service";
 })
 export class LoginComponent implements OnInit {
 	
-	constructor(private _localLogin: LocalLoginService) {
+	constructor() {
 	}
 	
 	
 	ngOnInit() {
-		this._localLogin.login('bill@ofrights.com', 'billoriley').then((success) => {
-			console.log('logged in!');
-		}).catch((err) => {
-			console.log('some error', err);
-		});
-		
 	}
 	
 	
