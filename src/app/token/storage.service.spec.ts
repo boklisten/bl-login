@@ -1,15 +1,15 @@
 import {TestBed, inject} from '@angular/core/testing';
 
-import {TokenService} from './token.service';
+import {StorageService} from './storage.service';
 import {LocalStorageService} from "angular-2-local-storage";
 import {CookieService, CookieOptionsProvider} from 'ngx-cookie';
 
 describe('TokenService', () => {
-	let service: TokenService;
+	let service: StorageService;
 	beforeEach(() => {
 		const fakeLocalStorage = {};
 		const fakeCookieService = {};
-		service = new TokenService(fakeLocalStorage as LocalStorageService, fakeCookieService as CookieService);
+		service = new StorageService(fakeLocalStorage as LocalStorageService, fakeCookieService as CookieService);
 	});
 	
 	describe('#validate', () => {
@@ -42,7 +42,7 @@ describe('TokenService', () => {
 				isSupported: true,
 			};
 		const cookieService = new CookieService({} as CookieOptionsProvider);
-		const tokenService = new TokenService(fakeLocalStorageService as LocalStorageService, cookieService);
+		const tokenService = new StorageService(fakeLocalStorageService as LocalStorageService, cookieService);
 		
 		beforeEach(() => {
 			spyOn(cookieService, 'put').and.returnValue(true);

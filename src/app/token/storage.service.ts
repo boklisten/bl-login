@@ -4,7 +4,7 @@ import {LocalStorageService} from "angular-2-local-storage";
 import {CookieService} from 'ngx-cookie';
 
 @Injectable()
-export class TokenService {
+export class StorageService {
 	private _accessTokenName: string;
 	private _refreshTokenName: string;
 	
