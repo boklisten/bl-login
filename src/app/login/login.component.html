@@ -36,6 +36,27 @@
 	</div>
 
 	<bl-local-login></bl-local-login>
+
+	<div class="row">
+		<div class="col-12">
+			<button class="btn btn-link bl-forgot-password-link" (click)="onShowForgotPassword()">forgot password?</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="bl-login-container container" *ngIf="showForgotPassword">
+	<div class="row">
+		<div class="col-12 bl-navigation-header" (click)="onShowLogin()">
+			<span>
+				<i class="fa fa-chevron-left fa-lg"></i>
+			</span>
+			<span>Forgot password</span>
+		</div>
+	</div>
+
+	<bl-forgot-password></bl-forgot-password>
+
 </div>
 
 

@@ -13,6 +13,7 @@ import {StorageService} from "../storage/storage.service";
 import { LocalLoginComponent } from './local-login/local-login.component';
 import {FormsModule} from "@angular/forms";
 import { SocialLoginComponent } from './social-login/social-login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SocialLoginComponent } from './social-login/social-login.component';
 	declarations: [
 		LoginComponent,
 		LocalLoginComponent,
-		SocialLoginComponent
+		SocialLoginComponent,
+		ForgotPasswordComponent
 	],
 	exports: [
 		LoginComponent
