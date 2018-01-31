@@ -1,4 +1,41 @@
 
-<div class="bl-login-container container">
+<div class="bl-login-container container" *ngIf="showMenu()">
+
+	<div class="row">
+		<div class="col-12">
+			<button class="btn btn-lg btn-primary btn-block">
+				<i class="fa fa-user-plus"></i> Register
+			</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<button class="bl-login-button btn btn-lg btn-success btn-block" (click)="onShowLogin()">
+				<i class="fa fa-sign-in-alt"></i> Login
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="bl-login-container container" *ngIf="showLogin">
+	<div class="row">
+		<div class="col-12 bl-navigation-header" (click)="onShowMenu()">
+			<span>
+				<i class="fa fa-chevron-left fa-lg"></i>
+			</span>
+			<span>Login</span>
+		</div>
+	</div>
+	<bl-social-login></bl-social-login>
+
+	<div class="row">
+		<div class="col-12">
+			<p class="bl-separater">- or use your email -</p>
+		</div>
+	</div>
+
 	<bl-local-login></bl-local-login>
 </div>
+
+
