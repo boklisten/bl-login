@@ -12,12 +12,18 @@ export class LocalLoginComponent implements OnInit {
 	public password: string;
 	public warning: boolean;
 	public warningText: string;
+	public tooltipEmail: string;
+	public tooltipPassword: string;
+	public loginButtonText: string;
 	
 	constructor(private _localLoginService: LocalLoginService) {
 		this.email = '';
 		this.password = '';
 		this.warning = false;
 		this.warningText = '';
+		this.tooltipEmail = 'Email';
+		this.tooltipPassword = 'Password';
+		this.loginButtonText = 'Login';
 	}
 	
 	ngOnInit() {
