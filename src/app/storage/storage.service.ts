@@ -36,7 +36,7 @@ export class StorageService {
 		if (!this._localStorage.isSupported) {
 			return this.deleteCookie(key);
 		}
-		this._localStorage.remove(key);
+		localStorage.removeItem(key);
 		return true;
 	}
 	
@@ -45,7 +45,7 @@ export class StorageService {
 			return this.getCookie(this._accessTokenName);
 		}
 		
-		const aToken = this._localStorage.get(this._accessTokenName);
+		const aToken = localStorage.getItem(this._accessTokenName);
 		if (!aToken) {
 			throw new Error('could not find accessToken');
 		}
@@ -58,7 +58,7 @@ export class StorageService {
 			return this.getCookie(this._refreshTokenName);
 		}
 		
-		const aToken = this._localStorage.get(this._refreshTokenName);
+		const aToken = localStorage.getItem(this._refreshTokenName);
 		if (!aToken) {
 			throw new Error('could not find accessToken');
 		}
@@ -67,12 +67,11 @@ export class StorageService {
 	}
 	
 	private storeLocalStorage(accessToken: string, refreshToken: string) {
-		if (!this._localStorage.set(this._accessTokenName, accessToken)) {
-			throw new Error('could not store accessToken');
-		}
-		
-		if (!this._localStorage.set(this._refreshTokenName, refreshToken)) {
-			throw new Error('could not store refreshToken');
+		try {
+			localStorage.setItem(this._accessTokenName, accessToken);
+			localStorage.setItem(this._refreshTokenName, refreshToken);
+		} catch (err) {
+			throw new Error('could not store tokens');
 		}
 		return true;
 	}

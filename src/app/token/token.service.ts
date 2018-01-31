@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {APP_CONFIG} from "../app_config";
 import {StorageService} from "../storage/storage.service";
+import {AccessToken, UserPermission} from "bl-model";
 
 @Injectable()
 export class TokenService {
@@ -18,7 +19,7 @@ export class TokenService {
 		return true;
 	}
 	
-	public decodeAccessToken(): any {
+	public decodeAccessToken(): AccessToken {
 		try {
 			const aToken = this._jwtHelper.decodeToken(this._storageService.getAccessToken());
 			return aToken;
@@ -27,11 +28,13 @@ export class TokenService {
 		}
 	}
 	
-	public accessTokenPermission() {
-		/*try {
-			const aToken = this.decodeAccessToken();
+	public accessTokenPermission(): UserPermission {
+		try {
+			const permission = this.decodeAccessToken().permission;
+			return permission;
+		} catch (err) {
+			throw new Error('could not decode access token: ' + err);
 		}
-		*/
 	}
 	
 }

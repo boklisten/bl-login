@@ -4,13 +4,14 @@ import {LocalStorageService} from "angular-2-local-storage";
 import {TokenService} from "../../token/token.service";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {StorageService} from "../../storage/storage.service";
+import {APP_CONFIG} from "../../app_config";
 
 @Injectable()
 export class LocalLoginService {
 	private loginUrl: string;
 	
 	constructor(private _httpClient: HttpClient, private _storageService: StorageService, private _tokenService: TokenService) {
-		this.loginUrl = 'http://localhost:1337/api/v1/auth/local/login';
+		this.loginUrl = APP_CONFIG.url.base + '/auth/local/login';
 	}
 	
 	public login(email: string, password: string): Promise<boolean> {
@@ -29,8 +30,6 @@ export class LocalLoginService {
 			};
 			
 			this._httpClient.post(this.loginUrl, loginObj).toPromise().then((response: {data: any}) => {
-				console.log('the tokens!', response.data);
-				// this._localStorage.add('accessToken', )
 				
 				try {
 					const validatedTokens = this.validateTokens(response.data);
@@ -40,22 +39,11 @@ export class LocalLoginService {
 					return reject(new Error('could not validate the tokens: ' + err));
 				}
 				
-				
-				console.log(this._tokenService.decodeAccessToken());
-				
-				console.log('the accessToken was stored "' + this._storageService.getAccessToken());
-				console.log('the refreshToken was stored "' + this._storageService.getRefreshToken());
-				
 				resolve(true);
 			}).catch((err) => {
 				reject(new Error('could not login: ' + err));
 			});
-		
-			
-			
 		});
-		
-		
 	}
 	
 	private validateTokens(data: any[]): {accessToken: string, refreshToken: string} {
