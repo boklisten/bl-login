@@ -2,7 +2,7 @@ import {TestBed, inject, ComponentFixture} from '@angular/core/testing';
 
 import {LocalLoginService} from './local-login.service';
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
-import {LocalStorageService} from "angular-2-local-storage";
+import {TokenService} from "../../token/token.service";
 
 
 describe('LocalLoginService', () => {
@@ -10,9 +10,9 @@ describe('LocalLoginService', () => {
 	beforeEach(() => {
 		
 		const fakeHttpClient = {};
-		const fakeLocalStorage = {};
+		const fakeTokenService = {};
 		
-		service = new LocalLoginService(fakeHttpClient as HttpClient, fakeLocalStorage as LocalStorageService);
+		service = new LocalLoginService(fakeHttpClient as HttpClient, fakeTokenService as TokenService);
 		
 	});
 	

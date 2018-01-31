@@ -4,6 +4,10 @@ import {LoginComponent} from './login.component';
 import {HttpClientModule} from "@angular/common/http";
 import {LocalLoginService} from "./local-login/local-login.service";
 import {LocalStorageModule} from "angular-2-local-storage";
+import {TokenService} from "../token/token.service";
+import {JwtHelperService, JwtModule} from "@auth0/angular-jwt";
+import {StorageService} from "../storage/storage.service";
+import {CookieModule} from "ngx-cookie";
 
 describe('LoginComponent', () => {
 	let component: LoginComponent;
@@ -16,10 +20,19 @@ describe('LoginComponent', () => {
 					LocalStorageModule.withConfig({
 						prefix: 'bl',
 						storageType: "localStorage"
-					})
+					}),
+					JwtModule.forRoot({
+						config: {
+							whitelistedDomains: [],
+							tokenGetter: () => {
+								return '';
+							}
+						}
+					}),
+					CookieModule.forChild()
 				],
 				declarations: [LoginComponent],
-				providers: [LocalLoginService]
+				providers: [LocalLoginService, TokenService, StorageService]
 			})
 			.compileComponents();
 	}));

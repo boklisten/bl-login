@@ -37,4 +37,9 @@ export class TokenService {
 		}
 	}
 	
+	public store(accessTokenVal: any, refreshTokenVal: any): boolean {
+		this._storageService.store(accessTokenVal, refreshTokenVal);
+		return true;
+	}
+	
 }

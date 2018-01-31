@@ -10,7 +10,7 @@ import {APP_CONFIG} from "../../app_config";
 export class LocalLoginService {
 	private loginUrl: string;
 	
-	constructor(private _httpClient: HttpClient, private _storageService: StorageService, private _tokenService: TokenService) {
+	constructor(private _httpClient: HttpClient, private _tokenService: TokenService) {
 		this.loginUrl = APP_CONFIG.url.base + '/auth/local/login';
 	}
 	
@@ -82,7 +82,7 @@ export class LocalLoginService {
 			throw new Error('refresh token empty or undefined');
 		}
 		
-		this._storageService.store(accessToken, refreshToken);
+		this._tokenService.store(accessToken, refreshToken);
 		
 		return true;
 	}

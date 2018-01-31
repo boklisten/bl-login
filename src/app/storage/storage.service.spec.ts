@@ -4,7 +4,7 @@ import {StorageService} from './storage.service';
 import {LocalStorageService} from "angular-2-local-storage";
 import {CookieService, CookieOptionsProvider} from 'ngx-cookie';
 
-describe('TokenService', () => {
+describe('StorageService', () => {
 	let service: StorageService;
 	beforeEach(() => {
 		const fakeLocalStorage = {};
@@ -49,17 +49,6 @@ describe('TokenService', () => {
 			spyOn(cookieService, 'get').and.returnValue('cookieValue');
 		});
 		
-		it('should throw error if accessToken could not be stored', () => {
-			expect(() => {
-				tokenService.store('aValue', 'refreshToken');
-			}).toThrowError('could not store accessToken');
-		});
-		
-		it('should throw error if refreshToken could not be stored', () => {
-			expect(() => {
-				tokenService.store('accessTokenVal', 'rToken');
-			}).toThrowError('could not store refreshToken');
-		});
 		
 		it('should return true if both refreshToken and accessToken is stored', () => {
 			expect(tokenService.store('accessTokenVal', 'refreshTokenVal'))
