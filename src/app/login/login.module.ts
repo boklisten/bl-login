@@ -6,6 +6,7 @@ import {LoginService} from "./login.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {LocalLoginService} from "./local-login/local-login.service";
 import {LocalStorageModule} from "angular-2-local-storage";
+import {CookieModule} from 'ngx-cookie';
 
 @NgModule({
 	imports: [
@@ -14,7 +15,8 @@ import {LocalStorageModule} from "angular-2-local-storage";
 		LocalStorageModule.withConfig({
 			prefix: 'bl',
 			storageType: "localStorage"
-		})
+		}),
+		CookieModule.forChild()
 	],
 	providers: [
 		LoginService,
