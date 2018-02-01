@@ -22,6 +22,9 @@ export class LocalRegisterComponent implements OnInit {
 	
 	public registerButtonText: string;
 	
+	public passwordToShort: string;
+	public emailNotValid: string;
+	
 	
 	constructor(private _localRegisterService: LocalRegisterService) {
 		this.email = '';
@@ -34,6 +37,9 @@ export class LocalRegisterComponent implements OnInit {
 		this.warningText = '';
 		this.registerButtonText = 'Register';
 		
+		this.passwordToShort = 'Password is to short, needs to be at least 6 characters';
+		this.emailNotValid = 'Email is not valid';
+		
 	}
 	
 	ngOnInit() {
@@ -43,25 +49,27 @@ export class LocalRegisterComponent implements OnInit {
 		this.clearWarning();
 		
 		if (!EmailValidator.validate(this.email)) {
-			this.setWarning('email not valid');
+			this.setWarning(this.emailNotValid);
 			return;
 		}
 		
-		if (this.password.length <= 3) {
-			this.setWarning('password to short');
+		if (this.password.length < 6) {
+			this.setWarning(this.passwordToShort);
 			return;
 		}
 		
 		this._localRegisterService.register(this.email, this.password).then(() => {
+			
 			console.log('yeei!');
-		}).catch(() => {
-			console.log('could not register..');
+			
+			
+		}).catch((err) => {
 			this.setWarning('Could not register');
 		});
 	}
 	
 	public showRegisterButton() {
-		return (EmailValidator.validate(this.email) && this.password.length > 3);
+		return (EmailValidator.validate(this.email) && this.password.length > 0);
 	}
 	
 	private setWarning(msg: string) {

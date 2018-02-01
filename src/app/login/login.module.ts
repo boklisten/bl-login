@@ -17,12 +17,14 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LocalRegisterComponent } from './local-register/local-register.component';
 import { SocialRegisterComponent } from './social-register/social-register.component';
 import {LocalRegisterService} from "./local-register/local-register.service";
+import {LoginRoutingModule} from "./login-routing.module";
 
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
+		LoginRoutingModule,
 		NgbModule.forRoot(),
 		LocalStorageModule.withConfig({
 			prefix: 'bl',
