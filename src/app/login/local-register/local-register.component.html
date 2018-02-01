@@ -1,3 +1,41 @@
-<p>
-  local-register works!
-</p>
+<div class="row" *ngIf="warning">
+	<div class="col-12">
+		<ngb-alert (close)="clearWarning()">
+			<i class="fa fa-exclamation-triangle"></i> {{warningText}}
+		</ngb-alert>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<div class="bl-input input-group md-3">
+			<div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipEmail}}">
+				<span class="input-group-text">
+					<i class="fa  fa-at" alt="email"></i>
+				</span>
+			</div>
+			<input type="email" class="form-control" id="blEmail" [(ngModel)]="email" [email]="true"
+				   placeholder="{{tooltipEmail}}" (focus)="true">
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<div class="bl-input input-group md-3">
+			<div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipPassword}}">
+           <span class="input-group-text">
+			   <i class="fa fa-key"></i>
+		   </span>
+			</div>
+			<input type="password" class="form-control" id="blPassword" [(ngModel)]="password" placeholder="{{tooltipPassword}}"
+				   (keyup.enter)="onRegister()">
+			<div class="input-group-append">
+				<button
+					[ngClass]="{'btn': true, 'btn-outline-secondary disabled': !showRegisterButton(), 'btn-success': showRegisterButton()}"
+					type="button" (click)="onRegister()">{{registerButtonText}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

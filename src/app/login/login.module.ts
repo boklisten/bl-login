@@ -16,6 +16,7 @@ import { SocialLoginComponent } from './social-login/social-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LocalRegisterComponent } from './local-register/local-register.component';
 import { SocialRegisterComponent } from './social-register/social-register.component';
+import {LocalRegisterService} from "./local-register/local-register.service";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { SocialRegisterComponent } from './social-register/social-register.compo
 		LoginService,
 		LocalLoginService,
 		TokenService,
-		StorageService
+		StorageService,
+		LocalRegisterService
 	],
 	declarations: [
 		LoginComponent,
