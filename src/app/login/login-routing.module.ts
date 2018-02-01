@@ -18,6 +18,10 @@ const routes: Routes = [
 			{
 				path: 'login',
 				component: LoginAuthComponent,
+			},
+			{
+				path: 'login/forgot',
+				component: ForgotPasswordComponent
 			}
 		]
 	}

@@ -14,6 +14,7 @@ export class ForgotPasswordComponent implements OnInit {
 	public successText: string;
 	public forgotPasswordText: string;
 	public tooltipText: string;
+	public navigationTitle: string;
 	
 	constructor() {
 		this.warning = false;
@@ -23,12 +24,20 @@ export class ForgotPasswordComponent implements OnInit {
 		this.successText = '';
 		this.tooltipText = 'Email';
 		this.forgotPasswordText = 'Write in your email and we will send you a link about how to reset it';
+		this.navigationTitle = 'Forgot password';
 	}
 	
 	ngOnInit() {
 	}
 	
 	public onRequestNewPassword() {
+		this.clearWarning();
+		
+		if (!EmailValidator.validate(this.email)) {
+			this.setWarning('email is not valid');
+			return;
+		}
+		
 		this.setSuccess('email with instructions sent to you! (not true)');
 	
 	}

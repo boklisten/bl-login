@@ -20,11 +20,14 @@ export class LoginComponent implements OnInit {
 	public loginTitle: string;
 	public registerTitle: string;
 	public orUseEmailRegisterText: string;
+	public navigationTitle: string;
 	
 	constructor(private _router: Router, private _route: ActivatedRoute) {
 		this.showLogin = false;
 		this.showRegister = false;
 		this.showForgotPassword = false;
+		
+		this.navigationTitle = 'Login';
 		
 		this.registerButtonText = 'Register';
 		this.loginButtonText = 'Login';
@@ -39,6 +42,10 @@ export class LoginComponent implements OnInit {
 	
 	ngOnInit() {
 		this._router.navigate(['menu'], {relativeTo: this._route});
+	}
+	
+	public showNavigation() {
+		return (this._router.url.indexOf('menu') < 0);
 	}
 	
 	onShowLogin() {
