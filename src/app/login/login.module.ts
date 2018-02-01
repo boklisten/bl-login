@@ -14,6 +14,8 @@ import { LocalLoginComponent } from './local-login/local-login.component';
 import {FormsModule} from "@angular/forms";
 import { SocialLoginComponent } from './social-login/social-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { LocalRegisterComponent } from './local-register/local-register.component';
+import { SocialRegisterComponent } from './social-register/social-register.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 		LoginComponent,
 		LocalLoginComponent,
 		SocialLoginComponent,
-		ForgotPasswordComponent
+		ForgotPasswordComponent,
+		LocalRegisterComponent,
+		SocialRegisterComponent
 	],
 	exports: [
 		LoginComponent

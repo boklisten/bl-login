@@ -3,7 +3,7 @@
 
 	<div class="row">
 		<div class="col-12">
-			<button class="btn btn-lg btn-primary btn-block">
+			<button class="btn btn-lg btn-primary btn-block" (click)="onShowRegister()">
 				<i class="fa fa-user-plus"></i> {{registerButtonText}}
 			</button>
 		</div>
@@ -57,6 +57,27 @@
 
 	<bl-forgot-password></bl-forgot-password>
 
+</div>
+
+<div class="bl-login-container container" *ngIf="showRegister">
+	<div class="row">
+		<div class="col-12 bl-navigation-header" (click)="onShowMenu()">
+			<span>
+				<i class="fa fa-chevron-left fa-lg"></i>
+			</span>
+			<span>{{registerTitle}}</span>
+		</div>
+	</div>
+
+	<bl-social-register></bl-social-register>
+
+	<div class="row">
+		<div class="col-12">
+			<p class="bl-separater">- {{orUseEmailRegisterText}} -</p>
+		</div>
+	</div>
+
+	<bl-local-register></bl-local-register>
 </div>
 
 

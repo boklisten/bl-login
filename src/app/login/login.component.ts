@@ -17,18 +17,22 @@ export class LoginComponent implements OnInit {
 	public forgotPasswordTitleText: string;
 	public forgotPasswordButtonText: string;
 	public loginTitle: string;
+	public registerTitle: string;
+	public orUseEmailRegisterText: string;
 	
 	constructor() {
 		this.showLogin = false;
-		this.showRegister = false;
+		this.showRegister = true;
 		this.showForgotPassword = false;
 		
 		this.registerButtonText = 'Register';
 		this.loginButtonText = 'Login';
 		this.loginTitle = 'Login';
+		this.registerTitle = 'Register';
 		this.forgotPasswordButtonText = 'forgot password';
 		this.forgotPasswordTitleText = 'forgot password?';
 		this.orUseEmailText = 'or use your email';
+		this.orUseEmailRegisterText = 'or use your email and password';
 	}
 	
 	
