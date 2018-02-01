@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {LocalLoginService} from "./local-login/local-login.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
 	selector: 'bl-login',
@@ -20,9 +21,9 @@ export class LoginComponent implements OnInit {
 	public registerTitle: string;
 	public orUseEmailRegisterText: string;
 	
-	constructor() {
+	constructor(private _router: Router, private _route: ActivatedRoute) {
 		this.showLogin = false;
-		this.showRegister = true;
+		this.showRegister = false;
 		this.showForgotPassword = false;
 		
 		this.registerButtonText = 'Register';
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
 	
 	
 	ngOnInit() {
+		this._router.navigate(['menu'], {relativeTo: this._route});
 	}
 	
 	onShowLogin() {

@@ -18,13 +18,16 @@ import { LocalRegisterComponent } from './local-register/local-register.componen
 import { SocialRegisterComponent } from './social-register/social-register.component';
 import {LocalRegisterService} from "./local-register/local-register.service";
 import {LoginRoutingModule} from "./login-routing.module";
+import {RegisterModule} from "../register/register.module";
+import { LoginMenuComponent } from './login-menu/login-menu.component';
+import { LoginAuthComponent } from './login-auth/login-auth.component';
 
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
-		LoginRoutingModule,
+		RegisterModule,
 		NgbModule.forRoot(),
 		LocalStorageModule.withConfig({
 			prefix: 'bl',
@@ -38,7 +41,8 @@ import {LoginRoutingModule} from "./login-routing.module";
 					return localStorage.getItem('bl.access_token');
 				}
 			}
-		})
+		}),
+		LoginRoutingModule
 	],
 	providers: [
 		LoginService,
@@ -53,7 +57,9 @@ import {LoginRoutingModule} from "./login-routing.module";
 		SocialLoginComponent,
 		ForgotPasswordComponent,
 		LocalRegisterComponent,
-		SocialRegisterComponent
+		SocialRegisterComponent,
+		LoginMenuComponent,
+		LoginAuthComponent
 	],
 	exports: [
 		LoginComponent
