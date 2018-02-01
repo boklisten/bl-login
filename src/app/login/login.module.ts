@@ -14,9 +14,9 @@ import { LocalLoginComponent } from './local-login/local-login.component';
 import {FormsModule} from "@angular/forms";
 import { SocialLoginComponent } from './social-login/social-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { LocalRegisterComponent } from './local-register/local-register.component';
-import { SocialRegisterComponent } from './social-register/social-register.component';
-import {LocalRegisterService} from "./local-register/local-register.service";
+import { LocalRegisterComponent } from '../register/local-register/local-register.component';
+import { SocialRegisterComponent } from '../register/social-register/social-register.component';
+import {LocalRegisterService} from "../register/local-register/local-register.service";
 import {LoginRoutingModule} from "./login-routing.module";
 import {RegisterModule} from "../register/register.module";
 import { LoginMenuComponent } from './login-menu/login-menu.component';
@@ -56,8 +56,6 @@ import { LoginAuthComponent } from './login-auth/login-auth.component';
 		LocalLoginComponent,
 		SocialLoginComponent,
 		ForgotPasswordComponent,
-		LocalRegisterComponent,
-		SocialRegisterComponent,
 		LoginMenuComponent,
 		LoginAuthComponent
 	],

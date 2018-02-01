@@ -1,4 +1,16 @@
-<p>
-  register works!
-</p>
+<div class="row">
+    <div class="col-12">
+        <button class="bl-login-navigation btn btn-link" (click)="onNavigateBack()">
+            <i class="fa fa-chevron-left"></i> {{navigationTitle}}
+        </button>
+    </div>
+</div>
+<bl-social-register></bl-social-register>
 
+<div class="row">
+    <div class="col-12">
+        <p class="bl-separater">- {{orUseEmailRegisterText}} -</p>
+    </div>
+</div>
+
+<bl-local-register></bl-local-register>
