@@ -41,6 +41,11 @@ export class LoginComponent implements OnInit {
 	
 	
 	ngOnInit() {
+		//this._router.navigate(['menu'], {relativeTo: this._route});
+		this.testShowDetails();
+	}
+	
+	testShowDetails() {
 		this._router.navigate(['register/detail'], {relativeTo: this._route});
 	}
 	

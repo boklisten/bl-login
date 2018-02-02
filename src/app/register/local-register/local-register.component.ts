@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalRegisterService} from "./local-register.service";
 import * as EmailValidator from 'email-validator';
+import {LocalLoginService} from "../../login/local-login/local-login.service";
 
 @Component({
 	selector: 'bl-local-register',
@@ -47,6 +48,7 @@ export class LocalRegisterComponent implements OnInit {
 	}
 	
 	ngOnInit() {
+	
 	}
 	
 	public onRegister() {

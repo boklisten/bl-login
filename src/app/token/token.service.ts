@@ -19,7 +19,7 @@ export class TokenService {
 		return true;
 	}
 	
-	public decodeAccessToken(): AccessToken {
+	public getAccessTokenBody(): AccessToken {
 		try {
 			const aToken = this._jwtHelper.decodeToken(this._storageService.getAccessToken());
 			return aToken;
@@ -28,9 +28,13 @@ export class TokenService {
 		}
 	}
 	
+	public getAccessToken(): string {
+		return this._storageService.getAccessToken();
+	}
+	
 	public accessTokenPermission(): UserPermission {
 		try {
-			const permission = this.decodeAccessToken().permission;
+			const permission = this.getAccessTokenBody().permission;
 			return permission;
 		} catch (err) {
 			throw new Error('could not decode access token: ' + err);

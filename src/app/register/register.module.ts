@@ -9,6 +9,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RegisterAgreementComponent } from './register-agreement/register-agreement.component';
 import { UserAgreementModalComponent } from './user-agreement-modal/user-agreement-modal.component';
+import {RegisterDetailService} from "./register-detail/register-detail.service";
 
 @NgModule({
 	imports: [
@@ -16,6 +17,9 @@ import { UserAgreementModalComponent } from './user-agreement-modal/user-agreeme
 		FormsModule,
 		ReactiveFormsModule,
 		NgbModule.forRoot()
+	],
+	providers: [
+		RegisterDetailService
 	],
 	declarations: [
 		RegisterDetailComponent,
