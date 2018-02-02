@@ -1,0 +1,30 @@
+<div class="row bl-user-agreement-container">
+	<div class="col-2" (click)="onUserAgreement(modalUserAgreement)">
+		<div *ngIf="!userAgreement">
+			<i class="far fa-square fa-3x bl-checkbox" ></i>
+		</div>
+		<div *ngIf="userAgreement">
+			<i class="fas fa-check-square fa-3x bl-checkbox-checked"></i>
+		</div>
+	</div>
+	<div class="col-10 bl-checkbox-text">
+		<p>
+			{{userAgreementInfoText}}
+		</p>
+	</div>
+</div>
+
+<ng-template #modalUserAgreement let-c="close" let-d="dismiss">
+	<div class="modal-header">
+    	<h4 class="modal-title">User agreement</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+	</div>
+
+	<bl-user-agreement-modal></bl-user-agreement-modal>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="c('Close click')">I Agree</button>
+	</div>
+</ng-template>

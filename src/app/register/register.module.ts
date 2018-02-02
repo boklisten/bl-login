@@ -6,19 +6,24 @@ import {RegisterComponent} from './register.component';
 import {SocialRegisterComponent} from "./social-register/social-register.component";
 import {LocalRegisterComponent} from "./local-register/local-register.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { RegisterAgreementComponent } from './register-agreement/register-agreement.component';
+import { UserAgreementModalComponent } from './user-agreement-modal/user-agreement-modal.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
+		ReactiveFormsModule,
 		NgbModule.forRoot()
 	],
 	declarations: [
 		RegisterDetailComponent,
 		RegisterComponent,
 		SocialRegisterComponent,
-		LocalRegisterComponent
+		LocalRegisterComponent,
+		RegisterAgreementComponent,
+		UserAgreementModalComponent
 	],
 	exports: [
 		RegisterComponent,
