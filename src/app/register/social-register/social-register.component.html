@@ -3,12 +3,15 @@
 
 <div class="row">
 	<div class="col-12">
-		<button class="bl-social-register-button btn btn-block btn-outline-primary">Register with Facebook</button>
+		<button class="bl-social-register-button btn btn-block btn-outline-primary" (click)="onSelectFacebook()">
+			<i class="fab fa-facebook-square"></i> {{registerFacebookText}}
+		</button>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-12">
-		<button class="bl-social-register-button btn btn-block btn-outline-secondary">Register with Google</button>
+		<button class="bl-social-register-button btn btn-block btn-outline-secondary" (click)="onSelectGoogle()">
+			<i class="fab fa-google"></i> {{registerGoogleText}}</button>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalRegisterService} from "./local-register.service";
 import * as EmailValidator from 'email-validator';
 
@@ -8,6 +8,10 @@ import * as EmailValidator from 'email-validator';
 	styleUrls: ['./local-register.component.scss']
 })
 export class LocalRegisterComponent implements OnInit {
+	
+	@Input() agreementConfirmed: boolean;
+	@Output() registerWithoutAgreement: EventEmitter<boolean> = new EventEmitter();
+	
 	public email: string;
 	public password: string;
 	
@@ -55,6 +59,11 @@ export class LocalRegisterComponent implements OnInit {
 		
 		if (this.password.length < 6) {
 			this.setWarning(this.passwordToShort);
+			return;
+		}
+		
+		if (!this.agreementConfirmed) {
+			this.registerWithoutAgreement.emit(true);
 			return;
 		}
 		

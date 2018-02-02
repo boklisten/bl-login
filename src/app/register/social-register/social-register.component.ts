@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {APP_CONFIG} from "../../app_config";
 
 @Component({
@@ -7,6 +7,9 @@ import {APP_CONFIG} from "../../app_config";
 	styleUrls: ['./social-register.component.scss']
 })
 export class SocialRegisterComponent implements OnInit {
+	
+	@Output() select: EventEmitter<"google" | "facebook"> = new EventEmitter();
+	
 	public registerFacebookText: string;
 	public registerFacebookUrl: string;
 	public registerGoogleUrl: string;
@@ -20,6 +23,14 @@ export class SocialRegisterComponent implements OnInit {
 	}
 	
 	ngOnInit() {
+	}
+	
+	public onSelectFacebook() {
+		this.select.emit("facebook");
+	}
+	
+	public onSelectGoogle() {
+		this.select.emit("google");
 	}
 	
 }

@@ -1,15 +1,25 @@
-<div class="row">
-    <div class="col-12">
-        <button class="bl-login-navigation btn btn-link" (click)="onNavigateBack()">
-            <i class="fa fa-chevron-left"></i> {{navigationTitle}}
-        </button>
+<div class="row no-gutters bl-navigation">
+    <div class="col-12 bl-link" (click)="onNavigateBack()">
+		<a>
+			<i class="fa fa-chevron-left"></i> {{navigationTitle}}
+		</a>
     </div>
 </div>
 
 
-<bl-register-agreement></bl-register-agreement>
+<div class="row" *ngIf="warning">
+	<div class="col-12">
+		<ngb-alert (close)="clearWarning()">
+			<i class="fa fa-exclamation-triangle"></i> {{warningText}}
+		</ngb-alert>
+	</div>
+</div>
 
-<bl-social-register></bl-social-register>
+
+
+<bl-register-agreement (confirmed)="onConfirmedAgreement($event)" (dismissed)="onDismissedAgreement($event)"></bl-register-agreement>
+
+<bl-social-register (select)="onRegister($event)"></bl-social-register>
 
 <div class="row">
     <div class="col-12">
@@ -17,4 +27,4 @@
     </div>
 </div>
 
-<bl-local-register></bl-local-register>
+<bl-local-register [agreementConfirmed]="agreementConfirmed" (registerWithoutAgreement)="onRegisterWithoutAgreement()"></bl-local-register>

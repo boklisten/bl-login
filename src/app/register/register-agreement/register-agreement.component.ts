@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NgbModal, ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
 
@@ -9,36 +9,41 @@ import {NgbModal, ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
 })
 export class RegisterAgreementComponent implements OnInit {
 	
+	@Output() confirmed: EventEmitter<boolean> = new EventEmitter();
+	@Output() dismissed: EventEmitter<boolean> = new EventEmitter();
+	
 	public userAgreement: boolean;
 	public userAgreementInfoText: string;
-	public privacyAgreementUrl: string;
-	public privacyAgreementUrlText: string;
-	
 	private _closeResult: string;
 	
 	constructor(private _modalService: NgbModal) {
 		this.userAgreement = false;
-		this.privacyAgreementUrlText = 'Click here to read the user agreement.';
 		this.userAgreementInfoText = 'I have read and understood the user-agreement.';
+		this._closeResult = '';
 	}
 	
 	ngOnInit() {
 	}
 	
 	public onUserAgreement(content) {
-		this.userAgreement = !this.userAgreement;
-		if (this.userAgreement) {
+		if (!this.userAgreement) {
 			this.open(content);
+		} else {
+			this.userAgreement = false;
+			this.dismissed.emit(true);
 		}
 	}
 	
 	public open(content) {
 		this._modalService.open(content).result.then((result) => {
 			this._closeResult = 'closed with' + result;
-			console.log(this._closeResult);
+			this.userAgreement = true;
+			this.confirmed.emit(true);
 		}).catch((reason) => {
 			this._closeResult = 'Dismissed: ' + this.getDismissReason(reason);
 			console.log(this._closeResult);
+			this.userAgreement = false;
+			this.dismissed.emit(true);
 		});
 		
 	}

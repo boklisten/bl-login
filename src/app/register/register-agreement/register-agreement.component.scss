@@ -2,17 +2,21 @@
 
 .bl-user-agreement-container {
 	margin-top: 20px;
-	margin-bottom: 20px;
 }
 
 .bl-checkbox {
-	color: #28a645;
+	text-align: center;
+	color: #db3545 ;
 }
 
 .bl-checkbox-checked {
+	@extend .bl-checkbox;
 	color: #28a645;
 }
 
 .bl-checkbox-text {
-	padding: 5px;
+	font-style: italic;
+	font-size: 12px;
+
+	padding-top: 7px;
 }
