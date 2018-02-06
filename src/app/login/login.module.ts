@@ -8,8 +8,6 @@ import {LocalLoginService} from "./local-login/local-login.service";
 import {LocalStorageModule, LocalStorageService} from "angular-2-local-storage";
 import {CookieModule} from 'ngx-cookie';
 import {JwtModule} from '@auth0/angular-jwt';
-import {TokenService} from "../token/token.service";
-import {StorageService} from "../storage/storage.service";
 import { LocalLoginComponent } from './local-login/local-login.component';
 import {FormsModule} from "@angular/forms";
 import { SocialLoginComponent } from './social-login/social-login.component';
@@ -21,6 +19,7 @@ import {LoginRoutingModule} from "./login-routing.module";
 import {RegisterModule} from "../register/register.module";
 import { LoginMenuComponent } from './login-menu/login-menu.component';
 import { LoginAuthComponent } from './login-auth/login-auth.component';
+import {BlConnectModule} from 'bl-connect';
 
 
 @NgModule({
@@ -29,27 +28,13 @@ import { LoginAuthComponent } from './login-auth/login-auth.component';
 		FormsModule,
 		RegisterModule,
 		NgbModule.forRoot(),
-		LocalStorageModule.withConfig({
-			prefix: 'bl',
-			storageType: "localStorage"
-		}),
-		CookieModule.forChild(),
-		JwtModule.forRoot({
-			config: {
-				whitelistedDomains: ['localhost:1337'],
-				tokenGetter: () => {
-					return localStorage.getItem('bl.access_token');
-				}
-			}
-		}),
-		LoginRoutingModule
+		LoginRoutingModule,
+		BlConnectModule
 	],
 	providers: [
 		LoginService,
 		LocalLoginService,
-		TokenService,
-		StorageService,
-		LocalRegisterService
+		LocalRegisterService,
 	],
 	declarations: [
 		LoginComponent,

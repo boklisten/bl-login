@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {LocalLoginService} from "./local-login/local-login.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {BlApiError} from "bl-model";
+
 
 @Component({
 	selector: 'bl-login',
@@ -41,8 +43,15 @@ export class LoginComponent implements OnInit {
 	
 	
 	ngOnInit() {
-		//this._router.navigate(['menu'], {relativeTo: this._route});
-		this.testShowDetails();
+		this._router.navigate(['menu'], {relativeTo: this._route});
+		/*
+		this._loginService.login('a@b.com', 'password').then(() => {
+			console.log('logged in baby!');
+		}).catch((blApiErr: BlApiError) => {
+			console.log('login error::', blApiErr);
+		});
+		*/
+		// this.testShowDetails();
 	}
 	
 	testShowDetails() {

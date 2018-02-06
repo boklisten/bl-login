@@ -75,8 +75,12 @@ export class RegisterDetailComponent implements OnInit {
 	private fetchUserDetails() {
 		this._registerDetailService.getUserDetails().then((userDetail: UserDetail) => {
 				console.log('we got the user details!!', userDetail);
-				this._defaultGroup.fullName = userDetail.name;
-				console.log('the defaultValue is now', this._defaultGroup);
+				this._defaultGroup.fullName = (userDetail.name) ? userDetail.name : '';
+				this._defaultGroup.mobile = (userDetail.phone) ? userDetail.phone : '';
+				this._defaultGroup.address = (userDetail.address) ? userDetail.address : '';
+				this._defaultGroup.postCity = (userDetail.postCity) ? userDetail.postCity : '';
+				this._defaultGroup.postCode = (userDetail.postCode) ? userDetail.postCode : '';
+				
 				this.registerForm.setValue(this._defaultGroup);
 		}).catch((err) => {
 			console.log('the error', err);

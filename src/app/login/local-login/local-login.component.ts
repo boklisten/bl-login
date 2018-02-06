@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalLoginService} from "./local-login.service";
 import * as EmailValidator from 'email-validator';
+import {BlApiError, BlApiLoginRequiredError, BlApiPermissionDeniedError} from "bl-model";
 
 @Component({
 	selector: 'bl-local-login',
@@ -41,8 +42,12 @@ export class LocalLoginComponent implements OnInit {
 			console.log('we are logged in!');
 			
 			
-		}).catch((err) => {
-			this.setWarning('Username or password is not correct');
+		}).catch((blApiErr: BlApiError) => {
+			if (blApiErr instanceof BlApiPermissionDeniedError) {
+				this.setWarning('Username or password is incorrect');
+			} else {
+				this.setWarning('There was a problem logging in');
+			}
 		});
 	}
 	

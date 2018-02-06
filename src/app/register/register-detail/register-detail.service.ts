@@ -1,18 +1,19 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AccessToken, UserDetail} from "bl-model";
-import {TokenService} from "../../token/token.service";
 import {APP_CONFIG} from "../../app_config";
 
 @Injectable()
 export class RegisterDetailService {
 	private _userDetailUrl: string;
 	
-	constructor(private _httpClient: HttpClient, private _tokenService: TokenService) {
+	constructor(private _httpClient: HttpClient) {
 		this._userDetailUrl = APP_CONFIG.url.base + '/userdetails/';
 	}
 	
 	public getUserDetails(): Promise<UserDetail> {
+		return Promise.reject('get userDetails: not implemented');
+		/*
 		const accessToken: AccessToken = this._tokenService.getAccessTokenBody();
 		const accessTokenString: string = this._tokenService.getAccessToken();
 		const headers = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessTokenString});
@@ -24,5 +25,6 @@ export class RegisterDetailService {
 				reject(new Error('could not get user details!'));
 			});
 		});
+		*/
 	}
 }
