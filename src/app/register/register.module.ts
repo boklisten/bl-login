@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RegisterAgreementComponent } from './register-agreement/register-agreement.component';
 import { UserAgreementModalComponent } from './user-agreement-modal/user-agreement-modal.component';
 import {RegisterDetailService} from "./register-detail/register-detail.service";
+import {SocialRegisterService} from "./social-register/social-register.service";
 
 @NgModule({
 	imports: [
@@ -19,7 +20,8 @@ import {RegisterDetailService} from "./register-detail/register-detail.service";
 		NgbModule.forRoot()
 	],
 	providers: [
-		RegisterDetailService
+		RegisterDetailService,
+		SocialRegisterService
 	],
 	declarations: [
 		RegisterDetailComponent,

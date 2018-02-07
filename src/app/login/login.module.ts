@@ -20,6 +20,7 @@ import {RegisterModule} from "../register/register.module";
 import { LoginMenuComponent } from './login-menu/login-menu.component';
 import { LoginAuthComponent } from './login-auth/login-auth.component';
 import {BlConnectModule} from 'bl-connect';
+import {SocialLoginService} from "./social-login/social-login.service";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {BlConnectModule} from 'bl-connect';
 		LoginService,
 		LocalLoginService,
 		LocalRegisterService,
+		SocialLoginService
 	],
 	declarations: [
 		LoginComponent,

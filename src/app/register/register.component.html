@@ -19,7 +19,7 @@
 
 <bl-register-agreement (confirmed)="onConfirmedAgreement($event)" (dismissed)="onDismissedAgreement($event)"></bl-register-agreement>
 
-<bl-social-register (select)="onRegister($event)"></bl-social-register>
+<bl-social-register [agreementConfirmed]="agreementConfirmed" (warning)="setWarning($event)"></bl-social-register>
 
 <div class="row">
     <div class="col-12">

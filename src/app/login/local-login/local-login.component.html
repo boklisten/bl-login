@@ -16,7 +16,7 @@
 		  </span>
 			</div>
 			<input type="email" class="form-control" id="blEmail" [(ngModel)]="email" [email]="true"
-				   placeholder="{{tooltipEmail}}" (focus)="true">
+				   placeholder="{{tooltipEmail}}" (keyup.enter)="login()">
 		</div>
 	</div>
 </div>

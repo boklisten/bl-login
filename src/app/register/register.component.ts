@@ -50,9 +50,12 @@ export class RegisterComponent implements OnInit {
 		this.clearWarning();
 		if (!this.agreementConfirmed) {
 			this.setWarning(this._agreementNotConfirmedText);
-		} else {
-			console.log('user whants to register');
+			return;
 		}
+		
+		
+		console.log('user whants to register');
+		
 	
 	}
 	

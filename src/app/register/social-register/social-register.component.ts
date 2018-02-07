@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {APP_CONFIG} from "../../app_config";
+import {SocialRegisterService} from "./social-register.service";
 
 @Component({
 	selector: 'bl-social-register',
@@ -8,29 +9,40 @@ import {APP_CONFIG} from "../../app_config";
 })
 export class SocialRegisterComponent implements OnInit {
 	
-	@Output() select: EventEmitter<"google" | "facebook"> = new EventEmitter();
+	@Output() warning: EventEmitter<string> = new EventEmitter();
+	@Input() agreementConfirmed: boolean;
 	
 	public registerFacebookText: string;
 	public registerFacebookUrl: string;
 	public registerGoogleUrl: string;
 	public registerGoogleText: string;
+	public agreementNotConfirmedText: string;
 	
-	constructor() {
+	constructor(private _socialRegisterService: SocialRegisterService) {
 		this.registerFacebookText = 'Register with Facebook';
 		this.registerGoogleText = 'Register with Google';
 		this.registerFacebookUrl = APP_CONFIG.url.base + '/auth/facebook/register';
 		this.registerGoogleUrl = APP_CONFIG.url.base + '/auth/google/register';
+		this.agreementNotConfirmedText = 'You must agree to the user agreement before registering';
 	}
 	
 	ngOnInit() {
 	}
 	
 	public onSelectFacebook() {
-		this.select.emit("facebook");
+		if (!this.agreementConfirmed) {
+			this.warning.emit(this.agreementNotConfirmedText);
+		} else {
+			this._socialRegisterService.register("facebook");
+		}
 	}
 	
 	public onSelectGoogle() {
-		this.select.emit("google");
+		if (!this.agreementConfirmed) {
+			this.warning.emit(this.agreementNotConfirmedText);
+		} else {
+			this._socialRegisterService.register("google");
+		}
 	}
 	
 }

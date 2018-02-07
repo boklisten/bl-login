@@ -8,7 +8,16 @@
 </div>
 
 
-<bl-social-login></bl-social-login>
+<div class="row" *ngIf="warning">
+	<div class="col-12">
+		<ngb-alert (close)="clearWarning()">
+			<i class="fa fa-exclamation-triangle"></i> {{warningText}}
+		</ngb-alert>
+	</div>
+</div>
+
+
+<bl-social-login (warning)="setWarning($event)"></bl-social-login>
 
 <div class="row">
     <div class="col-12">
