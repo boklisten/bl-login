@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalRegisterService} from "./local-register.service";
 import * as EmailValidator from 'email-validator';
-import {LocalLoginService} from "../../login/local-login/local-login.service";
 
 @Component({
 	selector: 'bl-local-register',
@@ -12,6 +11,7 @@ export class LocalRegisterComponent implements OnInit {
 	
 	@Input() agreementConfirmed: boolean;
 	@Output() registerWithoutAgreement: EventEmitter<boolean> = new EventEmitter();
+	@Output() registered: EventEmitter<boolean> = new EventEmitter();
 	
 	public email: string;
 	public password: string;
@@ -69,13 +69,14 @@ export class LocalRegisterComponent implements OnInit {
 			return;
 		}
 		
+		
 		this._localRegisterService.register(this.email, this.password).then(() => {
-			
-			console.log('yeei!');
+			this.registered.emit(true);
 			
 			
 		}).catch((err) => {
 			this.setWarning('Could not register');
+			console.log('register error', err);
 		});
 	}
 	

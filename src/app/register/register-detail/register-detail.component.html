@@ -7,12 +7,21 @@
 	</div>
 </div>
 
+
 <div class="row">
 	<div class="col-12">
-		<p>Update the details for <strong>user@hmail.com</strong>. To start renting items
+		<ngb-alert *ngIf="successMsg" type="success" (close)="successMsg = null">{{ successMsg }}</ngb-alert>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<p>Update the details for <strong>{{username}}</strong>. To start renting items
 		we need you to give us some basic information.</p>
 	</div>
 </div>
+
+
 
 <form [formGroup]="registerForm">
 	<div class="row">
@@ -23,7 +32,7 @@
 						<i class="fas fa-user"></i>
                     </span>
                 </div>
-                <input type="text" formControlName="fullName" class="form-control" placeholder="{{tooltipFullName}}" >
+                <input type="text" formControlName="name" class="form-control" placeholder="{{tooltipFullName}}" (keyup.enter)="onUpdateDetails()">
 			</div>
 
 			<div class="bl-input input-group md-3">
@@ -32,7 +41,8 @@
 						<i class="fas fa-phone"></i>
                     </span>
                 </div>
-                <input type="number" formControlName="mobile" class="form-control" placeholder="{{tooltipMobile}}" >
+                <input type="number" formControlName="phone" class="form-control" placeholder="{{tooltipMobile}}" (keyup.enter)="onUpdateDetails()">
+
 			</div>
 
 
@@ -47,7 +57,7 @@
 						<i class="fas fa-birthday-cake"></i>
                     </span>
                 </div>
-                <input ngbDatepicker #d="ngbDatepicker" type="text" formControlName="postCity" class="form-control" placeholder="{{tooltipBirthday}}" >
+                <input ngbDatepicker #d="ngbDatepicker" type="text" formControlName="postCity" class="form-control" placeholder="{{tooltipBirthday}}" (keyup.enter)="onUpdateDetails()">
 
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
@@ -62,9 +72,9 @@
 						<i class="far fa-address-card"></i>
                     </span>
                 </div>
-                <input type="text" formControlName="address" class="form-control" placeholder="{{tooltipAddress}}" >
-				<input type="text" formControlName="postCity" class="form-control" placeholder="{{tooltipPostCity}}" >
-				<input type="number" formControlName="postCode" class="form-control" placeholder="{{tooltipPostCode}}" >
+                <input type="text" formControlName="address" class="form-control" placeholder="{{tooltipAddress}}"  (keyup.enter)="onUpdateDetails()">
+				<input type="text" formControlName="postCity" class="form-control" placeholder="{{tooltipPostCity}}" (keyup.enter)="onUpdateDetails()">
+				<input type="number" formControlName="postCode" class="form-control" placeholder="{{tooltipPostCode}}" (keyup.enter)="onUpdateDetails()">
 			</div>
 		</div>
 	</div>
@@ -87,7 +97,7 @@
 
 	<div class="row bl-register-space">
 		<div class="col-12">
-			<button type="button" class="btn btn-block btn-outline-success">
+			<button type="button" class="btn btn-block btn-outline-success" (click)="onUpdateDetails()">
 				Update details
 			</button>
 		</div>

@@ -11,17 +11,21 @@ import { RegisterAgreementComponent } from './register-agreement/register-agreem
 import { UserAgreementModalComponent } from './user-agreement-modal/user-agreement-modal.component';
 import {RegisterDetailService} from "./register-detail/register-detail.service";
 import {SocialRegisterService} from "./social-register/social-register.service";
+import {BlConnectModule} from "bl-connect";
+import {LocalRegisterService} from "./local-register/local-register.service";
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
 		ReactiveFormsModule,
-		NgbModule.forRoot()
+		NgbModule.forRoot(),
+		BlConnectModule
 	],
 	providers: [
 		RegisterDetailService,
-		SocialRegisterService
+		SocialRegisterService,
+		LocalRegisterService
 	],
 	declarations: [
 		RegisterDetailComponent,

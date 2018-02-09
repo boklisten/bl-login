@@ -46,16 +46,11 @@ export class RegisterComponent implements OnInit {
 		this.clearWarning();
 	}
 	
-	public onRegister(type: "facebook" | "google" | "local") {
+	public onRegistered() {
 		this.clearWarning();
-		if (!this.agreementConfirmed) {
-			this.setWarning(this._agreementNotConfirmedText);
-			return;
-		}
+		console.log('have registered, trying to redirect');
 		
-		
-		console.log('user whants to register');
-		
+		this._router.navigate(['detail'], {relativeTo: this._route});
 	
 	}
 	
