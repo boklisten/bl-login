@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalLoginService} from "../../login/local-login/local-login.service";
 import {RegisterDetailService} from "./register-detail.service";
 import {BlApiError, UserDetail} from "bl-model";
+import {LoginService} from "../../login/login.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
 
 @Component({
 	selector: 'bl-register-detail',
@@ -12,6 +15,7 @@ import {BlApiError, UserDetail} from "bl-model";
 export class RegisterDetailComponent implements OnInit {
 	public registerDetailTitle: string;
 	public successMsg: string;
+	public warningMsg: string;
 	
 	
 	public username: string;
@@ -31,7 +35,8 @@ export class RegisterDetailComponent implements OnInit {
 	public registerForm: FormGroup;
 	
 	constructor(@Inject(FormBuilder) fb: FormBuilder, private _localLoginService: LocalLoginService,
-				private _registerDetailService: RegisterDetailService) {
+				private _registerDetailService: RegisterDetailService, private _LoginService: LoginService,
+				private _router: Router, private _route: ActivatedRoute) {
 		
 		
 		this._defaultGroup = {
@@ -71,6 +76,10 @@ export class RegisterDetailComponent implements OnInit {
 	
 	
 	ngOnInit() {
+		if (!this._LoginService.isLoggedIn()) {
+			this._router.navigate(['../../menu'], {relativeTo: this._route});
+		}
+		
 		this.fetchUserDetails();
 	}
 	
@@ -78,7 +87,7 @@ export class RegisterDetailComponent implements OnInit {
 		this._registerDetailService.getUserDetails().then((userDetail: UserDetail) => {
 			this.setUserDetail(userDetail);
 		}).catch((err: BlApiError) => {
-			console.log('could not fetch userDetails');
+			this._router.navigate(['../../menu'], {relativeTo: this._route});
 		});
 	}
 	
@@ -123,4 +132,7 @@ export class RegisterDetailComponent implements OnInit {
 		}, 3000);
 	}
 	
+	public onRegisterDetailLater() {
+		this._router.navigate([LOGIN_MODULE_SETTINGS.successPath], {relativeTo: this._route});
+	}
 }

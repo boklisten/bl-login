@@ -51,4 +51,7 @@ import {SocialLoginService} from "./social-login/social-login.service";
 	]
 })
 export class LoginModule {
+	withConfig(config?: {loginSuccessPath?: string}) {
+	
+	}
 }

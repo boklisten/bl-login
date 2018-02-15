@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {LOGIN_MODULE_SETTINGS} from "../login-module-settings";
 
 @Component({
 	selector: 'bl-login-auth',
@@ -23,7 +24,11 @@ export class LoginAuthComponent implements OnInit {
 	ngOnInit() {
 	}
 	
-	onForgotPassword() {
+	public  onLogin() {
+		this._router.navigate([LOGIN_MODULE_SETTINGS.successPath], {relativeTo: this._route});
+	}
+	
+	public onForgotPassword() {
 		this._router.navigate(['./forgot'], {relativeTo: this._route});
 	}
 	

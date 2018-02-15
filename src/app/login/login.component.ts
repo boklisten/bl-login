@@ -46,9 +46,8 @@ export class LoginComponent implements OnInit {
 		 this._router.navigate(['menu'], {relativeTo: this._route});
 	}
 	
-	testShowDetails() {
-		this._router.navigate(['register/detail'], {relativeTo: this._route});
-	}
+	
+	
 	
 	public showNavigation() {
 		return (this._router.url.indexOf('menu') < 0);

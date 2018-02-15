@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalLoginService} from "./local-login.service";
 import * as EmailValidator from 'email-validator';
 import {BlApiError, BlApiLoginRequiredError, BlApiPermissionDeniedError} from "bl-model";
@@ -17,6 +17,8 @@ export class LocalLoginComponent implements OnInit {
 	public tooltipPassword: string;
 	public loginButtonText: string;
 	
+	@Output() loggedIn: EventEmitter<boolean>;
+	
 	constructor(private _localLoginService: LocalLoginService) {
 		this.email = '';
 		this.password = '';
@@ -25,6 +27,7 @@ export class LocalLoginComponent implements OnInit {
 		this.tooltipEmail = 'Email';
 		this.tooltipPassword = 'Password';
 		this.loginButtonText = 'Login';
+		this.loggedIn = new EventEmitter<boolean>();
 	}
 	
 	ngOnInit() {
@@ -38,10 +41,7 @@ export class LocalLoginComponent implements OnInit {
 		}
 		
 		this._localLoginService.login(this.email, this.password).then(() => {
-			
-			console.log('we are logged in!');
-			
-			
+			this.loggedIn.emit(true);
 		}).catch((blApiErr: BlApiError) => {
 			if (blApiErr instanceof BlApiPermissionDeniedError) {
 				this.setWarning('Username or password is incorrect');

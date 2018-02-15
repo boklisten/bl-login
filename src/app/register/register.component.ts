@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
 	
 	public onRegistered() {
 		this.clearWarning();
-		console.log('have registered, trying to redirect');
 		
 		this._router.navigate(['detail'], {relativeTo: this._route});
 	
