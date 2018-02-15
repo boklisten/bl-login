@@ -19,11 +19,11 @@ export class LoginMenuComponent implements OnInit {
 	}
 	
 	public onLogin() {
-		this._router.navigate(['/auth/login']);
+		this._router.navigate(['../login'], {relativeTo: this._route});
 	}
 	
 	public onRegister() {
-		this._router.navigate(['/auth/register']);
+		this._router.navigate(['../register'], {relativeTo: this._route});
 	}
 	
 }

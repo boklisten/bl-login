@@ -43,15 +43,7 @@ export class LoginComponent implements OnInit {
 	
 	
 	ngOnInit() {
-		//this._router.navigate(['menu'], {relativeTo: this._route});
-		/*
-		this._loginService.login('a@b.com', 'password').then(() => {
-			console.log('logged in baby!');
-		}).catch((blApiErr: BlApiError) => {
-			console.log('login error::', blApiErr);
-		});
-		*/
-		 this.testShowDetails();
+		 this._router.navigate(['menu'], {relativeTo: this._route});
 	}
 	
 	testShowDetails() {
