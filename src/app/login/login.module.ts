@@ -21,6 +21,8 @@ import { LoginMenuComponent } from './login-menu/login-menu.component';
 import { LoginAuthComponent } from './login-auth/login-auth.component';
 import {BlConnectModule} from 'bl-connect';
 import {SocialLoginService} from "./social-login/social-login.service";
+import { LoginSuccessComponent } from './login-success/login-success.component';
+import {LOGIN_MODULE_SETTINGS} from "./login-module-settings";
 
 
 @NgModule({
@@ -44,14 +46,20 @@ import {SocialLoginService} from "./social-login/social-login.service";
 		SocialLoginComponent,
 		ForgotPasswordComponent,
 		LoginMenuComponent,
-		LoginAuthComponent
+		LoginAuthComponent,
+		LoginSuccessComponent
 	],
 	exports: [
 		LoginComponent
 	]
 })
 export class LoginModule {
-	withConfig(config?: {loginSuccessPath?: string}) {
-	
+	public static withConfig(config?: {successPath?: string}) {
+		if (config) {
+			if (config.successPath) {
+				LOGIN_MODULE_SETTINGS.successPath = config.successPath;
+			}
+		}
+		return this;
 	}
 }

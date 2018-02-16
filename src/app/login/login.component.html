@@ -1,9 +1,11 @@
+<div class="bl-login-wrapper">
+    <div class="container bl-login-container">
+        <div class="row">
+            <div class="col-12" *ngIf="!showNavigation()">
+                <img class="bl-logo" src="../../assets/boklisten_logo_v2_icon_blue.png" height="110" width="110">
+            </div>
 
-<div class="bl-login-container container-fluid">
-	<div class="row" *ngIf="!showNavigation()">
-		<div class="col-12">
-			<img class="bl-logo" src="../../assets/boklisten_logo_v2_icon_blue.png">
-		</div>
-	</div>
-	<router-outlet></router-outlet>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
 </div>

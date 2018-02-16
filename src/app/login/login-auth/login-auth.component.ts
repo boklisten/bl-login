@@ -25,7 +25,7 @@ export class LoginAuthComponent implements OnInit {
 	}
 	
 	public  onLogin() {
-		this._router.navigate([LOGIN_MODULE_SETTINGS.successPath], {relativeTo: this._route});
+		this._router.navigateByUrl(LOGIN_MODULE_SETTINGS.successPath);
 	}
 	
 	public onForgotPassword() {

@@ -43,11 +43,8 @@ export class LoginComponent implements OnInit {
 	
 	
 	ngOnInit() {
-		 this._router.navigate(['menu'], {relativeTo: this._route});
+		this._router.navigate(['login'], {relativeTo: this._route});
 	}
-	
-	
-	
 	
 	public showNavigation() {
 		return (this._router.url.indexOf('menu') < 0);

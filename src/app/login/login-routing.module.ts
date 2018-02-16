@@ -6,6 +6,7 @@ import {ForgotPasswordComponent} from "./forgot-password/forgot-password.compone
 import {LoginMenuComponent} from "./login-menu/login-menu.component";
 import {LoginAuthComponent} from "./login-auth/login-auth.component";
 import {RegisterDetailComponent} from "../register/register-detail/register-detail.component";
+import {LoginSuccessComponent} from "./login-success/login-success.component";
 
 const routes: Routes = [
 	{
@@ -23,6 +24,10 @@ const routes: Routes = [
 			{
 				path: 'login/forgot',
 				component: ForgotPasswordComponent
+			},
+			{
+				path: 'success',
+				component: LoginSuccessComponent
 			},
 			{
 				path: 'register',

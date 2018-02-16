@@ -133,6 +133,6 @@ export class RegisterDetailComponent implements OnInit {
 	}
 	
 	public onRegisterDetailLater() {
-		this._router.navigate([LOGIN_MODULE_SETTINGS.successPath], {relativeTo: this._route});
+		this._router.navigateByUrl(LOGIN_MODULE_SETTINGS.successPath);
 	}
 }
