@@ -2,10 +2,12 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalLoginService} from "../../login/local-login/local-login.service";
 import {RegisterDetailService} from "./register-detail.service";
-import {BlApiError, UserDetail} from "bl-model";
+import {BlApiError, Branch, UserDetail} from "bl-model";
 import {LoginService} from "../../login/login.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
+import {BranchService} from "bl-connect";
+import {NgbDatepickerConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
 	selector: 'bl-register-detail',
@@ -30,14 +32,19 @@ export class RegisterDetailComponent implements OnInit {
 	public branches: any[];
 	private _defaultGroup: any;
 	private _userDetail: UserDetail;
+	public selectedBranch: Branch;
 	
 	
 	public registerForm: FormGroup;
 	
 	constructor(@Inject(FormBuilder) fb: FormBuilder, private _localLoginService: LocalLoginService,
 				private _registerDetailService: RegisterDetailService, private _LoginService: LoginService,
-				private _router: Router, private _route: ActivatedRoute) {
+				private _router: Router, private _route: ActivatedRoute, private _branchService: BranchService,
+				private _ngbDatepickerConfig: NgbDatepickerConfig) {
 		
+		
+		this._ngbDatepickerConfig.minDate = {year: 1890, month: 1, day: 1};
+		this._ngbDatepickerConfig.maxDate = {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()}
 		
 		this._defaultGroup = {
 			name: '',
@@ -45,20 +52,15 @@ export class RegisterDetailComponent implements OnInit {
 			address: '',
 			postCity: '',
 			postCode: '',
-			birthday: ''
+			dob: '',
+			branch: ''
 		};
 		
 		this.registerForm = fb.group(this._defaultGroup);
 		
 		
-		this.registerForm.valueChanges.subscribe((something) => {
-			console.log('the change', something);
-		});
-		
 		
 		this.registerDetailTitle = 'Register your details';
-		
-		
 		this.tooltipFullName = 'Full name';
 		this.tooltipMobile = 'Mobile number';
 		this.tooltipAddress = 'Address';
@@ -67,20 +69,24 @@ export class RegisterDetailComponent implements OnInit {
 		this.tooltipBirthday = 'Birthday';
 		this.tooltipBranch = 'Branch';
 		this.tooltipSelectBranch = 'Select Branch';
-		this.branches = [
-			{id: '1', name: 'Akademiet Oslo'},
-			{id: '2', name: 'Sonans Oslo'}
-		];
-		
 	}
 	
-	
 	ngOnInit() {
+		
 		if (!this._LoginService.isLoggedIn()) {
 			this._router.navigate(['../../menu'], {relativeTo: this._route});
 		}
 		
+		this.fetchBranches();
 		this.fetchUserDetails();
+	}
+	
+	private fetchBranches() {
+		this._branchService.get().then((branches: Branch[]) => {
+			this.branches = branches;
+		}).catch((blApiError: BlApiError) => {
+			console.log('RegisterDetailComponent: could not get branches');
+		});
 	}
 	
 	private fetchUserDetails() {
@@ -99,8 +105,14 @@ export class RegisterDetailComponent implements OnInit {
 		this._defaultGroup.address = (userDetail.address) ? userDetail.address : '';
 		this._defaultGroup.postCity = (userDetail.postCity) ? userDetail.postCity : '';
 		this._defaultGroup.postCode = (userDetail.postCode) ? userDetail.postCode : '';
+		this._defaultGroup.branch = (userDetail.branch) ? userDetail.branch : '';
+		this._defaultGroup.dob = (userDetail.dob) ? this.convertDateToNgbDatepicker(new Date(userDetail.dob)) : '';
 		this.registerForm.setValue(this._defaultGroup);
 		this.username = userDetail.email;
+	}
+	
+	private convertDateToNgbDatepicker(theDate: Date) {
+		return {year: theDate.getFullYear(), month: theDate.getMonth(), day: theDate.getDay()};
 	}
 	
 	public onUpdateDetails() {
@@ -108,20 +120,23 @@ export class RegisterDetailComponent implements OnInit {
 			console.log('no change detected, returning');
 			return;
 		}
+		
+		if (this.registerForm.contains('dob')) {
+			const birth: {year: number, month: number, day: number} = this.registerForm.get('dob').value;
+			
+			const date = new Date(birth.year, birth.month - 1, birth.day + 1, 0);
+			
+			this._defaultGroup.dob = date;
+			this.registerForm.setValue(this._defaultGroup);
+		}
+		
 		this._registerDetailService.updateDetails(this.registerForm.value).then((userDetail: UserDetail) => {
+			
 			this.setUserDetail(userDetail);
 			this.setSuccess('user details was saved');
 		}).catch((blApiErr: BlApiError) => {
 			console.log('got error from server when updating the userDetail: ', blApiErr);
 		});
-	}
-	
-	private isUserDetailChanged() {
-		if (JSON.stringify(this._defaultGroup) === JSON.stringify(this.registerForm.value)) {
-			return false;
-		}
-		
-		return true;
 	}
 	
 	private setSuccess(msg: string) {

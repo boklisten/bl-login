@@ -1,3 +1,4 @@
+
 <div class="row">
 	<div class="col-8">
 		<h5><b>{{registerDetailTitle}}</b></h5>
@@ -57,7 +58,7 @@
 						<i class="fas fa-birthday-cake"></i>
                     </span>
                 </div>
-                <input ngbDatepicker #d="ngbDatepicker" type="text" formControlName="postCity" class="form-control" placeholder="{{tooltipBirthday}}" (keyup.enter)="onUpdateDetails()">
+                <input ngbDatepicker #d="ngbDatepicker" type="text" formControlName="dob" class="form-control" placeholder="{{tooltipBirthday}}" (keyup.enter)="onUpdateDetails()">
 
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
@@ -79,6 +80,8 @@
 		</div>
 	</div>
 
+
+
 	<div class="row bl-register-space">
 		<div class="col-12">
 			<div class="bl-input input-group mb-3">
@@ -87,9 +90,9 @@
 						<i class="fas fa-graduation-cap"></i>
 					</label>
 				</div>
-				<select class="custom-select" id="inputGroupSelect01">
+				<select class="custom-select" id="inputGroupSelect01" formControlName="branch">
 					<option selected>{{tooltipSelectBranch}}</option>
-					<option *ngFor="let branch of branches" value="branch.id">{{branch.name}}</option>
+					<option *ngFor="let branch of branches" value="{{branch.id}}">{{branch.name}}</option>
 				</select>
 			</div>
 		</div>

@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 	
 	
 	ngOnInit() {
-		this._router.navigate(['login'], {relativeTo: this._route});
+		// this._router.navigate(['login'], {relativeTo: this._route});
 	}
 	
 	public showNavigation() {
