@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
 import {BranchService} from "bl-connect";
 import {NgbDateAdapter, NgbDatepickerConfig, NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
+import {DateService} from "../../date/date.service";
 
 
 @Injectable()
@@ -56,7 +57,7 @@ export class RegisterDetailComponent implements OnInit {
 	constructor(@Inject(FormBuilder) fb: FormBuilder, private _localLoginService: LocalLoginService,
 				private _registerDetailService: RegisterDetailService, private _LoginService: LoginService,
 				private _router: Router, private _route: ActivatedRoute, private _branchService: BranchService,
-				private _ngbDatepickerConfig: NgbDatepickerConfig) {
+				private _ngbDatepickerConfig: NgbDatepickerConfig, private _dateService: DateService) {
 		
 		
 		this._ngbDatepickerConfig.minDate = {year: 1890, month: 1, day: 1};
@@ -69,7 +70,12 @@ export class RegisterDetailComponent implements OnInit {
 			postCity: '',
 			postCode: '',
 			dob: '',
-			branch: ''
+			branch: '',
+			guardian: fb.group({
+				name: '',
+				phone: '',
+				email: ''
+			})
 		};
 		
 		this.registerForm = fb.group(this._defaultGroup);
@@ -95,6 +101,10 @@ export class RegisterDetailComponent implements OnInit {
 		
 		this.fetchBranches();
 		this.fetchUserDetails();
+	}
+	
+	public showGuardianRegister(): boolean {
+		return this.isUnder18();
 	}
 	
 	private fetchBranches() {
@@ -123,6 +133,7 @@ export class RegisterDetailComponent implements OnInit {
 		this._defaultGroup.postCode = (userDetail.postCode) ? userDetail.postCode : '';
 		this._defaultGroup.branch = (userDetail.branch) ? userDetail.branch : '';
 		this._defaultGroup.dob = (userDetail.dob) ? new Date(userDetail.dob) : '';
+		this._defaultGroup.guardian = (userDetail.guardian) ? userDetail.guardian : {name: '', phone: '', email: ''};
 		this.registerForm.setValue(this._defaultGroup);
 		this.username = userDetail.email;
 	}
@@ -131,7 +142,12 @@ export class RegisterDetailComponent implements OnInit {
 		return {year: theDate.getFullYear(), month: theDate.getMonth(), day: theDate.getDay()};
 	}
 	
+	public isUnder18(): boolean {
+		return this._dateService.isUnder18(this.registerForm.value.dob);
+	}
+	
 	public onUpdateDetails() {
+		
 		if (!this.registerForm.dirty) {
 			console.log('no change detected, returning');
 			return;

@@ -13,6 +13,7 @@ import {RegisterDetailService} from "./register-detail/register-detail.service";
 import {SocialRegisterService} from "./social-register/social-register.service";
 import {BlConnectModule} from "bl-connect";
 import {LocalRegisterService} from "./local-register/local-register.service";
+import {DateService} from "../date/date.service";
 
 @NgModule({
 	imports: [
@@ -25,7 +26,8 @@ import {LocalRegisterService} from "./local-register/local-register.service";
 	providers: [
 		RegisterDetailService,
 		SocialRegisterService,
-		LocalRegisterService
+		LocalRegisterService,
+		DateService
 	],
 	declarations: [
 		RegisterDetailComponent,
