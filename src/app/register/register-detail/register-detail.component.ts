@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Injectable, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalLoginService} from "../../login/local-login/local-login.service";
 import {RegisterDetailService} from "./register-detail.service";
@@ -7,12 +7,28 @@ import {LoginService} from "../../login/login.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
 import {BranchService} from "bl-connect";
-import {NgbDatepickerConfig} from "@ng-bootstrap/ng-bootstrap";
+import {NgbDateAdapter, NgbDatepickerConfig, NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
+
+
+@Injectable()
+export class NgbDateNativeAdapter extends NgbDateAdapter<Date> {
+	
+	fromModel(date: Date): NgbDateStruct {
+		return (date && date.getFullYear) ? {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()} : null;
+	}
+	
+	toModel(date: NgbDateStruct): Date {
+		return date ? new Date(date.year, date.month - 1, date.day) : null;
+	}
+}
+
+
 
 @Component({
 	selector: 'bl-register-detail',
 	templateUrl: './register-detail.component.html',
-	styleUrls: ['./register-detail.component.scss']
+	styleUrls: ['./register-detail.component.scss'],
+	providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
 })
 export class RegisterDetailComponent implements OnInit {
 	public registerDetailTitle: string;
@@ -106,7 +122,7 @@ export class RegisterDetailComponent implements OnInit {
 		this._defaultGroup.postCity = (userDetail.postCity) ? userDetail.postCity : '';
 		this._defaultGroup.postCode = (userDetail.postCode) ? userDetail.postCode : '';
 		this._defaultGroup.branch = (userDetail.branch) ? userDetail.branch : '';
-		this._defaultGroup.dob = (userDetail.dob) ? this.convertDateToNgbDatepicker(new Date(userDetail.dob)) : '';
+		this._defaultGroup.dob = (userDetail.dob) ? new Date(userDetail.dob) : '';
 		this.registerForm.setValue(this._defaultGroup);
 		this.username = userDetail.email;
 	}
@@ -119,15 +135,6 @@ export class RegisterDetailComponent implements OnInit {
 		if (!this.registerForm.dirty) {
 			console.log('no change detected, returning');
 			return;
-		}
-		
-		if (this.registerForm.contains('dob')) {
-			const birth: {year: number, month: number, day: number} = this.registerForm.get('dob').value;
-			
-			const date = new Date(birth.year, birth.month - 1, birth.day + 1, 0);
-			
-			this._defaultGroup.dob = date;
-			this.registerForm.setValue(this._defaultGroup);
 		}
 		
 		this._registerDetailService.updateDetails(this.registerForm.value).then((userDetail: UserDetail) => {
