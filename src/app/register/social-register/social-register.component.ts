@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {APP_CONFIG} from "../../app_config";
 import {SocialRegisterService} from "./social-register.service";
 import {BlApiError} from "bl-model";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'bl-social-register',
@@ -19,41 +20,30 @@ export class SocialRegisterComponent implements OnInit {
 	public registerGoogleText: string;
 	public agreementNotConfirmedText: string;
 	
-	constructor(private _socialRegisterService: SocialRegisterService) {
+	constructor(private _router: Router) {
 		this.registerFacebookText = 'Register with Facebook';
 		this.registerGoogleText = 'Register with Google';
-		this.registerFacebookUrl = APP_CONFIG.url.base + '/auth/facebook/register';
-		this.registerGoogleUrl = APP_CONFIG.url.base + '/auth/google/register';
+		this.registerFacebookUrl = APP_CONFIG.url.base + '/auth/facebook';
+		this.registerGoogleUrl = APP_CONFIG.url.base + '/auth/google';
 		this.agreementNotConfirmedText = 'You must agree to the user agreement before registering';
-		console.log('hi there');
-		
+	}
+	
+	onFacebookRegister() {
+		if (!this.agreementConfirmed) {
+			this.warning.emit(this.agreementNotConfirmedText);
+		} else {
+			window.location.href = this.registerFacebookUrl;
+		}
+	}
+	
+	onGoogleRegister() {
+		if (!this.agreementConfirmed) {
+			this.warning.emit(this.agreementNotConfirmedText);
+		} else {
+			window.location.href = this.registerGoogleUrl;
+		}
 	}
 	
 	ngOnInit() {
 	}
-	
-	public onSelectFacebook() {
-		if (!this.agreementConfirmed) {
-			this.warning.emit(this.agreementNotConfirmedText);
-		} else {
-			this._socialRegisterService.facebookRegister().then(() => {
-				console.log('we registered with facebook!');
-			}).catch((blApiError: BlApiError) => {
-				console.log('socialRegisterComponent: could not register with facebook, ', blApiError);
-			});
-		}
-	}
-	
-	public onSelectGoogle() {
-		if (!this.agreementConfirmed) {
-			this.warning.emit(this.agreementNotConfirmedText);
-		} else {
-			this._socialRegisterService.googleRegister().then(() => {
-				console.log('we registered with google!');
-			}).catch((blApiError: BlApiError) => {
-				console.log('socialRegisterComponent: could not register with google', blApiError);
-			});
-		}
-	}
-	
 }

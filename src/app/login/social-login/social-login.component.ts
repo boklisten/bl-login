@@ -15,11 +15,15 @@ export class SocialLoginComponent implements OnInit {
 	public facebookLoginText: string;
 	public googleLoginText: string;
 	private warningText: string;
+	public facebookLoginUrl: string;
+	public googleLoginUrl: string;
 	
 	constructor(private _socailLoginService: SocialLoginService) {
 		this.facebookLoginText = 'Login with Facebook';
 		this.googleLoginText = 'Login with Google';
 		this.warningText = 'an error happened while trying to login';
+		this.facebookLoginUrl = APP_CONFIG.url.base + '/auth/facebook';
+		this.googleLoginUrl = APP_CONFIG.url.base + '/auth/google';
 		this.warning = new EventEmitter();
 	}
 	

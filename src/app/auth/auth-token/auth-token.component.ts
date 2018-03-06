@@ -14,9 +14,15 @@ export class AuthTokenComponent implements OnInit {
 	
 	ngOnInit() {
 		this._route.paramMap.subscribe((paramMap: ParamMap) => {
-			this._tokenService.addAccessToken(paramMap.get('accessToken'));
-			this._tokenService.addRefreshToken('refreshToken');
-			this._router.navigateByUrl('auth/register/detail');
+			if (!paramMap || !paramMap.get('accessToken') || !paramMap.get('refreshToken')) {
+				this._router.navigateByUrl('auth/login');
+			
+			} else {
+				this._tokenService.addAccessToken(paramMap.get('accessToken'));
+				this._tokenService.addRefreshToken(paramMap.get('refreshToken'));
+				this._router.navigateByUrl('auth/register/detail');
+			}
 		});
+		
 	}
 }

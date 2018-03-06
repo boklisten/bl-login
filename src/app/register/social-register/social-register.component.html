@@ -3,9 +3,7 @@
 
 <div class="row">
 	<div class="col-12">
-		<a href="http://localhost:1337/api/v1/auth/facebook"> hi there </a>
-
-		<button class="bl-social-register-button btn btn-block btn-outline-primary">
+		<button class="bl-social-register-button btn btn-block btn-outline-primary" (click)="onFacebookRegister()">
 			<i class="fab fa-facebook-square"></i> {{registerFacebookText}}
 		</button>
 	</div>
@@ -13,7 +11,8 @@
 
 <div class="row">
 	<div class="col-12">
-		<button class="bl-social-register-button btn btn-block btn-outline-secondary" (click)="onSelectGoogle()">
-			<i class="fab fa-google"></i> {{registerGoogleText}}</button>
+        <button class="bl-social-register-button btn btn-block btn-outline-secondary" (click)="onGoogleRegister()">
+            <i class="fab fa-google"></i> {{registerGoogleText}}
+        </button>
 	</div>
 </div>

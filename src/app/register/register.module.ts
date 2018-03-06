@@ -14,12 +14,14 @@ import {SocialRegisterService} from "./social-register/social-register.service";
 import {BlConnectModule} from "bl-connect";
 import {LocalRegisterService} from "./local-register/local-register.service";
 import {DateService} from "../date/date.service";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
 		ReactiveFormsModule,
+		RouterModule,
 		NgbModule.forRoot(),
 		BlConnectModule
 	],

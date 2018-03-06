@@ -2,12 +2,20 @@
 
 <div class="row">
 	<div class="col-12">
-		<button class="bl-social-button btn btn-block btn-primary" (click)="onFacebookLogin()">{{facebookLoginText}}</button>
+		<a href="{{facebookLoginUrl}}">
+			<button class="bl-social-button btn btn-block btn-primary">
+				{{facebookLoginText}}
+			</button>
+		</a>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-12">
-		<button class="bl-social-button btn btn-block btn-secondary" (click)="onGoogleLogin()">{{googleLoginText}}</button>
+		<a href="{{googleLoginUrl}}">
+			<button class="bl-social-button btn btn-block btn-secondary">
+				{{googleLoginText}}
+			</button>
+		</a>
 	</div>
 </div>
