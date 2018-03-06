@@ -11,11 +11,9 @@ export class DateService {
 		if (!(dob instanceof Date)) {
 			dob = new Date(dob);
 		}
-		
 		const eighteenDate = moment().subtract(18, 'years');
 		
 		return (moment(dob).isAfter(eighteenDate));
-		
 	}
 	
 }

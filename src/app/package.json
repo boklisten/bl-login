@@ -12,7 +12,8 @@
 		"@angular/router": "^5.1.0",
 		"bl-model": "^0.11.1",
 		"bl-connect": "^0.4.0",
-		"@ng-bootstrap/ng-bootstrap": "^1.0.0"
+		"@ng-bootstrap/ng-bootstrap": "^1.0.0",
+		"moment": "^2.20.1"
 	},
 	"dependencies": {
 		"email-validator": "^1.1.1"

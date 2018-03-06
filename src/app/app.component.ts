@@ -10,6 +10,7 @@ export class AppComponent {
 	title = 'app';
 	
 	constructor(private _router: Router) {
-		this._router.navigateByUrl('auth/register/detail');
+		//this._router.navigateByUrl('auth/register');
+		
 	}
 }

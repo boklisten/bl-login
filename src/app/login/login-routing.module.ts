@@ -7,6 +7,8 @@ import {LoginMenuComponent} from "./login-menu/login-menu.component";
 import {LoginAuthComponent} from "./login-auth/login-auth.component";
 import {RegisterDetailComponent} from "../register/register-detail/register-detail.component";
 import {LoginSuccessComponent} from "./login-success/login-success.component";
+import {AuthModule} from "../auth/auth.module";
+import {AuthTokenComponent} from "../auth/auth-token/auth-token.component";
 
 const routes: Routes = [
 	{
@@ -36,6 +38,10 @@ const routes: Routes = [
 			{
 				path: 'register/detail',
 				component: RegisterDetailComponent
+			},
+			{
+				path: 'token',
+				component: AuthTokenComponent
 			}
 		]
 	}

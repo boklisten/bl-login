@@ -23,6 +23,7 @@ import {BlConnectModule} from 'bl-connect';
 import {SocialLoginService} from "./social-login/social-login.service";
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import {LOGIN_MODULE_SETTINGS} from "./login-module-settings";
+import {AuthModule} from "../auth/auth.module";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {LOGIN_MODULE_SETTINGS} from "./login-module-settings";
 		RegisterModule,
 		NgbModule.forRoot(),
 		LoginRoutingModule,
-		BlConnectModule
+		BlConnectModule,
+		AuthModule
 	],
 	providers: [
 		LoginService,
