@@ -36,7 +36,9 @@ export class RegisterDetailComponent implements OnInit {
 	public successMsg: string;
 	public warningMsg: string;
 	
+	public branchNotSelectedWarning: string;
 	
+	public defaultBranch: {name: string, id?: string};
 	public username: string;
 	public tooltipFullName: string;
 	public tooltipMobile: string;
@@ -50,6 +52,7 @@ export class RegisterDetailComponent implements OnInit {
 	private _defaultGroup: any;
 	private _userDetail: UserDetail;
 	public selectedBranch: Branch;
+	public userDetailsWasSavedMsg: string;
 	
 	
 	public registerForm: FormGroup;
@@ -83,6 +86,7 @@ export class RegisterDetailComponent implements OnInit {
 		
 		
 		this.registerDetailTitle = 'Register your details';
+		this.branchNotSelectedWarning = 'You must select a branch to continue';
 		this.tooltipFullName = 'Full name';
 		this.tooltipMobile = 'Mobile number';
 		this.tooltipAddress = 'Address';
@@ -91,6 +95,8 @@ export class RegisterDetailComponent implements OnInit {
 		this.tooltipBirthday = 'Birthday';
 		this.tooltipBranch = 'Branch';
 		this.tooltipSelectBranch = 'Select Branch';
+		this.userDetailsWasSavedMsg = 'Userdetails was saved';
+		this.defaultBranch = {name: 'Select Branch', id: null};
 	}
 	
 	ngOnInit() {
@@ -149,14 +155,13 @@ export class RegisterDetailComponent implements OnInit {
 	public onUpdateDetails() {
 		
 		if (!this.registerForm.dirty) {
-			console.log('no change detected, returning');
 			return;
 		}
 		
 		this._registerDetailService.updateDetails(this.registerForm.value).then((userDetail: UserDetail) => {
 			
 			this.setUserDetail(userDetail);
-			this.setSuccess('user details was saved');
+			this.setSuccess(this.userDetailsWasSavedMsg);
 		}).catch((blApiErr: BlApiError) => {
 			console.log('got error from server when updating the userDetail: ', blApiErr);
 		});
@@ -170,7 +175,15 @@ export class RegisterDetailComponent implements OnInit {
 		}, 3000);
 	}
 	
+	private setWarning(msg: string) {
+		this.warningMsg = msg;
+	}
+	
 	public onRegisterDetailLater() {
+		if (!this._userDetail.branch) {
+			this.setWarning(this.branchNotSelectedWarning);
+			return;
+		}
 		this._router.navigateByUrl(LOGIN_MODULE_SETTINGS.successPath);
 	}
 }

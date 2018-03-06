@@ -17,6 +17,12 @@
 
 <div class="row">
 	<div class="col-12">
+		<ngb-alert *ngIf="warningMsg" type="warning" (close)="warningMsg= null">{{ warningMsg }}</ngb-alert>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
 		<p>Update the details for <strong>{{username}}</strong>. To start renting items
 		we need you to give us some basic information.</p>
 	</div>
@@ -90,8 +96,8 @@
 						<i class="fas fa-graduation-cap"></i>
 					</label>
 				</div>
-				<select class="custom-select" id="inputGroupSelect01" formControlName="branch">
-					<option selected>{{tooltipSelectBranch}}</option>
+				<select class="custom-select" id="inputGroupSelect01" formControlName="branch" placeholder="hello">
+					<option value="" disabled selected>{{tooltipSelectBranch}}</option>
 					<option *ngFor="let branch of branches" value="{{branch.id}}">{{branch.name}}</option>
 				</select>
 			</div>
