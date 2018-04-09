@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {TokenService} from "bl-connect";
+import {TokenService} from "@wizardcoder/bl-connect";
 
 @Component({
 	selector: 'bl-auth-token',

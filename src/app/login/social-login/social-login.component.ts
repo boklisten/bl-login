@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {APP_CONFIG} from "../../app_config";
 import {SocialLoginService} from "./social-login.service";
-import {BlApiError} from "bl-model";
+import {BlApiError} from "@wizardcoder/bl-model";
 
 @Component({
 	selector: 'bl-social-login',

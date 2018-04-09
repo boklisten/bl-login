@@ -2,11 +2,11 @@ import {Component, Inject, Injectable, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalLoginService} from "../../login/local-login/local-login.service";
 import {RegisterDetailService} from "./register-detail.service";
-import {BlApiError, Branch, UserDetail} from "bl-model";
+import {BlApiError, Branch, UserDetail} from "@wizardcoder/bl-model";
 import {LoginService} from "../../login/login.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
-import {BranchService} from "bl-connect";
+import {BranchService} from "@wizardcoder/bl-connect";
 import {NgbDateAdapter, NgbDatepickerConfig, NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 import {DateService} from "../../date/date.service";
 
@@ -64,7 +64,7 @@ export class RegisterDetailComponent implements OnInit {
 		
 		
 		this._ngbDatepickerConfig.minDate = {year: 1890, month: 1, day: 1};
-		this._ngbDatepickerConfig.maxDate = {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()}
+		this._ngbDatepickerConfig.maxDate = {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()};
 		
 		this._defaultGroup = {
 			name: '',

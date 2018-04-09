@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AccessToken, BlApiError, UserDetail} from "bl-model";
+import {AccessToken, BlApiError, UserDetail} from "@wizardcoder/bl-model";
 import {APP_CONFIG} from "../../app_config";
-import {TokenService, UserDetailService} from "bl-connect";
+import {TokenService, UserDetailService} from "@wizardcoder/bl-connect";
 
 @Injectable()
 export class RegisterDetailService {

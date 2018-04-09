@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {TokenService} from "bl-connect";
+import {TokenService} from "@wizardcoder/bl-connect";
 
 @Injectable()
 export class LoginService {

@@ -7,6 +7,6 @@ export let  APP_CONFIG = {
 		accessTokenName: 'access_token'
 	},
 	url: {
-		base: 'http://localhost:1337/api/v1'
+		base: 'https://localhost:1337/api/v1'
 	}
 };

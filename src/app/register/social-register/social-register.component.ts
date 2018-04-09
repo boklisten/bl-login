@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {APP_CONFIG} from "../../app_config";
 import {SocialRegisterService} from "./social-register.service";
-import {BlApiError} from "bl-model";
+import {BlApiError} from "@wizardcoder/bl-model";
 import {Router} from "@angular/router";
 
 @Component({

@@ -11,7 +11,7 @@ import { RegisterAgreementComponent } from './register-agreement/register-agreem
 import { UserAgreementModalComponent } from './user-agreement-modal/user-agreement-modal.component';
 import {RegisterDetailService} from "./register-detail/register-detail.service";
 import {SocialRegisterService} from "./social-register/social-register.service";
-import {BlConnectModule} from "bl-connect";
+import {BlConnectModule} from "@wizardcoder/bl-connect";
 import {LocalRegisterService} from "./local-register/local-register.service";
 import {DateService} from "../date/date.service";
 import {RouterModule} from "@angular/router";

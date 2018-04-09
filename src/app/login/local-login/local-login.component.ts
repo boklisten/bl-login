@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalLoginService} from "./local-login.service";
 import * as EmailValidator from 'email-validator';
-import {BlApiError, BlApiLoginRequiredError, BlApiPermissionDeniedError} from "bl-model";
+import {BlApiError, BlApiLoginRequiredError, BlApiPermissionDeniedError} from "@wizardcoder/bl-model";
 
 @Component({
 	selector: 'bl-local-login',

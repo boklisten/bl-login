@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LoginService} from "bl-connect";
+import {LoginService} from "@wizardcoder/bl-connect";
 
 @Injectable()
 export class SocialLoginService {
