@@ -1,6 +1,6 @@
 {
 	"name": "@wizardcoder/bl-login",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"license": "MIT",
 	"$schema": "./node_modules/ng-packagr/package.schema.json",
 	"scripts": {
@@ -84,6 +84,5 @@
 		"@fortawesome/free-regular-svg-icons": "^5.1.0-4",
 		"@fortawesome/free-solid-svg-icons": "^5.1.0-4"
 	},
-	"dependencies": {
-	}
+	"dependencies": {}
 }
