@@ -25,13 +25,14 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 import {faSquare} from "@fortawesome/free-regular-svg-icons";
 
 import {faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
-	faGraduationCap, faCheckSquare, faKey, faChevronLeft, faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
+	faGraduationCap, faCheckSquare, faKey, faChevronLeft, faExclamationTriangle,
+	faUserPlus, faSignInAlt, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons/faGoogle";
 
 
 library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
-	faFacebookSquare, faGoogle, faChevronLeft, faExclamationTriangle);
+	faFacebookSquare, faGoogle, faChevronLeft, faExclamationTriangle, faUserPlus, faSignInAlt, faArrowRight);
 
 
 @NgModule({
