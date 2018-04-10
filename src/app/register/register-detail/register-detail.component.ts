@@ -48,11 +48,13 @@ export class RegisterDetailComponent implements OnInit {
 	public tooltipBirthday: string;
 	public tooltipBranch: string;
 	public tooltipSelectBranch: string;
+	public tooltipGuardianEmail: string;
 	public branches: any[];
 	private _defaultGroup: any;
 	private _userDetail: UserDetail;
 	public selectedBranch: Branch;
 	public userDetailsWasSavedMsg: string;
+	public userAgreementUrl: string;
 	
 	
 	public registerForm: FormGroup;
@@ -95,7 +97,9 @@ export class RegisterDetailComponent implements OnInit {
 		this.tooltipBirthday = 'Birthday';
 		this.tooltipBranch = 'Branch';
 		this.tooltipSelectBranch = 'Select Branch';
+		this.tooltipGuardianEmail = 'Guardian email';
 		this.userDetailsWasSavedMsg = 'Userdetails was saved';
+		this.userAgreementUrl = LOGIN_MODULE_SETTINGS.userAgreementUrl;
 		this.defaultBranch = {name: 'Select Branch', id: null};
 	}
 	

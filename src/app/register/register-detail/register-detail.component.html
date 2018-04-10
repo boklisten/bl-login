@@ -1,10 +1,7 @@
 
 <div class="row">
-	<div class="col-8">
-		<h5><b>{{registerDetailTitle}}</b></h5>
-	</div>
-	<div class="col-4">
-		<button type="button" class="btn btn-link" (click)="onRegisterDetailLater()">Do it later</button>
+	<div class="col-12">
+		<h2><b>{{registerDetailTitle}}</b></h2>
 	</div>
 </div>
 
@@ -36,7 +33,7 @@
 			<div class="bl-input input-group md-3">
                 <div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipFullName}}">
                     <span class="input-group-text">
-						<i class="fas fa-user"></i>
+						<fa-icon [icon]="'user'"></fa-icon>
                     </span>
                 </div>
                 <input type="text" formControlName="name" class="form-control" placeholder="{{tooltipFullName}}" (keyup.enter)="onUpdateDetails()">
@@ -45,7 +42,7 @@
 			<div class="bl-input input-group md-3">
                 <div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipMobile}}">
                     <span class="input-group-text">
-						<i class="fas fa-phone"></i>
+						<fa-icon [icon]="'phone'"></fa-icon>
                     </span>
                 </div>
                 <input type="number" formControlName="phone" class="form-control" placeholder="{{tooltipMobile}}" (keyup.enter)="onUpdateDetails()">
@@ -61,14 +58,14 @@
 			<div class="bl-input input-group md-3">
                 <div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipBirthday}}">
                     <span class="input-group-text">
-						<i class="fas fa-birthday-cake"></i>
+						<fa-icon [icon]="'birthday-cake'"></fa-icon>
                     </span>
                 </div>
                 <input ngbDatepicker #d="ngbDatepicker" type="text" formControlName="dob" class="form-control" placeholder="{{tooltipBirthday}}" (keyup.enter)="onUpdateDetails()">
 
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-						<i class="far fa-calendar-alt"></i>
+						<fa-icon [icon]="'calendar-alt'"></fa-icon>
 					</button>
 				</div>
 			</div>
@@ -76,7 +73,7 @@
 			<div class="bl-input input-group md-3">
                 <div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipAddress}}">
                     <span class="input-group-text">
-						<i class="far fa-address-card"></i>
+						<fa-icon [icon]="'address-card'"></fa-icon>
                     </span>
                 </div>
                 <input type="text" formControlName="address" class="form-control" placeholder="{{tooltipAddress}}"  (keyup.enter)="onUpdateDetails()">
@@ -93,7 +90,7 @@
 			<div class="bl-input input-group mb-3">
 				<div class="input-group-prepend" ngbTooltip="{{tooltipBranch}}" placement="bottom">
 					<label class="input-group-text" for="inputGroupSelect01">
-						<i class="fas fa-graduation-cap"></i>
+						<fa-icon [icon]="'graduation-cap'"></fa-icon>
 					</label>
 				</div>
 				<select class="custom-select" id="inputGroupSelect01" formControlName="branch" placeholder="hello">
@@ -111,31 +108,37 @@
 				<div class="col-12">
 					<h4>Guardian details</h4>
 				</div>
+				<div class="col-12">
+					<p>Since you are under the age of 18, we need details about your guardian. You can read more about why we need this by
+					visiting our <a routerLink="{{userAgreementUrl}}">user agreement page.</a>
+					</p>
+
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-12">
                     <div class="bl-input input-group md-3">
                         <div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipFullName}}">
                             <span class="input-group-text">
-                                <i class="fas fa-user"></i>
+								<fa-icon [icon]="'user'"></fa-icon>
                             </span>
                         </div>
                         <input type="text" formControlName="name" class="form-control" placeholder="{{tooltipFullName}}" (keyup.enter)="onUpdateDetails()">
                     </div>
 
 					<div class="bl-input input-group md-3">
-                        <div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipFullName}}">
+                        <div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipGuardianEmail}}">
                             <span class="input-group-text">
-                                <i class="fa fa-at"></i>
+								<fa-icon [icon]="'at'"></fa-icon>
                             </span>
                         </div>
-                        <input type="email" formControlName="email" class="form-control" placeholder="{{tooltipFullName}}" (keyup.enter)="onUpdateDetails()">
+                        <input type="email" formControlName="email" class="form-control" placeholder="{{tooltipGuardianEmail}}" (keyup.enter)="onUpdateDetails()">
                     </div>
 
                     <div class="bl-input input-group md-3">
                         <div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipMobile}}">
                             <span class="input-group-text">
-                                <i class="fas fa-phone"></i>
+                                <fa-icon [icon]="'phone'"></fa-icon>
                             </span>
                         </div>
                         <input type="number" formControlName="phone" class="form-control" placeholder="{{tooltipMobile}}" (keyup.enter)="onUpdateDetails()">
@@ -146,7 +149,7 @@
 		</div>
 	</div>
 
-	<div class="row mt-3">
+	<div class="row mt-5">
 		<div class="col-12">
 			<button type="button" class="btn btn-block btn-outline-success" (click)="onUpdateDetails()">
 				Update details

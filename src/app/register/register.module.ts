@@ -15,6 +15,12 @@ import {BlConnectModule} from "@wizardcoder/bl-connect";
 import {LocalRegisterService} from "./local-register/local-register.service";
 import {DateService} from "../date/date.service";
 import {RouterModule} from "@angular/router";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap} from "@fortawesome/free-solid-svg-icons";
+
+
+library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap);
 
 @NgModule({
 	imports: [
@@ -23,7 +29,8 @@ import {RouterModule} from "@angular/router";
 		ReactiveFormsModule,
 		RouterModule,
 		NgbModule.forRoot(),
-		BlConnectModule
+		BlConnectModule,
+		FontAwesomeModule
 	],
 	providers: [
 		RegisterDetailService,

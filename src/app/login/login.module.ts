@@ -18,6 +18,11 @@ import {SocialLoginService} from "./social-login/social-login.service";
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import {LOGIN_MODULE_SETTINGS} from "./login-module-settings";
 import {AuthModule} from "../auth/auth.module";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {faGraduationCap, faPhone} from "@fortawesome/free-solid-svg-icons";
+import {library} from "@fortawesome/fontawesome-svg-core";
+
+library.add(faGraduationCap, faPhone);
 
 
 @NgModule({
@@ -28,7 +33,8 @@ import {AuthModule} from "../auth/auth.module";
 		NgbModule.forRoot(),
 		LoginRoutingModule,
 		BlConnectModule,
-		AuthModule
+		AuthModule,
+		FontAwesomeModule
 	],
 	providers: [
 		LoginService,
@@ -50,10 +56,14 @@ import {AuthModule} from "../auth/auth.module";
 	]
 })
 export class LoginModule {
-	public static withConfig(config?: {successPath?: string}) {
+	public static withConfig(config?: {successPath?: string, userAgreementUrl?: string}) {
 		if (config) {
 			if (config.successPath) {
 				LOGIN_MODULE_SETTINGS.successPath = config.successPath;
+			}
+			
+			if (config.userAgreementUrl) {
+				LOGIN_MODULE_SETTINGS.userAgreementUrl = config.userAgreementUrl;
 			}
 		}
 		return this;
