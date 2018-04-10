@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {APP_CONFIG} from "../../app_config";
 import {SocialLoginService} from "./social-login.service";
 import {BlApiError} from "@wizardcoder/bl-model";
+import {LOGIN_MODULE_SETTINGS} from "../login-module-settings";
 
 @Component({
 	selector: 'bl-social-login',
@@ -22,8 +23,8 @@ export class SocialLoginComponent implements OnInit {
 		this.facebookLoginText = 'Login with Facebook';
 		this.googleLoginText = 'Login with Google';
 		this.warningText = 'an error happened while trying to login';
-		this.facebookLoginUrl = APP_CONFIG.url.base + '/auth/facebook';
-		this.googleLoginUrl = APP_CONFIG.url.base + '/auth/google';
+		this.facebookLoginUrl = LOGIN_MODULE_SETTINGS.apiPath + 'auth/facebook';
+		this.googleLoginUrl = LOGIN_MODULE_SETTINGS.apiPath + 'auth/google';
 		this.warning = new EventEmitter();
 	}
 	

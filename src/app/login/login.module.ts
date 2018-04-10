@@ -66,7 +66,7 @@ library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 	]
 })
 export class LoginModule {
-	public static withConfig(config?: {successPath?: string, userAgreementUrl?: string}) {
+	public static withConfig(config?: {successPath?: string, userAgreementUrl?: string, apiPath?: string}) {
 		if (config) {
 			if (config.successPath) {
 				LOGIN_MODULE_SETTINGS.successPath = config.successPath;
@@ -74,6 +74,10 @@ export class LoginModule {
 			
 			if (config.userAgreementUrl) {
 				LOGIN_MODULE_SETTINGS.userAgreementUrl = config.userAgreementUrl;
+			}
+			
+			if (config.apiPath) {
+				LOGIN_MODULE_SETTINGS.apiPath = config.apiPath;
 			}
 		}
 		return this;
