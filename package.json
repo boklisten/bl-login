@@ -77,6 +77,8 @@
 	"dependencies": {
 		"@fortawesome/angular-fontawesome": "0.1.0-8",
 		"@fortawesome/fontawesome-svg-core": "^1.2.0-10",
+		"@fortawesome/free-brands-svg-icons": "^5.1.0-4",
+		"@fortawesome/free-regular-svg-icons": "^5.1.0-4",
 		"@fortawesome/free-solid-svg-icons": "^5.1.0-4"
 	}
 }

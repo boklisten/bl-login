@@ -2,9 +2,10 @@
 	<div class="col-2" (click)="onUserAgreement(modalUserAgreement)">
 		<span *ngIf="!userAgreement">
 			<i class="far fa-square fa-2x bl-checkbox" ></i>
+			<fa-icon [icon]="['far', 'square']" size="2x" class="bl-checkbox"></fa-icon>
 		</span>
 		<span *ngIf="userAgreement">
-			<i class="fas fa-check-square fa-2x bl-checkbox-checked"></i>
+			<fa-icon [icon]="'check-square'" size="2x" class="bl-checkbox-checked"></fa-icon>
 		</span>
 	</div>
 	<div class="col-10 bl-checkbox-text">

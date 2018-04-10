@@ -1,7 +1,7 @@
 <div class="row no-gutters bl-navigation">
     <div class="col-12 bl-link" (click)="onNavigateBack()">
 		<a>
-			<i class="fa fa-chevron-left"></i> {{navigationTitle}}
+			<fa-icon [icon]="'chevron-left'"></fa-icon> {{navigationTitle}}
 		</a>
     </div>
 </div>
@@ -10,7 +10,7 @@
 <div class="row" *ngIf="warning">
 	<div class="col-12">
 		<ngb-alert (close)="clearWarning()">
-			<i class="fa fa-exclamation-triangle"></i> {{warningText}}
+			<fa-icon [icon]="'exclamation-triangle'"></fa-icon> {{warningText}}
 		</ngb-alert>
 	</div>
 </div>

@@ -19,10 +19,19 @@ import { LoginSuccessComponent } from './login-success/login-success.component';
 import {LOGIN_MODULE_SETTINGS} from "./login-module-settings";
 import {AuthModule} from "../auth/auth.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {faGraduationCap, faPhone} from "@fortawesome/free-solid-svg-icons";
+
 import {library} from "@fortawesome/fontawesome-svg-core";
 
-library.add(faGraduationCap, faPhone);
+import {faSquare} from "@fortawesome/free-regular-svg-icons";
+
+import {faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
+	faGraduationCap, faCheckSquare, faKey, faChevronLeft, faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
+import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
+import {faGoogle} from "@fortawesome/free-brands-svg-icons/faGoogle";
+
+
+library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
+	faFacebookSquare, faGoogle, faChevronLeft, faExclamationTriangle);
 
 
 @NgModule({
