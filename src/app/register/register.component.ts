@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthLoginService} from "../login/auth-login.service";
 
 @Component({
 	selector: 'bl-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
 	public warning: boolean;
 	public warningText: string;
 	
-	constructor(private _router: Router, private _route: ActivatedRoute) {
+	constructor(private _router: Router, private _route: ActivatedRoute, private _authLoginService: AuthLoginService) {
 		this.orUseEmailRegisterText = 'or use your email to register';
 		this.useSocialRegisterText = 'use a social account to register';
 		this.navigationTitle = 'Register';
@@ -36,7 +37,6 @@ export class RegisterComponent implements OnInit {
 	}
 	
 	public onConfirmedAgreement(confirmed: boolean) {
-		console.log('the user agreement is confirmed: ', confirmed);
 		this.agreementConfirmed = true;
 		this.clearWarning();
 	}
@@ -48,9 +48,7 @@ export class RegisterComponent implements OnInit {
 	
 	public onRegistered() {
 		this.clearWarning();
-		
-		this._router.navigate(['detail'], {relativeTo: this._route});
-	
+		this._authLoginService.login('auth/register/detail');
 	}
 	
 	public onRegisterWithoutAgreement() {

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login.component';
-import {LoginService} from "./login.service";
+import {AuthLoginService} from "./auth-login.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {LocalLoginService} from "./local-login/local-login.service";
 import { LocalLoginComponent } from './local-login/local-login.component';
@@ -16,7 +16,7 @@ import { LoginAuthComponent } from './login-auth/login-auth.component';
 import {BlConnectModule} from '@wizardcoder/bl-connect';
 import {SocialLoginService} from "./social-login/social-login.service";
 import { LoginSuccessComponent } from './login-success/login-success.component';
-import {LOGIN_MODULE_SETTINGS} from "./login-module-settings";
+import {LOGIN_MODULE_SETTINGS, LoginModuleSettings} from "./login-module-settings";
 import {AuthModule} from "../auth/auth.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
@@ -30,6 +30,7 @@ import {faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons/faGoogle";
 import { LoginPermissionFailureComponent } from './login-permission-failure/login-permission-failure.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
@@ -48,7 +49,7 @@ library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 		FontAwesomeModule
 	],
 	providers: [
-		LoginService,
+		AuthLoginService,
 		LocalLoginService,
 		LocalRegisterService,
 		SocialLoginService
@@ -61,25 +62,38 @@ library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 		LoginMenuComponent,
 		LoginAuthComponent,
 		LoginSuccessComponent,
-		LoginPermissionFailureComponent
+		LoginPermissionFailureComponent,
+		LogoutComponent
 	],
 	exports: [
 		LoginComponent
 	]
 })
 export class LoginModule {
-	public static withConfig(config?: {successPath?: string, userAgreementUrl?: string, apiPath?: string}) {
-		if (config) {
-			if (config.successPath) {
-				LOGIN_MODULE_SETTINGS.successPath = config.successPath;
+	public static withConfig(settings?: LoginModuleSettings) {
+		if (settings) {
+			if (settings.successPath) {
+				LOGIN_MODULE_SETTINGS.successPath = settings.successPath;
 			}
 			
-			if (config.userAgreementUrl) {
-				LOGIN_MODULE_SETTINGS.userAgreementUrl = config.userAgreementUrl;
+			if (settings.userAgreementUrl) {
+				LOGIN_MODULE_SETTINGS.userAgreementUrl = settings.userAgreementUrl;
 			}
 			
-			if (config.apiPath) {
-				LOGIN_MODULE_SETTINGS.apiPath = config.apiPath;
+			if (settings.apiPath) {
+				LOGIN_MODULE_SETTINGS.apiPath = settings.apiPath;
+			}
+			
+			if (settings.logoutPath) {
+				LOGIN_MODULE_SETTINGS.logoutPath = settings.logoutPath;
+			}
+			
+			if (settings.permissionDeniedPath) {
+				LOGIN_MODULE_SETTINGS.permissionDeniedPath = settings.permissionDeniedPath;
+			}
+			
+			if (settings.permissions) {
+				LOGIN_MODULE_SETTINGS.permissions = settings.permissions;
 			}
 		}
 		return this;

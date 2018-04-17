@@ -3,6 +3,8 @@ import {APP_CONFIG} from "../../app_config";
 import {SocialRegisterService} from "./social-register.service";
 import {BlApiError} from "@wizardcoder/bl-model";
 import {Router} from "@angular/router";
+import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
+import {AuthLoginService} from "../../login/auth-login.service";
 
 @Component({
 	selector: 'bl-social-register',
@@ -23,8 +25,8 @@ export class SocialRegisterComponent implements OnInit {
 	constructor(private _router: Router) {
 		this.registerFacebookText = 'Register with Facebook';
 		this.registerGoogleText = 'Register with Google';
-		this.registerFacebookUrl = APP_CONFIG.url.base + '/auth/facebook';
-		this.registerGoogleUrl = APP_CONFIG.url.base + '/auth/google';
+		this.registerFacebookUrl = LOGIN_MODULE_SETTINGS.apiPath + 'auth/facebook';
+		this.registerGoogleUrl = LOGIN_MODULE_SETTINGS.apiPath + 'auth/google';
 		this.agreementNotConfirmedText = 'You must agree to the user agreement before registering';
 	}
 	

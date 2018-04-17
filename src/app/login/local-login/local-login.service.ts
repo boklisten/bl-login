@@ -19,7 +19,6 @@ export class LocalLoginService {
 			}
 			
 			this._loginService.login(email, password).then(() => {
-				console.log('logged in');
 				resolve(true);
 			}).catch((blApiErr: BlApiError) => {
 				if (blApiErr instanceof BlApiPermissionDeniedError) {

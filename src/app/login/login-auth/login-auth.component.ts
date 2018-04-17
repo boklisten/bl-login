@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LOGIN_MODULE_SETTINGS} from "../login-module-settings";
+import {AuthLoginService} from "../auth-login.service";
 
 @Component({
 	selector: 'bl-login-auth',
@@ -14,7 +15,7 @@ export class LoginAuthComponent implements OnInit {
 	public warning: boolean;
 	public warningText: string;
 	
-	constructor(private _router: Router, private _route: ActivatedRoute) {
+	constructor(private _router: Router, private _route: ActivatedRoute, private _authLoginService: AuthLoginService) {
 		this.orUseEmailText = 'or use your email to login';
 		this.forgotPasswordButtonText = 'forgot password?';
 		this.navigationTitle = 'Login';
@@ -25,7 +26,7 @@ export class LoginAuthComponent implements OnInit {
 	}
 	
 	public  onLogin() {
-		this._router.navigateByUrl(LOGIN_MODULE_SETTINGS.successPath);
+		this._authLoginService.login(LOGIN_MODULE_SETTINGS.successPath);
 	}
 	
 	public onForgotPassword() {

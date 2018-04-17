@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalLoginService} from "../../login/local-login/local-login.service";
 import {RegisterDetailService} from "./register-detail.service";
 import {BlApiError, Branch, UserDetail} from "@wizardcoder/bl-model";
-import {LoginService} from "../../login/login.service";
+import {AuthLoginService} from "../../login/auth-login.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
 import {BranchService} from "@wizardcoder/bl-connect";
@@ -60,7 +60,7 @@ export class RegisterDetailComponent implements OnInit {
 	public registerForm: FormGroup;
 	
 	constructor(@Inject(FormBuilder) fb: FormBuilder, private _localLoginService: LocalLoginService,
-				private _registerDetailService: RegisterDetailService, private _LoginService: LoginService,
+				private _registerDetailService: RegisterDetailService, private _authLoginService: AuthLoginService,
 				private _router: Router, private _route: ActivatedRoute, private _branchService: BranchService,
 				private _ngbDatepickerConfig: NgbDatepickerConfig, private _dateService: DateService) {
 		
@@ -105,7 +105,7 @@ export class RegisterDetailComponent implements OnInit {
 	
 	ngOnInit() {
 		
-		if (!this._LoginService.isLoggedIn()) {
+		if (!this._authLoginService.isLoggedIn()) {
 			this._router.navigate(['../../menu'], {relativeTo: this._route});
 		}
 		
@@ -183,11 +183,7 @@ export class RegisterDetailComponent implements OnInit {
 		this.warningMsg = msg;
 	}
 	
-	public onRegisterDetailLater() {
-		if (!this._userDetail.branch) {
-			this.setWarning(this.branchNotSelectedWarning);
-			return;
-		}
+	public onDoItLater() {
 		this._router.navigateByUrl(LOGIN_MODULE_SETTINGS.successPath);
 	}
 }

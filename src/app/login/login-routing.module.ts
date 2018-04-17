@@ -9,6 +9,7 @@ import {RegisterDetailComponent} from "../register/register-detail/register-deta
 import {LoginSuccessComponent} from "./login-success/login-success.component";
 import {AuthTokenComponent} from "../auth/auth-token/auth-token.component";
 import {LoginPermissionFailureComponent} from "./login-permission-failure/login-permission-failure.component";
+import {LogoutComponent} from "./logout/logout.component";
 
 const routes: Routes = [
 	{
@@ -46,6 +47,10 @@ const routes: Routes = [
 			{
 				path: 'permission/denied',
 				component: LoginPermissionFailureComponent
+			},
+			{
+				path: 'logout',
+				component: LogoutComponent
 			}
 		]
 	}
