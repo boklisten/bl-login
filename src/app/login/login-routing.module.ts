@@ -44,7 +44,7 @@ const routes: Routes = [
 				component: AuthTokenComponent
 			},
 			{
-				path: 'permission/failure',
+				path: 'permission/denied',
 				component: LoginPermissionFailureComponent
 			}
 		]
