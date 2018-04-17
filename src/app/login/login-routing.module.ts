@@ -8,6 +8,7 @@ import {LoginAuthComponent} from "./login-auth/login-auth.component";
 import {RegisterDetailComponent} from "../register/register-detail/register-detail.component";
 import {LoginSuccessComponent} from "./login-success/login-success.component";
 import {AuthTokenComponent} from "../auth/auth-token/auth-token.component";
+import {LoginPermissionFailureComponent} from "./login-permission-failure/login-permission-failure.component";
 
 const routes: Routes = [
 	{
@@ -41,6 +42,10 @@ const routes: Routes = [
 			{
 				path: 'token',
 				component: AuthTokenComponent
+			},
+			{
+				path: 'permission/failure',
+				component: LoginPermissionFailureComponent
 			}
 		]
 	}

@@ -1,0 +1,23 @@
+
+<div class="row">
+	<div class="col-12 text-center text-danger">
+		<fa-icon [icon]="'exclamation-triangle'" [size]="'3x'"></fa-icon>
+	</div>
+</div>
+<div class="row mt-3">
+	<div class="col-12 text-center text-danger">
+		<h2>Permission denied</h2>
+	</div>
+	<div class="col-12">
+		<p><b>You don't have the right permission to access this content. You have been logged out.</b></p>
+		<p>You can try login with another user or ask an administrator for details.</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<button class="btn btn-lg btn-block btn-outline-success" routerLink="/auth/login">
+			<fa-icon [icon]="'sign-in-alt'" class="mr-3"></fa-icon>Login
+		</button>
+	</div>
+</div>

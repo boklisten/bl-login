@@ -29,6 +29,7 @@ import {faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 	faUserPlus, faSignInAlt, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons/faGoogle";
+import { LoginPermissionFailureComponent } from './login-permission-failure/login-permission-failure.component';
 
 
 library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
@@ -59,7 +60,8 @@ library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 		ForgotPasswordComponent,
 		LoginMenuComponent,
 		LoginAuthComponent,
-		LoginSuccessComponent
+		LoginSuccessComponent,
+		LoginPermissionFailureComponent
 	],
 	exports: [
 		LoginComponent
