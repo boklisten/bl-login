@@ -49,7 +49,6 @@ library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 		FontAwesomeModule
 	],
 	providers: [
-		AuthLoginService,
 		LocalLoginService,
 		LocalRegisterService,
 		SocialLoginService
