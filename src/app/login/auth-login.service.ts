@@ -36,7 +36,7 @@ export class AuthLoginService {
 					this._router.navigateByUrl(LOGIN_MODULE_SETTINGS.successPath);
 				}
 			} else {
-				this._router.navigateByUrl(LOGIN_MODULE_SETTINGS.permissionDeniedPath);
+				this.logout(LOGIN_MODULE_SETTINGS.permissionDeniedPath);
 			}
 		} else {
 			this.logout(LOGIN_MODULE_SETTINGS.logoutPath);

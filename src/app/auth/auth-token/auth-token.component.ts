@@ -19,7 +19,6 @@ export class AuthTokenComponent implements OnInit {
 		this._route.paramMap.subscribe((paramMap: ParamMap) => {
 			if (!paramMap || !paramMap.get('accessToken') || !paramMap.get('refreshToken')) {
 				this._authLoginService.logout('auth/login');
-			
 			} else {
 				this._tokenService.addAccessToken(paramMap.get('accessToken'));
 				this._tokenService.addRefreshToken(paramMap.get('refreshToken'));
