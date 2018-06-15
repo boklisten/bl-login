@@ -26,14 +26,14 @@ import {faSquare} from "@fortawesome/free-regular-svg-icons";
 
 import {faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 	faGraduationCap, faCheckSquare, faKey, faChevronLeft, faExclamationTriangle,
-	faUserPlus, faSignInAlt, faArrowRight} from "@fortawesome/free-solid-svg-icons";
+	faUserPlus, faSignInAlt, faArrowRight, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons/faGoogle";
 import { LoginPermissionFailureComponent } from './login-permission-failure/login-permission-failure.component';
 import { LogoutComponent } from './logout/logout.component';
 
 
-library.add(faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
+library.add(faPhone, faTimes, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
 	faFacebookSquare, faGoogle, faChevronLeft, faExclamationTriangle, faUserPlus, faSignInAlt, faArrowRight);
 
 
@@ -74,23 +74,23 @@ export class LoginModule {
 			if (settings.successPath) {
 				LOGIN_MODULE_SETTINGS.successPath = settings.successPath;
 			}
-			
+
 			if (settings.userAgreementUrl) {
 				LOGIN_MODULE_SETTINGS.userAgreementUrl = settings.userAgreementUrl;
 			}
-			
+
 			if (settings.apiPath) {
 				LOGIN_MODULE_SETTINGS.apiPath = settings.apiPath;
 			}
-			
+
 			if (settings.logoutPath) {
 				LOGIN_MODULE_SETTINGS.logoutPath = settings.logoutPath;
 			}
-			
+
 			if (settings.permissionDeniedPath) {
 				LOGIN_MODULE_SETTINGS.permissionDeniedPath = settings.permissionDeniedPath;
 			}
-			
+
 			if (settings.permissions) {
 				LOGIN_MODULE_SETTINGS.permissions = settings.permissions;
 			}

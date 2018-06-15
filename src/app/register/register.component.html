@@ -1,16 +1,17 @@
-<div class="row no-gutters bl-navigation">
-    <div class="col-12 bl-link" (click)="onNavigateBack()">
-		<a>
-			<fa-icon [icon]="'chevron-left'"></fa-icon> {{navigationTitle}}
-		</a>
-    </div>
+
+
+<div class="row mb-2">
+	<div class="col-12 text-center text-secondary">
+		<h3>Register new user</h3>
+	</div>
 </div>
 
 
-<div class="row" *ngIf="warning">
+<div class="row" *ngIf="agreementNotConfirmed">
 	<div class="col-12">
 		<ngb-alert (close)="clearWarning()">
-			<fa-icon [icon]="'exclamation-triangle'"></fa-icon> {{warningText}}
+			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+			<span>You must agree to our terms to register</span>
 		</ngb-alert>
 	</div>
 </div>
@@ -19,12 +20,26 @@
 
 <bl-register-agreement (confirmed)="onConfirmedAgreement($event)" (dismissed)="onDismissedAgreement($event)"></bl-register-agreement>
 
+<hr>
+
+
 <bl-social-register [agreementConfirmed]="agreementConfirmed" (warning)="setWarning($event)"></bl-social-register>
 
-<div class="row">
-    <div class="col-12">
-        <p class="bl-separater">- {{orUseEmailRegisterText}} -</p>
+<div class="row mt-3 mb-3">
+    <div class="col-12 text-center">
+		<hr>
+		<h6 class="text-secondary">Or use your email to register</h6>
     </div>
 </div>
 
 <bl-local-register [agreementConfirmed]="agreementConfirmed" (registerWithoutAgreement)="onRegisterWithoutAgreement()" (registered)="onRegistered()"></bl-local-register>
+
+
+<div class="row mt-5 justify-content-left">
+    <div class="col-auto">
+        <button class="btn btn-link btn-sm" routerLink="../login">
+			<fa-icon [icon]="'chevron-left'" class="mr-2"></fa-icon>
+			<span>Go to login page</span>
+        </button>
+    </div>
+</div>

@@ -16,9 +16,12 @@ export class LocalLoginComponent implements OnInit {
 	public tooltipEmail: string;
 	public tooltipPassword: string;
 	public loginButtonText: string;
-	
+
+	public loginError: boolean;
+	public connectionError: boolean;
+
 	@Output() loggedIn: EventEmitter<boolean>;
-	
+
 	constructor(private _localLoginService: LocalLoginService) {
 		this.email = '';
 		this.password = '';
@@ -28,41 +31,45 @@ export class LocalLoginComponent implements OnInit {
 		this.tooltipPassword = 'Password';
 		this.loginButtonText = 'Login';
 		this.loggedIn = new EventEmitter<boolean>();
+		this.loginError = false;
+		this.connectionError = false;
 	}
-	
+
 	ngOnInit() {
 	}
-	
+
 	public login() {
 		this.clearWarning();
 		if (!this.showLoginButton()) {
 			this.setWarning('correct email and a password must be provided');
 			return;
 		}
-		
+		this.loginError = false;
+		this.connectionError = false;
+
 		this._localLoginService.login(this.email, this.password).then(() => {
 			this.loggedIn.emit(true);
 		}).catch((blApiErr: BlApiError) => {
-			if (blApiErr instanceof BlApiPermissionDeniedError) {
-				this.setWarning('Username or password is incorrect');
+			if (blApiErr instanceof BlApiLoginRequiredError || blApiErr instanceof BlApiPermissionDeniedError) {
+				this.loginError = true;
 			} else {
-				this.setWarning('There was a problem logging in');
+				this.connectionError = true;
 			}
 		});
 	}
-	
+
 	private setWarning(msg: string) {
 		this.warning = true;
 		this.warningText = msg;
 	}
-	
+
 	public clearWarning() {
 		this.warningText = '';
 		this.warning = false;
 	}
-	
+
 	public showLoginButton() {
 		return (this.password.length > 0 && EmailValidator.validate(this.email));
 	}
-	
+
 }

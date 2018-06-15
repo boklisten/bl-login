@@ -1,7 +1,17 @@
-<div class="row" *ngIf="warning">
+<div class="row" *ngIf="loginError">
 	<div class="col-12">
-		<ngb-alert (close)="clearWarning()">
-			<fa-icon [icon]="'exclamation-triangle'"></fa-icon> {{warningText}}
+		<ngb-alert [type]="'warning'" (close)="clearWarning()">
+			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+			<span>Username or password is incorrect</span>
+		</ngb-alert>
+	</div>
+</div>
+
+<div class="row" *ngIf="connectionError">
+	<div class="col-12">
+		<ngb-alert [type]="'danger'" (close)="clearWarning()">
+			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+			<span>Something went wrong with the connection</span>
 		</ngb-alert>
 	</div>
 </div>

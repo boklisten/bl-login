@@ -1,7 +1,8 @@
-<div class="row" *ngIf="warning">
+<div class="row" *ngIf="registerError">
 	<div class="col-12">
-		<ngb-alert (close)="clearWarning()">
-			<i class="fa fa-exclamation-triangle"></i> {{warningText}}
+		<ngb-alert>
+			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+			<span>Could not register</span>
 		</ngb-alert>
 	</div>
 </div>

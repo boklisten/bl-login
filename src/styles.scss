@@ -8,6 +8,12 @@
 	cursor: pointer;
 }
 
+.bl-link:hover {
+	text-decoration: underline;
+	text-decoration-style: solid;
+
+}
+
 .bl-navigation {
 	margin-bottom: 20px;
 }
