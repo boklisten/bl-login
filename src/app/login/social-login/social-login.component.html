@@ -4,7 +4,8 @@
 	<div class="col-12">
 		<a href="{{facebookLoginUrl}}">
 			<button class="bl-social-button btn btn-block btn-primary">
-				<fa-icon [icon]="['fab','facebook-square']"></fa-icon> {{facebookLoginText}}
+				<fa-icon [icon]="['fab','facebook-square']" class="mr-2"></fa-icon>
+				<span i18n="@@socialLoginWithFacebook">Login with Facebook</span>
 			</button>
 		</a>
 	</div>
@@ -14,7 +15,8 @@
 	<div class="col-12">
 		<a href="{{googleLoginUrl}}">
 			<button class="bl-social-button btn btn-block btn-secondary">
-				<fa-icon [icon]="['fab', 'google']"></fa-icon> {{googleLoginText}}
+				<fa-icon [icon]="['fab', 'google']" class="mr-2"></fa-icon>
+				<span i18n="@@socialLoginWithGoogle">Login with Google</span>
 			</button>
 		</a>
 	</div>

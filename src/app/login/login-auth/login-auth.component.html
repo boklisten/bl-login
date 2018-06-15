@@ -1,34 +1,16 @@
-<!--
-<div class="row mb-2">
-    <div class="col-12">
-        <button class="bl-login-navigation btn btn-link" routerLink="../menu">
-			<fa-icon [icon]="'chevron-left'" class="mr-2"></fa-icon> Login
-        </button>
-    </div>
-</div>
--->
 
 <div class="row mb-2">
 	<div class="col-12 text-center text-secondary">
-		<h3>Login</h3>
+		<h3 i18n="@@loginAuthTitle">Login</h3>
 	</div>
 </div>
 
-
-<div class="row" *ngIf="warning">
-	<div class="col-12">
-		<ngb-alert (close)="clearWarning()">
-			<fa-icon [icon]="'exclamation-triangle'"></fa-icon> {{warningText}}
-		</ngb-alert>
-	</div>
-</div>
-
-<bl-social-login (warning)="setWarning($event)"></bl-social-login>
+<bl-social-login></bl-social-login>
 
 <div class="row mt-3 mb-3">
     <div class="col-12 text-center">
 		<hr>
-		<h6 class="text-secondary">Or use your email to login</h6>
+		<h6 class="text-secondary" i18n="@@loginAuthOrUseEmail">Or use your email to login</h6>
     </div>
 </div>
 
@@ -38,7 +20,7 @@
 
     <div class="col-auto">
 		<button class="btn btn-link btn-sm" (click)="onForgotPassword()">
-			<span>Forgot your password?</span>
+			<span i18n="@@loginAuthForgotPassword">Forgot your password?</span>
 		</button>
     </div>
 </div>

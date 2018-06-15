@@ -1,9 +1,10 @@
 
 
-<div class="row">
+<div class="row mt-4">
     <div class="col-12">
         <button class="btn btn-lg btn-outline-primary btn-block" (click)="onRegister()">
-			<fa-icon [icon]="'user-plus'"></fa-icon> {{registerButtonText}}
+			<fa-icon [icon]="'user-plus'" class="mr-2"></fa-icon>
+			<span i18n="@@loginMenuRegisterButton">Register new user</span>
         </button>
     </div>
 </div>
@@ -11,7 +12,8 @@
 <div class="row">
     <div class="col-12">
         <button class="bl-login-menu-button btn btn-lg btn-outline-success btn-block" (click)="onLogin()">
-			<fa-icon [icon]="'sign-in-alt'"></fa-icon> {{loginButtonText}}
+			<fa-icon [icon]="'sign-in-alt'" class="mr-2"></fa-icon>
+			<span i18n="@@loginMenuLoginButton">Login</span>
         </button>
     </div>
 </div>

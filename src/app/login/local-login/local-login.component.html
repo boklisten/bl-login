@@ -2,7 +2,7 @@
 	<div class="col-12">
 		<ngb-alert [type]="'warning'" (close)="clearWarning()">
 			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span>Username or password is incorrect</span>
+			<span i18n="@@localLoginUserOrPasswordError">Username or password is incorrect</span>
 		</ngb-alert>
 	</div>
 </div>
@@ -11,7 +11,7 @@
 	<div class="col-12">
 		<ngb-alert [type]="'danger'" (close)="clearWarning()">
 			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span>Something went wrong with the connection</span>
+			<span i18n="@@localLoginConnectionError">Something went wrong with the connection</span>
 		</ngb-alert>
 	</div>
 </div>
@@ -20,30 +20,48 @@
 <div class="row">
 	<div class="col-12">
 		<div class="bl-input input-group md-3">
-			<div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipEmail}}">
+			<div class="bl-input-prepend input-group-prepend"
+				 placement="bottom"
+				 i18n-ngbTooltip="@@localLoginEmail"
+				 ngbTooltip="Email">
           <span class="input-group-text">
 			  <fa-icon icon="at"></fa-icon>
 		  </span>
 			</div>
-			<input type="email" class="form-control" id="blEmail" [(ngModel)]="email" [email]="true"
-				   placeholder="{{tooltipEmail}}" (keyup.enter)="login()">
+			<input type="email"
+				   class="form-control"
+				   id="blEmail"
+				   [(ngModel)]="email"
+				   [email]="true"
+				   i18n-placeholder="@@localLoginEmail"
+				   placeholder="Email"
+				   (keyup.enter)="login()">
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
 		<div class="bl-input input-group md-3">
-			<div class="bl-input-prepend input-group-prepend" placement="bottom" ngbTooltip="{{tooltipPassword}}">
+			<div class="bl-input-prepend input-group-prepend"
+				 placement="bottom"
+				 i18n-ngbTooltip="@@localLoginPassword"
+				 ngbTooltip="Password">
            <span class="input-group-text">
 			   <fa-icon icon="key"></fa-icon>
 		   </span>
 			</div>
-			<input type="password" class="form-control" id="blPassword" [(ngModel)]="password" placeholder="{{tooltipPassword}}"
+			<input type="password"
+				   class="form-control"
+				   id="blPassword"
+				   [(ngModel)]="password"
+				   i18n-placeholder="@@localLoginPassword"
+				   placeholder="Password"
 				   (keyup.enter)="login()">
 			<div class="input-group-append">
 				<button
 					[ngClass]="{'btn': true, 'btn-outline-secondary disabled': !showLoginButton(), 'btn-success': showLoginButton()}"
-					type="button" (click)="login()">{{loginButtonText}}
+					type="button" (click)="login()">
+					<span i18n="@@localLoginButton">Login</span>
 				</button>
 			</div>
 		</div>
