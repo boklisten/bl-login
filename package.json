@@ -77,7 +77,7 @@
 		"@angular/router": "^5.1.0",
 		"@ng-bootstrap/ng-bootstrap": "^1.0.0",
 		"@wizardcoder/bl-connect": "^0.5.3",
-		"@wizardcoder/bl-model": "^0.13.1",
+		"@wizardcoder/bl-model": "^0.14.7",
 		"moment": "^2.20.1",
 		"email-validator": "^1.1.1",
 		"@fortawesome/angular-fontawesome": "0.1.0-8",
@@ -85,8 +85,5 @@
 		"@fortawesome/free-brands-svg-icons": "^5.1.0-4",
 		"@fortawesome/free-regular-svg-icons": "^5.1.0-4",
 		"@fortawesome/free-solid-svg-icons": "^5.1.0-4"
-	},
-	"dependencies": {
-		"@wizardcoder/bl-model": "^0.14.7"
 	}
 }
