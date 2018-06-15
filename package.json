@@ -7,7 +7,7 @@
 		"ng": "ng",
 		"start": "ng serve --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en",
 		"start-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
-		"build": "ng build",
+		"build": "ng build --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
