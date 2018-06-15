@@ -51,7 +51,8 @@ library.add(faPhone, faTimes, faAt, faUser, faBirthdayCake, faCalendarAlt, faAdd
 	providers: [
 		LocalLoginService,
 		LocalRegisterService,
-		SocialLoginService
+		SocialLoginService,
+		AuthLoginService
 	],
 	declarations: [
 		LoginComponent,
