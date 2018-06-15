@@ -4,7 +4,8 @@
 <div class="row">
 	<div class="col-12">
 		<button class="bl-social-register-button btn btn-block btn-outline-primary" (click)="onFacebookRegister()">
-			<fa-icon [icon]="['fab', 'facebook-square']"></fa-icon> {{registerFacebookText}}
+			<fa-icon [icon]="['fab', 'facebook-square']" class="mr-2"></fa-icon>
+			<span i18n="@@socialRegisterWithFacebook">Register with Facebook</span>
 		</button>
 	</div>
 </div>
@@ -12,7 +13,8 @@
 <div class="row">
 	<div class="col-12">
         <button class="bl-social-register-button btn btn-block btn-outline-secondary" (click)="onGoogleRegister()">
-			<fa-icon [icon]="['fab', 'google']"></fa-icon> {{registerGoogleText}}
+			<fa-icon [icon]="['fab', 'google']" class="mr-2"></fa-icon>
+			<span i18n="@@socialRegisterWithGoogle">Register with Google</span>
         </button>
 	</div>
 </div>

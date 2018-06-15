@@ -9,7 +9,7 @@
 		</span>
 	</div>
 	<div class="col-10 bl-checkbox-text">
-		<p>
+		<p i18n="@@registerAgreementIHaveUnderstood">
 			I have read and understood the user-agreement
 		</p>
 	</div>
@@ -17,7 +17,7 @@
 
 <ng-template #modalUserAgreement let-c="close" let-d="dismiss">
 	<div class="modal-header">
-    	<h4 class="modal-title">User agreement</h4>
+    	<h4 class="modal-title" i18n="@@registerAgreementTitle">User agreement</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
 			<fa-icon [icon]="'times'"></fa-icon>
         </button>
@@ -26,6 +26,8 @@
 	<bl-user-agreement-modal></bl-user-agreement-modal>
 
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-success" (click)="c('Close click')">I Agree</button>
+		<button type="button" class="btn btn-outline-success" (click)="c('Close click')">
+			<span i18n="@@registerDetailIAgree">I Agree</span>
+		</button>
 	</div>
 </ng-template>

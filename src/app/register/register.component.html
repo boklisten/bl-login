@@ -2,7 +2,7 @@
 
 <div class="row mb-2">
 	<div class="col-12 text-center text-secondary">
-		<h3>Register new user</h3>
+		<h3 i18n="@@registerTitle">Register new user</h3>
 	</div>
 </div>
 
@@ -11,7 +11,7 @@
 	<div class="col-12">
 		<ngb-alert (close)="clearWarning()">
 			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span>You must agree to our terms to register</span>
+			<span i18n="the user must accept the user agreement before registering @@registerMustAgree">You must agree to our terms to register</span>
 		</ngb-alert>
 	</div>
 </div>
@@ -28,7 +28,7 @@
 <div class="row mt-3 mb-3">
     <div class="col-12 text-center">
 		<hr>
-		<h6 class="text-secondary">Or use your email to register</h6>
+		<h6 class="text-secondary" i18n="@@registerOrUseEmail">Or use your email to register</h6>
     </div>
 </div>
 
@@ -39,7 +39,7 @@
     <div class="col-auto">
         <button class="btn btn-link btn-sm" routerLink="../login">
 			<fa-icon [icon]="'chevron-left'" class="mr-2"></fa-icon>
-			<span>Go to login page</span>
+			<span i18n="@@registerGoToLoginPage">Go to login page</span>
         </button>
     </div>
 </div>

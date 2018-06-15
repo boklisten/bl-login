@@ -5,11 +5,13 @@
 	"$schema": "./node_modules/ng-packagr/package.schema.json",
 	"scripts": {
 		"ng": "ng",
-		"start": "ng serve",
+		"start": "ng serve --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en",
+		"start-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"build": "ng build",
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
+		"extract-i18n": "ng xi18n --output-path src/locale --locale en && xliffmerge --profile xliffmerge.json en nb",
 		"build:lib": "ng-packagr -p package.json",
 		"lib:pub": "npm run build:lib && npm publish ./dist/@wizardcoder/bl-login",
 		"blink": "npm run build:lib && npm link dist/bl-login"
@@ -60,6 +62,7 @@
 		"moment-es6": "^1.0.0",
 		"ng-packagr": "^2.4.2",
 		"ngx-cookie": "^2.0.1",
+		"ngx-i18nsupport": "^0.16.2",
 		"protractor": "~5.1.2",
 		"rxjs": "^5.4.2",
 		"ts-node": "~3.2.0",
