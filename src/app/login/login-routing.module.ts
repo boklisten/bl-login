@@ -11,6 +11,7 @@ import {AuthTokenComponent} from "../auth/auth-token/auth-token.component";
 import {LoginPermissionFailureComponent} from "./login-permission-failure/login-permission-failure.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {AuthSocialFailureComponent} from "../auth/auth-social-failure/auth-social-failure.component";
+import {AuthPasswordResetComponent} from "../auth/auth-password-reset/auth-password-reset.component";
 
 const routes: Routes = [
 	{
@@ -28,6 +29,10 @@ const routes: Routes = [
 			{
 				path: 'login/forgot',
 				component: ForgotPasswordComponent
+			},
+			{
+				path: 'reset/:id',
+				component: AuthPasswordResetComponent
 			},
 			{
 				path: 'social/failure',

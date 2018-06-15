@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as EmailValidator from 'email-validator';
+import {PasswordResetService} from "@wizardcoder/bl-connect";
+import {BlApiError} from "@wizardcoder/bl-model";
 
 @Component({
 	selector: 'bl-forgot-password',
@@ -15,8 +17,9 @@ export class ForgotPasswordComponent implements OnInit {
 	public forgotPasswordText: string;
 	public tooltipText: string;
 	public navigationTitle: string;
-	
-	constructor() {
+	public emailNotValid: boolean;
+
+	constructor(private _passwordResetService: PasswordResetService) {
 		this.warning = false;
 		this.warningText = '';
 		this.email = '';
@@ -25,45 +28,31 @@ export class ForgotPasswordComponent implements OnInit {
 		this.tooltipText = 'Email';
 		this.forgotPasswordText = 'Write in your email and we will send you a link about how to reset it';
 		this.navigationTitle = 'Forgot password';
+		this.emailNotValid = false;
 	}
-	
+
 	ngOnInit() {
 	}
-	
+
 	public onRequestNewPassword() {
-		this.clearWarning();
-		
+		this.warning = false;
+		this.success = false;
+		this.emailNotValid = false;
+
 		if (!EmailValidator.validate(this.email)) {
-			this.setWarning('email is not valid');
+			this.emailNotValid = true;
 			return;
 		}
-		
-		this.setSuccess('email with instructions sent to you! (not true)');
-	
+
+		this._passwordResetService.requestPasswordResetLink(this.email).then(() => {
+			this.success = true;
+		}).catch((blApiError: BlApiError) => {
+			this.warning = true;
+		});
+
 	}
-	
+
 	public showRequestNewPasswordButton(): boolean {
 		return (EmailValidator.validate(this.email));
 	}
-	
-	private setWarning(msg: string) {
-		this.warning = true;
-		this.warningText = msg;
-	}
-	
-	private setSuccess(msg: string) {
-		this.success = true;
-		this.successText = msg;
-	}
-	
-	public clearWarning() {
-		this.warning = false;
-		this.warningText = '';
-	}
-	
-	public clearSuccess() {
-		this.success = false;
-		this.successText = '';
-	}
-	
 }
