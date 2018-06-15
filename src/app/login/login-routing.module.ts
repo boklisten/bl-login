@@ -10,6 +10,7 @@ import {LoginSuccessComponent} from "./login-success/login-success.component";
 import {AuthTokenComponent} from "../auth/auth-token/auth-token.component";
 import {LoginPermissionFailureComponent} from "./login-permission-failure/login-permission-failure.component";
 import {LogoutComponent} from "./logout/logout.component";
+import {AuthSocialFailureComponent} from "../auth/auth-social-failure/auth-social-failure.component";
 
 const routes: Routes = [
 	{
@@ -27,6 +28,10 @@ const routes: Routes = [
 			{
 				path: 'login/forgot',
 				component: ForgotPasswordComponent
+			},
+			{
+				path: 'social/failure',
+				component: AuthSocialFailureComponent
 			},
 			{
 				path: 'success',
