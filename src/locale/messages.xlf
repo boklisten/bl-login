@@ -512,6 +512,55 @@
           <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="emailValidationEmailConfirmed" datatype="html">
+        <source>Email was confirmed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailValidationConfirmError" datatype="html">
+        <source>Email could not be confirmed.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailValidationLinkMayBeExpired" datatype="html">
+        <source>The link may be expired.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailValidationClickForNewLink" datatype="html">
+        <source>Click here to send a new confirmation link</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailValidationNotLoggedInError" datatype="html">
+        <source>You must login to send a new confirmation link</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailValidationClickToLogin" datatype="html">
+        <source>Click her to login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailValidationNewLinkSent" datatype="html">
+        <source>A new confirmation link has been sent to your email.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
