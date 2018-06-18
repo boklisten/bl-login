@@ -7,6 +7,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {NgbAlertModule} from "@ng-bootstrap/ng-bootstrap";
 import {AuthPasswordResetComponent} from "./auth-password-reset/auth-password-reset.component";
 import {FormsModule} from "@angular/forms";
+import { AuthEmailValidationComponent } from './auth-email-validation/auth-email-validation.component';
 
 @NgModule({
 	imports: [
@@ -18,7 +19,8 @@ import {FormsModule} from "@angular/forms";
 	declarations: [
 		AuthTokenComponent,
 		AuthSocialFailureComponent,
-		AuthPasswordResetComponent
+		AuthPasswordResetComponent,
+		AuthEmailValidationComponent
 	],
 	exports: [AuthTokenComponent]
 })

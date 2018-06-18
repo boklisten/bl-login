@@ -12,6 +12,7 @@ import {LoginPermissionFailureComponent} from "./login-permission-failure/login-
 import {LogoutComponent} from "./logout/logout.component";
 import {AuthSocialFailureComponent} from "../auth/auth-social-failure/auth-social-failure.component";
 import {AuthPasswordResetComponent} from "../auth/auth-password-reset/auth-password-reset.component";
+import {AuthEmailValidationComponent} from "../auth/auth-email-validation/auth-email-validation.component";
 
 const routes: Routes = [
 	{
@@ -33,6 +34,10 @@ const routes: Routes = [
 			{
 				path: 'reset/:id',
 				component: AuthPasswordResetComponent
+			},
+			{
+				path: 'email/confirm/:id',
+				component: AuthEmailValidationComponent
 			},
 			{
 				path: 'social/failure',

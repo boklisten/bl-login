@@ -26,7 +26,8 @@ import {faSquare} from "@fortawesome/free-regular-svg-icons";
 
 import {faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 	faGraduationCap, faCheckSquare, faKey, faChevronLeft, faExclamationTriangle,
-	faUserPlus, faSignInAlt, faArrowRight, faTimes} from "@fortawesome/free-solid-svg-icons";
+	faUserPlus, faSignInAlt, faArrowRight, faTimes, faCheckCircle, faTimesCircle,
+	faCircleNotch} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons/faGoogle";
 import { LoginPermissionFailureComponent } from './login-permission-failure/login-permission-failure.component';
@@ -34,7 +35,9 @@ import { LogoutComponent } from './logout/logout.component';
 
 
 library.add(faPhone, faTimes, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
-	faFacebookSquare, faGoogle, faChevronLeft, faExclamationTriangle, faUserPlus, faSignInAlt, faArrowRight);
+	faFacebookSquare, faGoogle, faChevronLeft, faExclamationTriangle,
+	faUserPlus, faSignInAlt, faArrowRight, faCheckCircle, faTimesCircle,
+	faCircleNotch);
 
 
 @NgModule({
