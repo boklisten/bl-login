@@ -6,6 +6,8 @@ import {LoginModule} from "./login/login.module";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthLoginService} from "./login/auth-login.service";
+import { UserDetailEditComponent } from './user-detail/user-detail-edit/user-detail-edit.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
 	declarations: [

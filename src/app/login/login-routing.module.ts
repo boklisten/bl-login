@@ -13,6 +13,7 @@ import {LogoutComponent} from "./logout/logout.component";
 import {AuthSocialFailureComponent} from "../auth/auth-social-failure/auth-social-failure.component";
 import {AuthPasswordResetComponent} from "../auth/auth-password-reset/auth-password-reset.component";
 import {AuthEmailValidationComponent} from "../auth/auth-email-validation/auth-email-validation.component";
+import {UserDetailEditComponent} from "../user-detail/user-detail-edit/user-detail-edit.component";
 
 const routes: Routes = [
 	{
@@ -66,6 +67,10 @@ const routes: Routes = [
 			{
 				path: 'logout',
 				component: LogoutComponent
+			},
+			{
+				path: 'edit',
+				component: UserDetailEditComponent
 			}
 		]
 	}

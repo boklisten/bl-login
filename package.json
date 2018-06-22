@@ -46,6 +46,8 @@
 		"@types/jasmine": "~2.5.53",
 		"@types/jasminewd2": "~2.0.2",
 		"@types/node": "~6.0.60",
+		"@wizardcoder/bl-connect": "^0.5.14",
+		"@wizardcoder/bl-model": "^0.14.7",
 		"angular-2-local-storage": "^1.0.1",
 		"codelyzer": "~3.1.1",
 		"core-js": "^2.4.1",
@@ -58,6 +60,7 @@
 		"karma-coverage-istanbul-reporter": "^1.2.1",
 		"karma-jasmine": "~1.1.0",
 		"karma-jasmine-html-reporter": "^0.2.2",
+		"moment": "^2.20.1",
 		"moment-es6": "^1.0.0",
 		"ng-packagr": "^2.4.2",
 		"ngx-cookie": "^2.0.1",
@@ -84,8 +87,5 @@
 		"@fortawesome/free-brands-svg-icons": "^5.1.0-4",
 		"@fortawesome/free-regular-svg-icons": "^5.1.0-4",
 		"@fortawesome/free-solid-svg-icons": "^5.1.0-4"
-	},
-	"dependencies": {
-		"@wizardcoder/bl-connect": "^0.5.13"
 	}
 }

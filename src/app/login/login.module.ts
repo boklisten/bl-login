@@ -27,17 +27,21 @@ import {faSquare} from "@fortawesome/free-regular-svg-icons";
 import {faPhone, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard,
 	faGraduationCap, faCheckSquare, faKey, faChevronLeft, faExclamationTriangle,
 	faUserPlus, faSignInAlt, faArrowRight, faTimes, faCheckCircle, faTimesCircle,
-	faCircleNotch} from "@fortawesome/free-solid-svg-icons";
+	faCircleNotch, faSync} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons/faGoogle";
 import { LoginPermissionFailureComponent } from './login-permission-failure/login-permission-failure.component';
 import { LogoutComponent } from './logout/logout.component';
+import {UserDetailEditComponent} from "../user-detail/user-detail-edit/user-detail-edit.component";
+import {BrowserModule} from "@angular/platform-browser";
+import {UserDetailModule} from "../user-detail/user-detail.module";
 
 
-library.add(faPhone, faTimes, faAt, faUser, faBirthdayCake, faCalendarAlt, faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
+library.add(faPhone, faTimes, faAt, faUser, faBirthdayCake, faCalendarAlt,
+	faAddressCard, faGraduationCap, faSquare, faCheckSquare, faKey,
 	faFacebookSquare, faGoogle, faChevronLeft, faExclamationTriangle,
 	faUserPlus, faSignInAlt, faArrowRight, faCheckCircle, faTimesCircle,
-	faCircleNotch);
+	faCircleNotch, faSync);
 
 
 @NgModule({
@@ -49,7 +53,8 @@ library.add(faPhone, faTimes, faAt, faUser, faBirthdayCake, faCalendarAlt, faAdd
 		LoginRoutingModule,
 		BlConnectModule,
 		AuthModule,
-		FontAwesomeModule
+		FontAwesomeModule,
+		UserDetailModule
 	],
 	providers: [
 		LocalLoginService,
@@ -69,7 +74,8 @@ library.add(faPhone, faTimes, faAt, faUser, faBirthdayCake, faCalendarAlt, faAdd
 		LogoutComponent
 	],
 	exports: [
-		LoginComponent
+		LoginComponent,
+		UserDetailEditComponent
 	]
 })
 export class LoginModule {

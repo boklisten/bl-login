@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="col-12">
+		<ngb-datepicker [dayTemplate]="t" [(ngModel)]="currentDob" (select)="onDateSelect()"></ngb-datepicker>
+	</div>
+</div>
+
+
+<ng-template #t let-date="date" let-focused="focused" let-selected="selected">
+  <span class="bl-user-detail-dob"
+		[class.range]="false"
+		[class.focused]="selected">
+    {{ date.day }}
+  </span>
+</ng-template>
