@@ -105,7 +105,7 @@ export class UserDetailEditComponent implements OnInit, OnChanges {
 			postCity: (this.userDetail.postCity) ? this.userDetail.postCity : '',
 			guardianName: (this.userDetail.guardian && this.userDetail.guardian.name) ? this.userDetail.guardian.name : '',
 			guardianPhone: (this.userDetail.guardian && this.userDetail.guardian.email) ? this.userDetail.guardian.email : '',
-			guardianEmail: (this.userDetail.guardian.email && this.userDetail.guardian.email) ? this.userDetail.guardian.email : ''
+			guardianEmail: (this.userDetail.guardian && this.userDetail.guardian.email) ? this.userDetail.guardian.email : ''
 		});
 		this.userDetail.dob = this.oldDob;
 	}
