@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthLoginService} from "../login/auth-login.service";
+import {LOGIN_MODULE_SETTINGS} from "../login/login-module-settings";
 
 @Component({
 	selector: 'bl-register',
@@ -50,7 +51,7 @@ export class RegisterComponent implements OnInit {
 
 	public onRegistered() {
 		this.clearWarning();
-		this._authLoginService.login('auth/register/detail');
+		this._authLoginService.login(LOGIN_MODULE_SETTINGS.registerSuccessPath);
 	}
 
 	public onRegisterWithoutAgreement() {
