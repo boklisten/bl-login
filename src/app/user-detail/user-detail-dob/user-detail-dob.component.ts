@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import {NgbCalendar, NgbDatepicker, NgbDatepickerConfig} from "@ng-bootstrap/ng-bootstrap";
-import * as moment from 'moment';
+import moment from 'moment-es6';
 
 @Component({
 	selector: 'bl-user-detail-dob',

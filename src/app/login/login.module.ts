@@ -101,6 +101,10 @@ export class LoginModule {
 				LOGIN_MODULE_SETTINGS.permissionDeniedPath = settings.permissionDeniedPath;
 			}
 
+			if (settings.registerSuccessPath) {
+				LOGIN_MODULE_SETTINGS.registerSuccessPath = settings.registerSuccessPath;
+			}
+
 			if (settings.permissions) {
 				LOGIN_MODULE_SETTINGS.permissions = settings.permissions;
 			}
