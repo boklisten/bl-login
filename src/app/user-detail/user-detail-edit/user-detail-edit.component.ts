@@ -97,15 +97,15 @@ export class UserDetailEditComponent implements OnInit, OnChanges {
 
 	public rebuildForm() {
 		this.userDetailForm.reset({
-			email: this.userDetail.email,
-			name: this.userDetail.name,
-			phone: this.userDetail.phone,
-			address: this.userDetail.address,
-			postCode: this.userDetail.postCode,
-			postCity: this.userDetail.postCity,
-			guardianName: this.userDetail.guardian.name,
-			guardianPhone: this.userDetail.guardian.email,
-			guardianEmail: this.userDetail.guardian.email
+			email: (this.userDetail.email) ? this.userDetail.email : '',
+			name: (this.userDetail.name) ? this.userDetail.name : '',
+			phone: (this.userDetail.phone) ? this.userDetail.phone : '',
+			address: (this.userDetail.address) ? this.userDetail.address : '',
+			postCode: (this.userDetail.postCode) ? this.userDetail.postCode : '',
+			postCity: (this.userDetail.postCity) ? this.userDetail.postCity : '',
+			guardianName: (this.userDetail.guardian && this.userDetail.guardian.name) ? this.userDetail.guardian.name : '',
+			guardianPhone: (this.userDetail.guardian && this.userDetail.guardian.email) ? this.userDetail.guardian.email : '',
+			guardianEmail: (this.userDetail.guardian.email && this.userDetail.guardian.email) ? this.userDetail.guardian.email : ''
 		});
 		this.userDetail.dob = this.oldDob;
 	}
