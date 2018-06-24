@@ -23,12 +23,6 @@ export class UserDetailEditComponent implements OnInit, OnChanges {
 	constructor(private _userDetailService: UserDetailService, private _tokenService: TokenService, private _loginService: LoginService,
 				private formBuilder: FormBuilder) {
 		this.patchValues = new EventEmitter<any>();
-	}
-
-	ngOnInit() {
-		this.userUnder18 = true;
-		this.defaultDate = new Date();
-		this.oldDob = (this.userDetail && this.userDetail.dob) ? this.userDetail.dob : this.defaultDate;
 
 		this.userDetailForm = this.formBuilder.group({
 			email: new FormControl({value: '', disabled: true}, [Validators.required]),
@@ -41,6 +35,12 @@ export class UserDetailEditComponent implements OnInit, OnChanges {
 			guardianName: new FormControl('', [this.requiredIfUserUnder18()]),
 			guardianEmail: new FormControl('', [this.requiredIfUserUnder18(), Validators.email])
 		});
+		this.userUnder18 = true;
+		this.defaultDate = new Date();
+	}
+
+	ngOnInit() {
+		this.oldDob = (this.userDetail && this.userDetail.dob) ? this.userDetail.dob : this.defaultDate;
 
 		if (this.userDetail) {
 			this.rebuildForm();
