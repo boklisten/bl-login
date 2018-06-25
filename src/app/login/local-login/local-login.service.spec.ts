@@ -2,20 +2,20 @@ import {TestBed, inject, ComponentFixture} from '@angular/core/testing';
 
 import {LocalLoginService} from './local-login.service';
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
-import {TokenService} from "../../token/token.service";
+import {LoginService, TokenService} from "@wizardcoder/bl-connect";
 
 
 describe('LocalLoginService', () => {
 	let service: LocalLoginService;
 	beforeEach(() => {
-		
-		const fakeHttpClient = {};
+
+		const fakeLoginService = {};
 		const fakeTokenService = {};
-		
-		service = new LocalLoginService(fakeHttpClient as HttpClient, fakeTokenService as TokenService);
-		
+
+		service = new LocalLoginService(fakeLoginService as LoginService);
+
 	});
-	
+
 	describe('#login', () => {
 		it('should reject with error when email is empty or undefined', (done: DoneFn) => {
 			service.login("", "aPassword").then((ret) => {
@@ -25,7 +25,7 @@ describe('LocalLoginService', () => {
 				done();
 			});
 		});
-		
+
 		it('should throw error when password is empty or undefined', (done: DoneFn) => {
 			return service.login('albert@aaberg.com', null)
 				.catch((err) => {
@@ -33,6 +33,6 @@ describe('LocalLoginService', () => {
 					done();
 				});
 		});
-		
+
 	});
 });

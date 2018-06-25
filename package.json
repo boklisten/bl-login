@@ -8,7 +8,7 @@
 		"start": "ng serve --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en",
 		"start-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"build": "ng build --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
-		"test": "ng test",
+		"test": "ng test --sourcemaps=false",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
 		"extract-i18n": "ng xi18n --output-path src/locale --locale en && xliffmerge --profile xliffmerge.json en nb",
