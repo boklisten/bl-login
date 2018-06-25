@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {TokenService} from "@wizardcoder/bl-connect";
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
+import {Observable, Subject} from "rxjs";
 import {Router} from "@angular/router";
 import {LOGIN_MODULE_SETTINGS} from "./login-module-settings";
 import {UserPermission} from "@wizardcoder/bl-model";

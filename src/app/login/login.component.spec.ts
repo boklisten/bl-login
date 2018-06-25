@@ -3,7 +3,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {LoginComponent} from './login.component';
 import {HttpClientModule} from "@angular/common/http";
 import {LocalLoginService} from "./local-login/local-login.service";
-import {LocalStorageModule} from "angular-2-local-storage";
 import {JwtHelperService, JwtModule} from "@auth0/angular-jwt";
 import {CookieModule} from "ngx-cookie";
 import {StorageService, TokenService} from "@wizardcoder/bl-connect";
@@ -16,10 +15,6 @@ describe('LoginComponent', () => {
 		TestBed.configureTestingModule({
 				imports: [
 					HttpClientModule,
-					LocalStorageModule.withConfig({
-						prefix: 'bl',
-						storageType: "localStorage"
-					}),
 					JwtModule.forRoot({
 						config: {
 							whitelistedDomains: [],
