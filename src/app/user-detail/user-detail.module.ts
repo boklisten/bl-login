@@ -6,6 +6,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {NgbDateAdapter, NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgbDateNativeAdapter} from "../register/register-detail/register-detail.component";
 import { UserDetailDobComponent } from './user-detail-dob/user-detail-dob.component';
+import {NgDatepickerModule} from 'ng2-datepicker';
 
 @NgModule({
 	imports: [
@@ -13,7 +14,8 @@ import { UserDetailDobComponent } from './user-detail-dob/user-detail-dob.compon
 		FormsModule,
 		ReactiveFormsModule,
 		FontAwesomeModule,
-		NgbDatepickerModule
+		NgbDatepickerModule,
+		NgDatepickerModule
 	],
 	declarations: [
 		UserDetailEditComponent,

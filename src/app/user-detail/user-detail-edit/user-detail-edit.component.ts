@@ -35,11 +35,25 @@ export class UserDetailEditComponent implements OnInit, OnChanges {
 			guardianName: new FormControl('', [this.requiredIfUserUnder18()]),
 			guardianEmail: new FormControl('', [this.requiredIfUserUnder18(), Validators.email])
 		});
-		this.userUnder18 = true;
+		this.userUnder18 = false;
 		this.defaultDate = new Date();
 	}
 
 	ngOnInit() {
+		/*
+		this.userDetail = {
+			id: 'abc',
+			name: 'billy bob',
+			email: 'billy@bob.com',
+			phone: '12345678',
+			address: 'somewhere',
+			postCode: '1234',
+			postCity: 'Texas',
+			country: 'norway',
+			dob: null,
+			branch: 'branch1'
+		};
+		*/
 		this.oldDob = (this.userDetail && this.userDetail.dob) ? this.userDetail.dob : this.defaultDate;
 
 		if (this.userDetail) {
@@ -104,7 +118,7 @@ export class UserDetailEditComponent implements OnInit, OnChanges {
 			postCode: (this.userDetail.postCode) ? this.userDetail.postCode : '',
 			postCity: (this.userDetail.postCity) ? this.userDetail.postCity : '',
 			guardianName: (this.userDetail.guardian && this.userDetail.guardian.name) ? this.userDetail.guardian.name : '',
-			guardianPhone: (this.userDetail.guardian && this.userDetail.guardian.email) ? this.userDetail.guardian.email : '',
+			guardianPhone: (this.userDetail.guardian && this.userDetail.guardian.email) ? this.userDetail.guardian.phone : '',
 			guardianEmail: (this.userDetail.guardian && this.userDetail.guardian.email) ? this.userDetail.guardian.email : ''
 		});
 		this.userDetail.dob = this.oldDob;

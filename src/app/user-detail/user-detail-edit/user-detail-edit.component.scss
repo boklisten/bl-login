@@ -3,3 +3,10 @@
 .bl-input-invalid {
 	border-right: 5px solid red;
 }
+.ngx-datepicker-container {
+	.ngx-datepicker-calendar-container {
+		width: 50px !important;
+	}
+}
+
+

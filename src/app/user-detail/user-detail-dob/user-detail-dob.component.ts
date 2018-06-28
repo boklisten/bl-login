@@ -1,65 +1,68 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
-import {NgbCalendar, NgbDatepicker, NgbDatepickerConfig} from "@ng-bootstrap/ng-bootstrap";
+import {Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import moment from 'moment-es6';
+import {DatepickerOptions} from "ng2-datepicker";
+import * as nbLocale from 'date-fns/locale/nb';
 
 @Component({
 	selector: 'bl-user-detail-dob',
 	templateUrl: './user-detail-dob.component.html',
 	styleUrls: ['./user-detail-dob.component.scss']
 })
-export class UserDetailDobComponent implements OnInit, OnChanges {
+export class UserDetailDobComponent implements OnInit, DoCheck {
 	@Input() dob: Date;
 	@Output() dobChange: EventEmitter<Date>;
 	@Output() under18: EventEmitter<boolean>;
-	@ViewChild(NgbDatepicker) datepicker;
 	@Output() dateChange: EventEmitter<Date>;
 	currentDob: Date;
 
-	constructor(private _config: NgbDatepickerConfig, private _calendar: NgbCalendar) {
+	datepickerOptions: DatepickerOptions;
 
-		const maxDate = moment(new Date()).add(2, 'month'); // again, ng-bootstrap fucks up dates, must add two months to start date just to display current date..
-		this._config.minDate = {year: 1904, month: 4, day: 2}; // currently oldest person on the planet
-		this._config.maxDate = {year: maxDate.year(), month: maxDate.month(), day: maxDate.month()};
-
-
+	constructor() {
 		this.dobChange = new EventEmitter<Date>();
 		this.under18 = new EventEmitter<boolean>();
 		this.dateChange = new EventEmitter<Date>();
 	}
 
 	ngOnInit() {
-		this.setDates();
+		this.datepickerOptions = {
+			minYear: 1904,
+			maxYear: new Date().getFullYear(),
+			locale: nbLocale,
+			firstCalendarDay: 1,
+			displayFormat: 'DD.MM.YYYY'
+		};
+
+		if (moment(this.dob).isValid()) {
+			if (!moment(this.dob).isSame(new Date(), 'day')) {
+				this.currentDob = this.dob;
+				this.emitUnder18(this.currentDob); // should check under 18 on init
+			} else {
+				this.currentDob = this.dob;
+			}
+		} else {
+			this.currentDob = new Date();
+		}
 	}
 
-	ngOnChanges() {
+	ngDoCheck() {
+		if (this.currentDob !== this.dob) {
+			this.setDates();
+		}
 	}
 
 	setDates() {
-		if (moment(this.dob).isValid()) {
-			this.currentDob = this.dob;
-			this._config.startDate = {year: this.currentDob.getFullYear(), month: this.currentDob.getMonth() + 1};
-			this.datepicker.navigateTo(this._config.startDate); // navigate the view of the calendar to the date
-		}
-		this.emitUnder18();
-	}
-
-	onDateSelect() {
-		// ng-bootstrap really can't do date properly, the date selected is always a day off..
-		const selectedDate = moment(this.currentDob).add(1, 'day').toDate();
-		this.dob = selectedDate;
+		this.dob = moment(this.currentDob).add(1, 'day').toDate();
 		this.dobChange.emit(this.dob);
 		this.dateChange.emit(this.dob);
-		this.emitUnder18();
+		this.emitUnder18(this.dob);
 	}
 
-	emitUnder18() {
-		const selectedDate = moment(this.currentDob).add(1, 'day').toDate();
-		if (this.isUnder18(selectedDate)) {
+	emitUnder18(date: Date) {
+		if (this.isUnder18(date)) {
 			this.under18.emit(true);
 		} else {
 			this.under18.emit(false);
 		}
-
 	}
 
 	isUnder18(date) {

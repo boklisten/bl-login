@@ -17,3 +17,10 @@
 .bl-navigation {
 	margin-bottom: 20px;
 }
+.ngx-datepicker-container {
+	z-index: 999 !important;
+	min-width: 240px;
+	.ngx-datepicker-calendar-container {
+		width: auto !important;
+	}
+}

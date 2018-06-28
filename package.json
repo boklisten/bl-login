@@ -5,7 +5,7 @@
 	"$schema": "./node_modules/ng-packagr/package.schema.json",
 	"scripts": {
 		"ng": "ng",
-		"start": "ng serve --aot",
+		"start": "ng serve",
 		"start-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"build": "ng build --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"test": "ng test --sourcemaps=false",
@@ -69,7 +69,10 @@
 		"ts-node": "~3.2.0",
 		"tslint": "~5.3.2",
 		"typescript": "2.7.2",
-		"zone.js": "^0.8.26"
+		"zone.js": "^0.8.26",
+		"@wizardcoder/bl-connect": "^0.6.1",
+		"@wizardcoder/bl-model": "^0.14.7",
+		"@fortawesome/angular-fontawesome": "0.1.0-10"
 	},
 	"peerDependencies": {
 		"@angular/common": "6.0.6",
@@ -88,6 +91,8 @@
 		"@wizardcoder/bl-model": "^0.14.7"
 	},
 	"dependencies": {
-		"@auth0/angular-jwt": "^2.0.0"
+		"@auth0/angular-jwt": "^2.0.0",
+		"date-fns": "^1.29.0",
+		"ng2-datepicker": "^3.1.0"
 	}
 }

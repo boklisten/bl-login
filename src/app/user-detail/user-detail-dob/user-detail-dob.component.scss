@@ -1,5 +1,4 @@
 
-
 .bl-user-detail-dob {
 	text-align: center;
 	padding: 0.185rem 0.25rem;
@@ -14,4 +13,7 @@
 	font-weight: bold;
 	border-radius: 50%;
 
+}
+.bl-input-invalid {
+	border-right: 2px solid red;
 }

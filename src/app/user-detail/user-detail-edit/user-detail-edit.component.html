@@ -123,9 +123,9 @@
                 </div>
             </div>
 
-
             <label for="dob" class="text-secondary" i18n="@@userDetailEditBirthdayTitle">Birthday</label>
-            <bl-user-detail-dob id="dob" (dateChange)="onDobChange($event)" [(dob)]="userDetail.dob" (under18)="onUserUnder18($event)"></bl-user-detail-dob>
+			<bl-user-detail-dob id="dob" (dateChange)="onDobChange($event)" [(dob)]="userDetail.dob" (under18)="onUserUnder18($event)"></bl-user-detail-dob>
+
 
 			<div class="mt-2" *ngIf="!isDobValid()">
                 <div class="alert alert-danger">
