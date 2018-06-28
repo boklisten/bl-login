@@ -5,13 +5,14 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Valid
 import {isNumber} from "util";
 import {NgbDateAdapter} from "@ng-bootstrap/ng-bootstrap";
 import {NgbDateNativeAdapter} from "../../register/register-detail/register-detail.component";
+import * as moment from "moment";
 
 @Component({
 	selector: 'bl-user-detail-edit',
 	templateUrl: './user-detail-edit.component.html',
 	styleUrls: ['./user-detail-edit.component.scss']
 })
-export class UserDetailEditComponent implements OnInit, OnChanges {
+export class UserDetailEditComponent implements OnInit {
 	@Input() userDetail: UserDetail;
 	@Output() patchValues: EventEmitter<any>;
 	userDetailForm: FormGroup;
@@ -35,26 +36,19 @@ export class UserDetailEditComponent implements OnInit, OnChanges {
 			guardianName: new FormControl('', [this.requiredIfUserUnder18()]),
 			guardianEmail: new FormControl('', [this.requiredIfUserUnder18(), Validators.email])
 		});
+
 		this.userUnder18 = false;
 		this.defaultDate = new Date();
 	}
 
 	ngOnInit() {
-		/*
-		this.userDetail = {
-			id: 'abc',
-			name: 'billy bob',
-			email: 'billy@bob.com',
-			phone: '12345678',
-			address: 'somewhere',
-			postCode: '1234',
-			postCity: 'Texas',
-			country: 'norway',
-			dob: null,
-			branch: 'branch1'
-		};
-		*/
-		this.oldDob = (this.userDetail && this.userDetail.dob) ? this.userDetail.dob : this.defaultDate;
+
+
+		if (this.userDetail && this.userDetail.dob && moment(this.userDetail.dob).isValid()) {
+			this.oldDob = moment(this.userDetail.dob).subtract(1, 'day').toDate();
+		} else {
+			this.oldDob = this.defaultDate;
+		}
 
 		if (this.userDetail) {
 			this.rebuildForm();
@@ -83,11 +77,6 @@ export class UserDetailEditComponent implements OnInit, OnChanges {
 			}
 			return null;
 		};
-	}
-
-	ngOnChanges() {
-		this.userDetail.dob = this.oldDob;
-		this.rebuildForm();
 	}
 
 	public onSubmit() {
