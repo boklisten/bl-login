@@ -133,7 +133,7 @@
                 </div>
             </div>
 
-			<div *ngIf="userUnder18" class="mt-2">
+			<div [style.display]="userUnder18 ? 'inline' : 'none'" class="mt-2">
 				<hr>
 				<span class="text-secondary font-weight-bold" i18n="@@userDetailEditUnder18Info">Since you are under the age of 18 we need information about your guardian. </span>
 				<hr>

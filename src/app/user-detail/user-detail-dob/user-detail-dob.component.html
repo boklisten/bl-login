@@ -1,3 +1,18 @@
-<ng-datepicker [(ngModel)]="currentDob" [options]="datepickerOptions"></ng-datepicker>
+<!--<ng-datepicker [(ngModel)]="currentDob" [options]="datepickerOptions"></ng-datepicker>-->
 
 
+
+ <div class="input-group mb-3 input-group-sm" id="guardianName">
+    <div class="input-group-prepend">
+        <span class="input-group-text">
+            <fa-icon [icon]="'birthday-cake'"></fa-icon>
+        </span>
+    </div>
+    <input
+        type="date"
+        title="dob"
+        [(ngModel)]="dobInput"
+        (change)="onDobChange()"
+        class="form-control"
+        [ngClass]="{'bl-input-invalid': dateInvalidError}">
+ </div>

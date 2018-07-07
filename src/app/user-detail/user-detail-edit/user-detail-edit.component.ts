@@ -5,7 +5,8 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Valid
 import {isNumber} from "util";
 import {NgbDateAdapter} from "@ng-bootstrap/ng-bootstrap";
 import {NgbDateNativeAdapter} from "../../register/register-detail/register-detail.component";
-import * as moment from "moment";
+
+import moment from 'moment-es6';
 
 @Component({
 	selector: 'bl-user-detail-edit',
@@ -32,7 +33,8 @@ export class UserDetailEditComponent implements OnInit {
 			address: new FormControl('', [Validators.required, Validators.maxLength(40)]),
 			postCode: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4), this.isValidNumber()]),
 			postCity: new FormControl('', [Validators.required, Validators.maxLength(40)]),
-			guardianPhone: new FormControl('', [this.requiredIfUserUnder18(), this.isValidNumber(), Validators.maxLength(8), Validators.minLength(8)]),
+			guardianPhone:
+				new FormControl('', [this.requiredIfUserUnder18(), this.isValidNumber(), Validators.maxLength(8), Validators.minLength(8)]),
 			guardianName: new FormControl('', [this.requiredIfUserUnder18()]),
 			guardianEmail: new FormControl('', [this.requiredIfUserUnder18(), Validators.email])
 		});
@@ -42,7 +44,19 @@ export class UserDetailEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		/*
+		this.userDetail = {
+			id: 'abc',
+			name: 'Albert',
+			email: 'test@test.com',
+			phone: '91804211',
+			address: 'osloveien',
+			postCode: '1234',
+			postCity: 'oslo',
+			country: 'norway',
+			branch: 'branch1'
+		};
+		*/
 
 		if (this.userDetail && this.userDetail.dob && moment(this.userDetail.dob).isValid()) {
 			this.oldDob = moment(this.userDetail.dob).subtract(1, 'day').toDate();
@@ -95,6 +109,8 @@ export class UserDetailEditComponent implements OnInit {
 				email: formValues.guardianEmail
 			}
 		};
+
+		console.log('the patched values', patchedValues);
 		this.patchValues.emit(patchedValues);
 	}
 
@@ -118,9 +134,8 @@ export class UserDetailEditComponent implements OnInit {
 	}
 
 	public onUserUnder18(under18: boolean) {
-		this.userUnder18 = under18;
 
-		if (!this.userUnder18) {
+		if (!under18) {
 			this.userDetailForm.controls.guardianEmail.clearValidators();
 			this.userDetailForm.controls.guardianName.clearValidators();
 			this.userDetailForm.controls.guardianPhone.clearValidators();
@@ -135,6 +150,7 @@ export class UserDetailEditComponent implements OnInit {
 			this.userDetailForm.controls.guardianName.setValidators([Validators.maxLength(40), Validators.required]);
 			this.userDetailForm.controls.guardianPhone.setValidators([this.isValidNumber(), Validators.required]);
 		}
+		this.userUnder18 = under18;
 
 		this.checkIfCanSave();
 	}

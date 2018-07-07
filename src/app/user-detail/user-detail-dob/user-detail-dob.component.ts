@@ -8,12 +8,13 @@ import * as nbLocale from 'date-fns/locale/nb';
 	templateUrl: './user-detail-dob.component.html',
 	styleUrls: ['./user-detail-dob.component.scss']
 })
-export class UserDetailDobComponent implements OnInit, DoCheck {
+export class UserDetailDobComponent implements OnInit {
 	@Input() dob: Date;
 	@Output() dobChange: EventEmitter<Date>;
 	@Output() under18: EventEmitter<boolean>;
 	@Output() dateChange: EventEmitter<Date>;
-	currentDob: Date;
+	dobInput: string;
+	dateInvalidError: boolean;
 
 	datepickerOptions: DatepickerOptions;
 
@@ -21,6 +22,7 @@ export class UserDetailDobComponent implements OnInit, DoCheck {
 		this.dobChange = new EventEmitter<Date>();
 		this.under18 = new EventEmitter<boolean>();
 		this.dateChange = new EventEmitter<Date>();
+		this.dateInvalidError = false;
 	}
 
 	ngOnInit() {
@@ -32,26 +34,42 @@ export class UserDetailDobComponent implements OnInit, DoCheck {
 			displayFormat: 'DD.MM.YYYY'
 		};
 
+
 		if (moment(this.dob).isValid()) {
+			this.dobInput = moment(this.dob).format('YYYY-MM-DD');
 			if (!moment(this.dob).isSame(new Date(), 'day')) {
-				this.currentDob = this.dob;
-				this.emitUnder18(this.currentDob); // should check under 18 on init
-			} else {
-				this.currentDob = this.dob;
+				this.emitUnder18(this.dob); // should check under 18 on init
 			}
 		} else {
-			this.currentDob = new Date();
+			this.dobInput = moment().toString();
 		}
 	}
 
-	ngDoCheck() {
-		if (this.currentDob !== this.dob) {
-			this.setDates();
+	public onDobChange() {
+		this.dateInvalidError = false;
+		let momentDate = null;
+
+		if (moment(this.dobInput, 'DDMMYYYY').isValid())  {
+			momentDate = moment(this.dobInput, 'DDMMYYYY');
+		} else if (moment(this.dobInput, 'DD.MM.YYYY').isValid()) {
+			momentDate = moment(this.dobInput, 'DD.MM.YYYY');
+		} else if (moment(this.dobInput, 'DDMMYY').isValid()) {
+			momentDate = moment(this.dobInput, 'DDMMYY');
+		} else if (moment(this.dobInput).isValid()) {
+			momentDate = moment(this.dobInput);
 		}
+
+		if (!momentDate) {
+			console.log('the date is not valid');
+			this.dateInvalidError = true;
+			return;
+		}
+
+		this.setDates(moment(momentDate).toDate());
 	}
 
-	setDates() {
-		this.dob = moment(this.currentDob).add(1, 'day').toDate();
+	setDates(dob: Date) {
+		this.dob = moment(dob).add(1, 'day').toDate();
 		this.dobChange.emit(this.dob);
 		this.dateChange.emit(this.dob);
 		this.emitUnder18(this.dob);
