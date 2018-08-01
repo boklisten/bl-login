@@ -23,6 +23,7 @@
 		"dest": "./dist/@wizardcoder/bl-login",
 		"whitelistedNonPeerDependencies": [
 			"@auth0/angular-jwt",
+			"@wizardcoder/bl-connect",
 			"date-fns",
 			"ng2-datepicker"
 		]
@@ -93,7 +94,7 @@
 	},
 	"dependencies": {
 		"@auth0/angular-jwt": "^2.0.0",
-		"@wizardcoder/bl-connect": "^0.7.0",
+		"@wizardcoder/bl-connect": "^0.7.1",
 		"date-fns": "^1.29.0",
 		"ng2-datepicker": "^3.1.0"
 	}
