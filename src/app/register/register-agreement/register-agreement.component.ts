@@ -8,23 +8,23 @@ import {NgbModal, ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
 	styleUrls: ['./register-agreement.component.scss']
 })
 export class RegisterAgreementComponent implements OnInit {
-	
+
 	@Output() confirmed: EventEmitter<boolean> = new EventEmitter();
 	@Output() dismissed: EventEmitter<boolean> = new EventEmitter();
-	
+
 	public userAgreement: boolean;
 	public userAgreementInfoText: string;
 	private _closeResult: string;
-	
+
 	constructor(private _modalService: NgbModal) {
 		this.userAgreement = false;
 		this.userAgreementInfoText = 'I have read and understood the user-agreement.';
 		this._closeResult = '';
 	}
-	
+
 	ngOnInit() {
 	}
-	
+
 	public onUserAgreement(content) {
 		if (!this.userAgreement) {
 			this.open(content);
@@ -33,9 +33,9 @@ export class RegisterAgreementComponent implements OnInit {
 			this.dismissed.emit(true);
 		}
 	}
-	
+
 	public open(content) {
-		this._modalService.open(content).result.then((result) => {
+		this._modalService.open(content, {centered: true, backdropClass: 'bl-modal'}).result.then((result) => {
 			this._closeResult = 'closed with' + result;
 			this.userAgreement = true;
 			this.confirmed.emit(true);
@@ -45,9 +45,9 @@ export class RegisterAgreementComponent implements OnInit {
 			this.userAgreement = false;
 			this.dismissed.emit(true);
 		});
-		
+
 	}
-	
+
 	private getDismissReason(reason: any): string {
 		if (reason === ModalDismissReasons.ESC) {
 			return 'by pressing ESC';
@@ -58,5 +58,5 @@ export class RegisterAgreementComponent implements OnInit {
 		}
 	}
 
-	
+
 }

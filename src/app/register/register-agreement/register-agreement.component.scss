@@ -10,6 +10,14 @@
 
 }
 
+.bl-modal {
+	margin-top: 80px;
+}
+
+.modal-dialog {
+	margin-top: 80px;
+}
+
 .bl-checkbox-checked {
 	@extend .bl-checkbox;
 	color: #28a645;
