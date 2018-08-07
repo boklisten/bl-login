@@ -94,7 +94,7 @@
 	},
 	"dependencies": {
 		"@auth0/angular-jwt": "^2.0.0",
-		"@wizardcoder/bl-connect": "^0.7.1",
+		"@wizardcoder/bl-connect": "^0.7.2",
 		"date-fns": "^1.29.0",
 		"ng2-datepicker": "^3.1.0"
 	}
