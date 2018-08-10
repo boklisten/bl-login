@@ -33,10 +33,7 @@ export class AuthEmailValidationComponent implements OnInit {
 		this._emailValidationService.validateConfirmationLink(this._id).then(() => {
 			this.emailConfirmed = true;
 			this.waiting = false;
-
-			setTimeout(() => {
-				this.goToHome();
-			}, 2500);
+			this.goToHome();
 		}).catch(() => {
 			this.waiting = false;
 			this.emailValidationError = true;
