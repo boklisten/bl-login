@@ -55,7 +55,7 @@ export class UserDetailEditComponent implements OnInit {
 			postCity: 'oslo',
 			country: 'norway',
 			branch: 'branch1'
-		};
+		} as any;
 		*/
 
 		if (this.userDetail && this.userDetail.dob && moment(this.userDetail.dob).isValid()) {

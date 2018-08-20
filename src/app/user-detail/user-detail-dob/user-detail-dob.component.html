@@ -1,6 +1,4 @@
-<!--<ng-datepicker [(ngModel)]="currentDob" [options]="datepickerOptions"></ng-datepicker>-->
-
-
+<div i18n="@@userDetailDobDateFormatMustBe" *ngIf="showDateStringFormat">Date must be on the format "dd.mm.yyyy"</div>
 
  <div class="input-group mb-3 input-group-sm" id="guardianName">
     <div class="input-group-prepend">
@@ -10,9 +8,11 @@
     </div>
     <input
         type="date"
+		id="blDateField"
         title="dob"
         [(ngModel)]="dobInput"
         (change)="onDobChange()"
         class="form-control"
         [ngClass]="{'bl-input-invalid': dateInvalidError}">
  </div>
+

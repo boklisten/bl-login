@@ -15,6 +15,7 @@ export class UserDetailDobComponent implements OnInit {
 	@Output() dateChange: EventEmitter<Date>;
 	dobInput: string;
 	dateInvalidError: boolean;
+	public showDateStringFormat: boolean;
 
 	datepickerOptions: DatepickerOptions;
 
@@ -34,6 +35,14 @@ export class UserDetailDobComponent implements OnInit {
 			displayFormat: 'DD.MM.YYYY'
 		};
 
+		const dateField = document.getElementById('blDateField');
+		if (dateField) {
+			dateField.setAttribute('type', 'date');
+			if (dateField['type'] !== 'date') {
+				this.showDateStringFormat = true;
+			}
+		}
+
 
 		if (moment(this.dob).isValid()) {
 			this.dobInput = moment(this.dob).format('YYYY-MM-DD');
@@ -49,18 +58,14 @@ export class UserDetailDobComponent implements OnInit {
 		this.dateInvalidError = false;
 		let momentDate = null;
 
-		if (moment(this.dobInput, 'DDMMYYYY').isValid())  {
-			momentDate = moment(this.dobInput, 'DDMMYYYY');
-		} else if (moment(this.dobInput, 'DD.MM.YYYY').isValid()) {
-			momentDate = moment(this.dobInput, 'DD.MM.YYYY');
-		} else if (moment(this.dobInput, 'DDMMYY').isValid()) {
-			momentDate = moment(this.dobInput, 'DDMMYY');
-		} else if (moment(this.dobInput).isValid()) {
-			momentDate = moment(this.dobInput);
+
+		if (moment(new Date(this.dobInput)).isValid()) {
+			momentDate = moment(new Date(this.dobInput));
+		} else {
+			momentDate = moment(this.dobInput.toString(), 'DD.MM.YYYY');
 		}
 
 		if (!momentDate) {
-			console.log('the date is not valid');
 			this.dateInvalidError = true;
 			return;
 		}
@@ -69,7 +74,7 @@ export class UserDetailDobComponent implements OnInit {
 	}
 
 	setDates(dob: Date) {
-		this.dob = moment(dob).add(1, 'day').toDate();
+		this.dob = dob;
 		this.dobChange.emit(this.dob);
 		this.dateChange.emit(this.dob);
 		this.emitUnder18(this.dob);
@@ -84,7 +89,7 @@ export class UserDetailDobComponent implements OnInit {
 	}
 
 	isUnder18(date) {
-		return moment(date).isAfter(moment(new Date()).subtract(18, 'years'));
+		return moment(date).isSameOrAfter(moment(new Date()).subtract(18, 'years'));
 	}
 
 }
