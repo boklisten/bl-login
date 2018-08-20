@@ -18,6 +18,17 @@
         </div>
     </div>
 
+	<div class="row mt-2 justify-content-center" *ngIf="connectionError">
+        <div class="col-12 text-center mt-2">
+            <div class="alert alert-danger">
+                <b>
+                    <fa-icon [icon]="'times-circle'" class="mr-2"></fa-icon>
+                    <span i18n="@@emailValidationNoConnection">Could not connect to the server</span>
+                </b>
+            </div>
+        </div>
+	</div>
+
     <div class="row mt-2 justify-content-center" *ngIf="emailValidationError && !newLinkSent">
         <div class="col-12 text-center mt-2">
             <div class="alert alert-danger">

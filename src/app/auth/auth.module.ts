@@ -8,7 +8,7 @@ import {NgbAlertModule} from "@ng-bootstrap/ng-bootstrap";
 import {AuthPasswordResetComponent} from "./auth-password-reset/auth-password-reset.component";
 import {FormsModule} from "@angular/forms";
 import { AuthEmailValidationComponent } from './auth-email-validation/auth-email-validation.component';
-import {TokenService} from "@wizardcoder/bl-connect";
+import {BlConnectModule, TokenService} from "@wizardcoder/bl-connect";
 
 @NgModule({
 	imports: [
@@ -24,7 +24,7 @@ import {TokenService} from "@wizardcoder/bl-connect";
 		AuthEmailValidationComponent
 	],
 	providers: [
-		TokenService
+		BlConnectModule
 	],
 	exports: [AuthTokenComponent]
 })

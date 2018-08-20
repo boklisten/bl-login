@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {EmailValidationService, TokenService} from "@wizardcoder/bl-connect";
-import {BlApiError} from "@wizardcoder/bl-model";
+import {BlApiError, BlApiNotFoundError} from "@wizardcoder/bl-model";
 import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
 
 @Component({
@@ -11,7 +11,7 @@ import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
 })
 export class AuthEmailValidationComponent implements OnInit {
 	private _id: string;
-
+	public connectionError: boolean;
 	public emailConfirmed: boolean;
 	public emailValidationError: boolean;
 	public newLinkSent: boolean;
@@ -34,9 +34,17 @@ export class AuthEmailValidationComponent implements OnInit {
 			this.emailConfirmed = true;
 			this.waiting = false;
 			this.goToHome();
-		}).catch(() => {
+		}).catch((emailerr) => {
 			this.waiting = false;
-			this.emailValidationError = true;
+			if (emailerr instanceof BlApiNotFoundError) {
+				this.emailValidationError = true;
+			} else if (emailerr instanceof BlApiError) {
+				if (emailerr.msg === 'could not connect') {
+					this.connectionError = true;
+				}
+			} else {
+				this.emailValidationError = true;
+			}
 		});
 	}
 
