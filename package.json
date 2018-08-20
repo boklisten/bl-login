@@ -24,6 +24,7 @@
 		"whitelistedNonPeerDependencies": [
 			"@auth0/angular-jwt",
 			"@wizardcoder/bl-connect",
+			"@wizardcoder/bl-model",
 			"date-fns",
 			"ng2-datepicker"
 		]
