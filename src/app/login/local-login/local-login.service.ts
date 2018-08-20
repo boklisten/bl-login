@@ -4,31 +4,23 @@ import {BlApiError, BlApiLoginRequiredError, BlApiPermissionDeniedError} from "@
 
 @Injectable()
 export class LocalLoginService {
-	
+
 	constructor(private _loginService: LoginService) {
 	}
-	
+
 	public login(email: string, password: string): Promise<boolean> {
 		return new Promise((resolve, reject) => {
 			if (!email || email.length <= 0) {
 				reject(new Error('email is empty or undefined'));
 			}
-			
+
 			if (!password || password.length <= 0) {
 				reject(new Error('password is empty or undefined'));
 			}
-			
+
 			this._loginService.login(email, password).then(() => {
 				resolve(true);
 			}).catch((blApiErr: BlApiError) => {
-				if (blApiErr instanceof BlApiPermissionDeniedError) {
-					console.log('loginError: BlPermissionDeniedError');
-				} else if (blApiErr instanceof BlApiLoginRequiredError) {
-					console.log('loginError: BlLoginRequiredError');
-				} else {
-					console.log('loginError: there was an error with login in bl-connect', blApiErr);
-				}
-				
 				reject(blApiErr);
 			});
 		});

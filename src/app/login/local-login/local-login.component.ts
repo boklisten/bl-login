@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalLoginService} from "./local-login.service";
 import * as EmailValidator from 'email-validator';
 import {BlApiError, BlApiLoginRequiredError, BlApiPermissionDeniedError} from "@wizardcoder/bl-model";
+import {BlApiUsernameAndPasswordError} from "@wizardcoder/bl-model/dist/bl-api-error/bl-api-username-and-password-error";
+import {BlApiUserAlreadyExistsError} from "@wizardcoder/bl-model/dist/bl-api-error/bl-api-user-already-exists-error";
 
 @Component({
 	selector: 'bl-local-login',
@@ -50,7 +52,9 @@ export class LocalLoginComponent implements OnInit {
 		this._localLoginService.login(this.email, this.password).then(() => {
 			this.loggedIn.emit(true);
 		}).catch((blApiErr: BlApiError) => {
-			if (blApiErr instanceof BlApiLoginRequiredError || blApiErr instanceof BlApiPermissionDeniedError) {
+			if (blApiErr instanceof BlApiUsernameAndPasswordError || blApiErr instanceof BlApiUserAlreadyExistsError) {
+				this.loginError = true;
+			} else if (blApiErr instanceof BlApiLoginRequiredError || blApiErr instanceof  BlApiPermissionDeniedError) {
 				this.loginError = true;
 			} else {
 				this.connectionError = true;
