@@ -52,7 +52,7 @@
 		"@types/jasmine": "~2.5.53",
 		"@types/jasminewd2": "~2.0.2",
 		"@types/node": "^6.0.115",
-		"@wizardcoder/bl-model": "^0.14.7",
+		"@wizardcoder/bl-model": "^0.15.3",
 		"codelyzer": "~3.1.1",
 		"core-js": "^2.5.7",
 		"email-validator": "^1.2.3",
@@ -94,7 +94,7 @@
 	},
 	"dependencies": {
 		"@auth0/angular-jwt": "^2.0.0",
-		"@wizardcoder/bl-connect": "^0.8.0",
+		"@wizardcoder/bl-connect": "^0.8.1",
 		"date-fns": "^1.29.0",
 		"ng2-datepicker": "^3.1.0"
 	}

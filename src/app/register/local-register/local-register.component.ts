@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalRegisterService} from "./local-register.service";
 import * as EmailValidator from 'email-validator';
 import {BlApiError} from "@wizardcoder/bl-model";
+import {BlApiUserAlreadyExistsError} from "@wizardcoder/bl-model/dist/bl-api-error/bl-api-user-already-exists-error";
 
 @Component({
 	selector: 'bl-local-register',
@@ -16,6 +17,8 @@ export class LocalRegisterComponent implements OnInit {
 
 	public email: string;
 	public password: string;
+
+	public userAlreadyExistsError: boolean;
 
 	public tooltipEmail: string;
 	public tooltipPassword: string;
@@ -58,6 +61,7 @@ export class LocalRegisterComponent implements OnInit {
 	public onRegister() {
 		this.clearWarning();
 		this.registerError = false;
+		this.userAlreadyExistsError = false;
 
 		if (!EmailValidator.validate(this.email)) {
 			this.setWarning(this.emailNotValid);
@@ -77,7 +81,12 @@ export class LocalRegisterComponent implements OnInit {
 		this._localRegisterService.register(this.email, this.password).then(() => {
 			this.registered.emit(true);
 		}).catch((blApiErr: BlApiError) => {
-			this.registerError = true;
+
+			if (blApiErr instanceof BlApiUserAlreadyExistsError) {
+				this.userAlreadyExistsError = true;
+			} else {
+				this.registerError = true;
+			}
 		});
 	}
 
