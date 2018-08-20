@@ -59,7 +59,7 @@ export class UserDetailEditComponent implements OnInit {
 		*/
 
 		if (this.userDetail && this.userDetail.dob && moment(this.userDetail.dob).isValid()) {
-			this.oldDob = moment(this.userDetail.dob).subtract(1, 'day').toDate();
+			this.oldDob = moment(this.userDetail.dob).toDate();
 		} else {
 			this.oldDob = this.defaultDate;
 		}
