@@ -15,7 +15,8 @@ import {BlConnectModule, TokenService} from "@wizardcoder/bl-connect";
 		CommonModule,
 		FontAwesomeModule,
 		NgbAlertModule,
-		FormsModule
+		FormsModule,
+		BlConnectModule
 	],
 	declarations: [
 		AuthTokenComponent,
@@ -24,7 +25,6 @@ import {BlConnectModule, TokenService} from "@wizardcoder/bl-connect";
 		AuthEmailValidationComponent
 	],
 	providers: [
-		BlConnectModule
 	],
 	exports: [AuthTokenComponent]
 })
