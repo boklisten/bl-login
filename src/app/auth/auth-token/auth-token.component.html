@@ -1,3 +1,27 @@
-<p>
-	saving tokens
-</p>
+<div class="row justify-content-center mt-5" *ngIf="!addTokensError">
+	<div class="col-auto text-secondary">
+		<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'4x'"></fa-icon>
+	</div>
+</div>
+
+<div class="row justify-content-center mt-2" *ngIf="!addTokensError">
+	<div class="col-auto">
+		<h6 i18n="@@authTokenComponentWeAreLoggingYouIn">We are logging you in, please wait</h6>
+	</div>
+</div>
+
+
+<div class="row justify-content-center mt-2" *ngIf="addTokensError">
+	<div class="col-12">
+		<div class="alert alert-danger">
+			<span i18n="@@authTokenFailedToLoginError">
+				Failed to log you in.
+			</span>
+			<span i18n="@@authTokenTryToLoginAgain"
+				  (click)="onLoginAgainClick()"
+				  class="bl-link font-weight-bold">
+				Click here to try again
+			</span>
+		</div>
+	</div>
+</div>
