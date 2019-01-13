@@ -1,9 +1,13 @@
-import {Injectable} from '@angular/core';
-import {TokenService, UserSessionService} from "@wizardcoder/bl-connect";
-import {Observable, Subject} from "rxjs";
-import {Router} from "@angular/router";
-import {LOGIN_MODULE_SETTINGS} from "./login-module-settings";
-import {UserPermission} from "@wizardcoder/bl-model";
+import { Injectable } from "@angular/core";
+import {
+	TokenService,
+	UserSessionService,
+	UserDetailService
+} from "@wizardcoder/bl-connect";
+import { Observable, Subject } from "rxjs";
+import { Router } from "@angular/router";
+import { LOGIN_MODULE_SETTINGS } from "./login-module-settings";
+import { UserPermission } from "@wizardcoder/bl-model";
 
 @Injectable()
 export class AuthLoginService {
@@ -11,7 +15,12 @@ export class AuthLoginService {
 	private _login$: Subject<boolean>;
 	private _logout$: Subject<boolean>;
 
-	constructor(private _tokenService: TokenService, private _router: Router, private _userSessionService: UserSessionService) {
+	constructor(
+		private _tokenService: TokenService,
+		private _router: Router,
+		private _userSessionService: UserSessionService,
+		private _userDetailService: UserDetailService
+	) {
 		this._login$ = new Subject<boolean>();
 		this._logout$ = new Subject<boolean>();
 		this.onBlConnectLogout();
@@ -26,15 +35,36 @@ export class AuthLoginService {
 
 	public login(url?: string) {
 		if (this._tokenService.haveAccessToken()) {
-			if (this.havePermission(this._tokenService.getAccessTokenBody().permission)) {
-				this._login$.next(true);
-				if (url) {
-					this._router.navigateByUrl(url);
-				} else if (this.redirectUrl) {
-					this._router.navigateByUrl(this.redirectUrl);
-				} else {
-					this._router.navigateByUrl(LOGIN_MODULE_SETTINGS.successPath);
-				}
+			if (
+				this.havePermission(
+					this._tokenService.getAccessTokenBody().permission
+				)
+			) {
+				this._userDetailService
+					.isValid(this._tokenService.getAccessTokenBody().details)
+					.then(validObject => {
+						this._login$.next(true);
+						if (!validObject.valid) {
+							this._router.navigateByUrl(
+								LOGIN_MODULE_SETTINGS.userDetailNotValidPath
+							);
+						} else {
+							if (url) {
+								this._router.navigateByUrl(url);
+							} else if (this.redirectUrl) {
+								this._router.navigateByUrl(this.redirectUrl);
+							} else {
+								this._router.navigateByUrl(
+									LOGIN_MODULE_SETTINGS.successPath
+								);
+							}
+						}
+					})
+					.catch(() => {
+						this._router.navigateByUrl(
+							LOGIN_MODULE_SETTINGS.userDetailNotValidPath
+						);
+					});
 			} else {
 				this.logout(LOGIN_MODULE_SETTINGS.permissionDeniedPath);
 			}
@@ -70,12 +100,12 @@ export class AuthLoginService {
 
 	private havePermission(userPermission: UserPermission): boolean {
 		if (LOGIN_MODULE_SETTINGS.permissions) {
-			if (LOGIN_MODULE_SETTINGS.permissions.indexOf(userPermission) > -1) {
+			if (
+				LOGIN_MODULE_SETTINGS.permissions.indexOf(userPermission) > -1
+			) {
 				return true;
 			}
 		}
 		return false;
 	}
-
 }
-
