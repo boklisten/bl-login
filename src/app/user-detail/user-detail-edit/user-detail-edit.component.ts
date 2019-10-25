@@ -47,13 +47,21 @@ export class UserDetailEditComponent implements OnInit {
 		private formBuilder: FormBuilder
 	) {
 		this.patchValues = new EventEmitter<any>();
+		const nameValidatorRegex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){},.|~<>;:[\]]{2,}$/;
 
 		this.userDetailForm = this.formBuilder.group({
 			email: new FormControl({ value: "", disabled: true }, [
 				Validators.required
 			]),
-			name: new FormControl("", [
+			firstName: new FormControl("", [
 				Validators.required,
+				Validators.pattern(nameValidatorRegex),
+
+				Validators.maxLength(40)
+			]),
+			lastName: new FormControl("", [
+				Validators.required,
+				Validators.pattern(nameValidatorRegex),
 				Validators.maxLength(40)
 			]),
 			phone: new FormControl("", [
@@ -81,7 +89,11 @@ export class UserDetailEditComponent implements OnInit {
 				Validators.maxLength(8),
 				Validators.minLength(8)
 			]),
-			guardianName: new FormControl("", [this.requiredIfUserUnder18()]),
+			guardianName: new FormControl("", [
+				this.requiredIfUserUnder18(),
+				Validators.maxLength(40),
+				Validators.pattern(nameValidatorRegex)
+			]),
 			guardianEmail: new FormControl("", [
 				this.requiredIfUserUnder18(),
 				Validators.email
@@ -95,17 +107,17 @@ export class UserDetailEditComponent implements OnInit {
 	ngOnInit() {
 		/*
 		this.userDetail = {
-			id: 'abc',
-			name: 'Albert',
-			email: 'test@test.com',
-			phone: '91804211',
-			address: 'osloveien',
-			postCode: '1234',
-			postCity: 'oslo',
-			country: 'norway',
-			branch: 'branch1'
+			id: "abc",
+			name: "JONNY B GOOD-VIBES",
+			email: "test@test.com",
+			phone: "12345678",
+			address: "osloveien",
+			postCode: "1234",
+			postCity: "oslo",
+			country: "norway",
+			branch: "branch1"
 		} as any;
-		*/
+    */
 
 		if (
 			this.userDetail &&
@@ -154,7 +166,7 @@ export class UserDetailEditComponent implements OnInit {
 	public onSubmit() {
 		const formValues = this.userDetailForm.getRawValue();
 		const patchedValues = {
-			name: formValues.name,
+			name: formValues.firstName + " " + formValues.lastName,
 			phone: formValues.phone,
 			address: formValues.address,
 			postCode: formValues.postCode,
@@ -170,10 +182,11 @@ export class UserDetailEditComponent implements OnInit {
 		this.patchValues.emit(patchedValues);
 	}
 
-	public rebuildForm() {
+	private rebuildForm() {
 		this.userDetailForm.reset({
 			email: this.userDetail.email ? this.userDetail.email : "",
-			name: this.userDetail.name ? this.userDetail.name : "",
+			firstName: this.extractFirstName(this.userDetail.name),
+			lastName: this.extractLastName(this.userDetail.name),
 			phone: this.userDetail.phone ? this.userDetail.phone : "",
 			address: this.userDetail.address ? this.userDetail.address : "",
 			postCode: this.userDetail.postCode ? this.userDetail.postCode : "",
@@ -192,6 +205,38 @@ export class UserDetailEditComponent implements OnInit {
 					: ""
 		});
 		this.userDetail.dob = this.oldDob;
+	}
+
+	private extractFirstName(fullName: string): string {
+		if (!fullName || fullName.length <= 0) {
+			return "";
+		}
+
+		let fullNameSplit = fullName.split(" ");
+
+		if (fullNameSplit.length == 1) {
+			return fullNameSplit[0];
+		}
+
+		return fullName
+			.split(" ")
+			.slice(0, fullNameSplit.length - 1)
+			.join(" ");
+	}
+
+	private extractLastName(fullName: string): string {
+		if (!fullName || fullName.length <= 0) {
+			return "";
+		}
+
+		const fullNameSplit = fullName.split(" ");
+
+		if (fullNameSplit.length > 1) {
+			return fullNameSplit
+				.slice(fullNameSplit.length - 1, fullNameSplit.length)
+				.join(" ");
+		}
+		return "";
 	}
 
 	public onDobChange(dob: Date) {

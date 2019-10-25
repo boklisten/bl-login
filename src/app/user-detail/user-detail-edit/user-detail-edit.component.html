@@ -2,69 +2,172 @@
 	<div class="col-12">
 		<div class="alert alert-secondary">
 			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span i18n="@@userDetailEditCouldNotRetrieveError">Could not retrieve user details</span>
+			<span i18n="@@userDetailEditCouldNotRetrieveError"
+				>Could not retrieve user details</span
+			>
 		</div>
 	</div>
 </div>
 
 <div class="row" *ngIf="userDetail">
 	<div class="col-12">
-        <form [formGroup]="userDetailForm">
-			<label for="email" class="text-secondary" i18n="@@userDetailEditEmailTitle">Email</label>
+		<form [formGroup]="userDetailForm">
+			<label
+				for="email"
+				class="text-secondary"
+				i18n="@@userDetailEditEmailTitle"
+				>Email</label
+			>
 			<div class="input-group mb-3 input-group-sm" id="email">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<fa-icon [icon]="'at'"></fa-icon>
 					</span>
 				</div>
-				<input type="text" class="form-control" formControlName="email">
+				<input
+					type="text"
+					class="form-control"
+					formControlName="email"
+				/>
 			</div>
 
-			<label for="name" class="text-secondary" i18n="@@userDetailEditNameTitle">Name</label>
-			<div class="input-group mb-3 input-group-sm" id="name">
+			<label
+				for="firstName"
+				class="text-secondary"
+				i18n="@@userDetailEditFirstNameTitle"
+				>First name</label
+			>
+			<div class="input-group mb-3 input-group-sm" id="firstName">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<fa-icon [icon]="'user'"></fa-icon>
 					</span>
 				</div>
-				<input type="text"
-					   class="form-control"
-					   i18n-placeholder="@@userDetailEditNamePlaceholder"
-					   placeholder="Name"
-					   formControlName="name"
-					   [ngClass]="{'bl-input-invalid': userDetailForm.controls.name.invalid}"
-					   required>
+				<input
+					type="text"
+					class="form-control"
+					i18n-placeholder="@@userDetailEditFirstNamePlaceholder"
+					placeholder="First name"
+					formControlName="firstName"
+					[ngClass]="{
+						'bl-input-invalid':
+							userDetailForm.controls.firstName.invalid
+					}"
+					required
+				/>
 			</div>
 
-            <div class="mt-2" *ngIf="userDetailForm.controls.name.invalid && (userDetailForm.controls.name?.dirty || userDetailForm.controls.name.touched)">
-                <div *ngIf="userDetailForm.controls.name.errors.required" class="alert alert-danger">
-					<span i18n="@@userDetailEditNameIsRequired">Name is required</span>
-                </div>
-            </div>
+			<div
+				class="mt-2"
+				*ngIf="
+					userDetailForm.controls.firstName.invalid &&
+					(userDetailForm.controls.firstName?.dirty ||
+						userDetailForm.controls.firstName.touched)
+				"
+			>
+				<div
+					*ngIf="userDetailForm.controls.firstName.errors.required"
+					class="alert alert-danger"
+				>
+					<span i18n="@@userDetailEditFirstNameIsRequired"
+						>First name is required</span
+					>
+				</div>
+			</div>
 
-			<label for="phone" class="text-secondary" i18n="@@userDetailEditPhoneTitle">Phone</label>
+			<label
+				for="lastName"
+				class="text-secondary"
+				i18n="@@userDetailEditLastNameTitle"
+				>Last name</label
+			>
+			<div class="input-group mb-3 input-group-sm" id="lastName">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<fa-icon [icon]="'user'"></fa-icon>
+					</span>
+				</div>
+				<input
+					type="text"
+					class="form-control"
+					i18n-placeholder="@@userDetailEditLastNamePlaceholder"
+					placeholder="Last name"
+					formControlName="lastName"
+					[ngClass]="{
+						'bl-input-invalid':
+							userDetailForm.controls.lastName.invalid
+					}"
+					required
+				/>
+			</div>
+
+			<div
+				class="mt-2"
+				*ngIf="
+					userDetailForm.controls.lastName.invalid &&
+					(userDetailForm.controls.lastName?.dirty ||
+						userDetailForm.controls.lastName.touched)
+				"
+			>
+				<div
+					*ngIf="userDetailForm.controls.lastName.errors.required"
+					class="alert alert-danger"
+				>
+					<span i18n="@@userDetailEditLastNameIsRequired"
+						>Last name is required</span
+					>
+				</div>
+			</div>
+
+			<label
+				for="phone"
+				class="text-secondary"
+				i18n="@@userDetailEditPhoneTitle"
+				>Phone</label
+			>
 			<div class="input-group mb-3 input-group-sm" id="phone">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<fa-icon [icon]="'phone'"></fa-icon>
 					</span>
 				</div>
-				<input type="text"
-					   class="form-control"
-					   i18n-placeholder="@@userDetailEditPhonePlaceholder"
-					   placeholder="Phone"
-					   formControlName="phone"
-					   [ngClass]="{'bl-input-invalid': userDetailForm.controls.phone.invalid}"
-					   required>
+				<input
+					type="text"
+					class="form-control"
+					i18n-placeholder="@@userDetailEditPhonePlaceholder"
+					placeholder="Phone"
+					formControlName="phone"
+					[ngClass]="{
+						'bl-input-invalid':
+							userDetailForm.controls.phone.invalid
+					}"
+					required
+				/>
 			</div>
-            <div class="mt-2" *ngIf="userDetailForm.controls.phone.invalid && (userDetailForm.controls.phone.dirty || userDetailForm.controls.phone.touched)">
-				<div *ngIf="userDetailForm.controls.phone.errors?.notNumber" class="alert alert-danger">
-					<span i18n="@@userDetailEditPhoneNumberMustBeValid">Phone number must be a valid number</span>
-                </div>
-            </div>
+			<div
+				class="mt-2"
+				*ngIf="
+					userDetailForm.controls.phone.invalid &&
+					(userDetailForm.controls.phone.dirty ||
+						userDetailForm.controls.phone.touched)
+				"
+			>
+				<div
+					*ngIf="userDetailForm.controls.phone.errors?.notNumber"
+					class="alert alert-danger"
+				>
+					<span i18n="@@userDetailEditPhoneNumberMustBeValid"
+						>Phone number must be a valid number</span
+					>
+				</div>
+			</div>
 
-
-			<label for="address" class="text-secondary" i18n="@@userDetailEditAddressTitle">Address</label>
+			<label
+				for="address"
+				class="text-secondary"
+				i18n="@@userDetailEditAddressTitle"
+				>Address</label
+			>
 			<div class="input-group mb-3 input-group-sm" id="address">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
@@ -77,134 +180,251 @@
 					i18n-placeholder="@@userDetailEditAddressPlaceholder"
 					placeholder="Address"
 					formControlName="address"
-					[ngClass]="{'bl-input-invalid': userDetailForm.controls.address.invalid}"
-					required>
+					[ngClass]="{
+						'bl-input-invalid':
+							userDetailForm.controls.address.invalid
+					}"
+					required
+				/>
 			</div>
 
-            <div class="mt-2" *ngIf="userDetailForm.controls.address.invalid && (userDetailForm.controls.address.dirty || userDetailForm.controls.address.touched)">
-                <div class="alert alert-danger">
-					<span i18n="@@userDetailEditAddressMustBeValid">Address must be valid</span>
-                </div>
-            </div>
+			<div
+				class="mt-2"
+				*ngIf="
+					userDetailForm.controls.address.invalid &&
+					(userDetailForm.controls.address.dirty ||
+						userDetailForm.controls.address.touched)
+				"
+			>
+				<div class="alert alert-danger">
+					<span i18n="@@userDetailEditAddressMustBeValid"
+						>Address must be valid</span
+					>
+				</div>
+			</div>
 
-
-			<label for="postCity" class="text-secondary" i18n="@@userDetailEditPostalTitle">Postal code and city</label>
+			<label
+				for="postCity"
+				class="text-secondary"
+				i18n="@@userDetailEditPostalTitle"
+				>Postal code and city</label
+			>
 			<div class="input-group mb-3 input-group-sm">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<fa-icon [icon]="'address-card'"></fa-icon>
 					</span>
 				</div>
-				<input type="text"
-					   class="form-control"
-					   i18n-placeholder="@@userDetailEditPostCodePlaceholder"
-					   placeholder="Post code"
-					   formControlName="postCode"
-					   [ngClass]="{'bl-input-invalid': userDetailForm.controls.postCode.invalid}"
-					   required id="postCode">
-				<input type="text"
-					   class="form-control"
-					   i18n-placeholder="@@userDetailEditPostCityPlaceholder"
-					   placeholder="Post city"
-					   formControlName="postCity"
-					   [ngClass]="{'bl-input-invalid': userDetailForm.controls.postCity.invalid}"
-					   required id="postCity">
+				<input
+					type="text"
+					class="form-control"
+					i18n-placeholder="@@userDetailEditPostCodePlaceholder"
+					placeholder="Post code"
+					formControlName="postCode"
+					[ngClass]="{
+						'bl-input-invalid':
+							userDetailForm.controls.postCode.invalid
+					}"
+					required
+					id="postCode"
+				/>
+				<input
+					type="text"
+					class="form-control"
+					i18n-placeholder="@@userDetailEditPostCityPlaceholder"
+					placeholder="Post city"
+					formControlName="postCity"
+					[ngClass]="{
+						'bl-input-invalid':
+							userDetailForm.controls.postCity.invalid
+					}"
+					required
+					id="postCity"
+				/>
 			</div>
 
-            <div class="mt-2" *ngIf="userDetailForm.controls.postCity.invalid && (userDetailForm.controls.postCity.dirty || userDetailForm.controls.postCity.touched)">
-                <div class="alert alert-danger">
-					<span i18n="@@userDetailEditPostCityRequired">Post city is required</span>
-                </div>
+			<div
+				class="mt-2"
+				*ngIf="
+					userDetailForm.controls.postCity.invalid &&
+					(userDetailForm.controls.postCity.dirty ||
+						userDetailForm.controls.postCity.touched)
+				"
+			>
+				<div class="alert alert-danger">
+					<span i18n="@@userDetailEditPostCityRequired"
+						>Post city is required</span
+					>
+				</div>
 			</div>
 
-			<div class="mt-2" *ngIf="userDetailForm.controls.postCode.invalid && (userDetailForm.controls.postCode.dirty || userDetailForm.controls.postCode.touched)">
-                <div class="alert alert-danger">
-					<span i18n="@@userDetailEditPostalCodeError">Postal code must be 4 numbers</span>
-                </div>
-            </div>
+			<div
+				class="mt-2"
+				*ngIf="
+					userDetailForm.controls.postCode.invalid &&
+					(userDetailForm.controls.postCode.dirty ||
+						userDetailForm.controls.postCode.touched)
+				"
+			>
+				<div class="alert alert-danger">
+					<span i18n="@@userDetailEditPostalCodeError"
+						>Postal code must be 4 numbers</span
+					>
+				</div>
+			</div>
 
-            <label for="dob" class="text-secondary" i18n="@@userDetailEditBirthdayTitle">Birthday</label>
-			<bl-user-detail-dob id="dob" (dateChange)="onDobChange($event)" [(dob)]="userDetail.dob" (under18)="onUserUnder18($event)"></bl-user-detail-dob>
-
+			<label
+				for="dob"
+				class="text-secondary"
+				i18n="@@userDetailEditBirthdayTitle"
+				>Birthday</label
+			>
+			<bl-user-detail-dob
+				id="dob"
+				(dateChange)="onDobChange($event)"
+				[(dob)]="userDetail.dob"
+				(under18)="onUserUnder18($event)"
+			></bl-user-detail-dob>
 
 			<div class="mt-2" *ngIf="!isDobValid()">
-                <div class="alert alert-danger">
-					<span i18n="@@userDetailEditMustProvideDob">You must provide a date of birth</span>
-                </div>
-            </div>
+				<div class="alert alert-danger">
+					<span i18n="@@userDetailEditMustProvideDob"
+						>You must provide a date of birth</span
+					>
+				</div>
+			</div>
 
 			<div [style.display]="userUnder18 ? 'inline' : 'none'" class="mt-2">
-				<hr>
-				<span class="text-secondary font-weight-bold" i18n="@@userDetailEditUnder18Info">Since you are under the age of 18 we need information about your guardian. </span>
-				<hr>
+				<hr />
+				<span
+					class="text-secondary font-weight-bold"
+					i18n="@@userDetailEditUnder18Info"
+					>Since you are under the age of 18 we need information about
+					your guardian.
+				</span>
+				<hr />
 
+				<label
+					for="guardianName"
+					class="text-secondary"
+					i18n="@@userDetailEditGuardianName"
+					>Guardian's full name</label
+				>
+				<div class="input-group mb-3 input-group-sm" id="guardianName">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<fa-icon [icon]="'user'"></fa-icon>
+						</span>
+					</div>
+					<input
+						type="text"
+						class="form-control"
+						i18n-placeholder="@@userDetailEditGuardianNamePlaceholder"
+						placeholder="Gardian's full name"
+						formControlName="guardianName"
+						[ngClass]="{
+							'bl-input-invalid':
+								userDetailForm.controls.guardianName.invalid
+						}"
+					/>
+				</div>
 
-                <label for="guardianName" class="text-secondary" i18n="@@userDetailEditGuardianName">Guardian's full name</label>
-                <div class="input-group mb-3 input-group-sm" id="guardianName">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <fa-icon [icon]="'user'"></fa-icon>
-                            </span>
-                    </div>
-                    <input type="text"
-                           class="form-control"
-						   i18n-placeholder="@@userDetailEditGuardianNamePlaceholder"
-                           placeholder="Gardian's full name"
-                           formControlName="guardianName"
-                           [ngClass]="{'bl-input-invalid': userDetailForm.controls.guardianName.invalid}">
-                </div>
+				<div
+					class="mt-2"
+					*ngIf="
+						userDetailForm.controls.guardianName.invalid &&
+						(userDetailForm.controls.guardianName.dirty ||
+							userDetailForm.controls.guardianName.touched)
+					"
+				>
+					<div class="alert alert-danger">
+						<span i18n="@@userDetailEditGuardianNameError"
+							>Guardian's full name is required</span
+						>
+					</div>
+				</div>
 
-				<div class="mt-2" *ngIf="userDetailForm.controls.guardianName.invalid && (userDetailForm.controls.guardianName.dirty || userDetailForm.controls.guardianName.touched)">
-                    <div class="alert alert-danger">
-                        <span i18n="@@userDetailEditGuardianNameError">Guardian's full name is required</span>
-                    </div>
-                </div>
+				<label
+					for="guardianEmail"
+					class="text-secondary"
+					i18n="@@userDetailEditGuardianEmail"
+					>Guardian's email</label
+				>
+				<div class="input-group mb-3 input-group-sm" id="guardianEmail">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<fa-icon [icon]="'at'"></fa-icon>
+						</span>
+					</div>
+					<input
+						type="text"
+						class="form-control"
+						i18n-placeholder="@@userDetailEditGuardianEmailPlaceholder"
+						placeholder="Gardian's email"
+						formControlName="guardianEmail"
+						[ngClass]="{
+							'bl-input-invalid':
+								userDetailForm.controls.guardianEmail.invalid
+						}"
+					/>
+				</div>
+				<div
+					class="mt-2"
+					*ngIf="
+						userDetailForm.controls.guardianEmail.invalid &&
+						(userDetailForm.controls.guardianEmail.dirty ||
+							userDetailForm.controls.guardianEmail.touched)
+					"
+				>
+					<div class="alert alert-danger">
+						<span i18n="@@userDetailEditGuardianEmailError"
+							>Must provide a valid email</span
+						>
+					</div>
+				</div>
 
-                <label for="guardianEmail" class="text-secondary" i18n="@@userDetailEditGuardianEmail">Guardian's email</label>
-                <div class="input-group mb-3 input-group-sm" id="guardianEmail">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <fa-icon [icon]="'at'"></fa-icon>
-                            </span>
-                    </div>
-                    <input type="text"
-                           class="form-control"
-						   i18n-placeholder="@@userDetailEditGuardianEmailPlaceholder"
-                           placeholder="Gardian's email"
-                           formControlName="guardianEmail"
-                           [ngClass]="{'bl-input-invalid': userDetailForm.controls.guardianEmail.invalid}">
-                </div>
-				<div class="mt-2" *ngIf="userDetailForm.controls.guardianEmail.invalid && (userDetailForm.controls.guardianEmail.dirty || userDetailForm.controls.guardianEmail.touched)">
-                    <div class="alert alert-danger">
-                        <span i18n="@@userDetailEditGuardianEmailError">Must provide a valid email</span>
-                    </div>
-                </div>
-
-
-				<label for="guardianPhone" class="text-secondary" i18n="@@userDetailEditGuardianPhoneTitle">Guardian's phone</label>
-                <div class="input-group mb-3 input-group-sm" id="guardianPhone">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <fa-icon [icon]="'phone'"></fa-icon>
-                            </span>
-                    </div>
-                    <input type="text"
-                           class="form-control"
-						   i18n-placeholder="@@userDetailEditGuardianPhonePlaceholder"
-                           placeholder="Guardian's phone "
-                           formControlName="guardianPhone"
-                           [ngClass]="{'bl-input-invalid': userDetailForm.controls.guardianPhone.invalid}">
-                </div>
-				<div class="mt-2" *ngIf="userDetailForm.controls.guardianPhone.invalid && (userDetailForm.controls.guardianPhone.dirty || userDetailForm.controls.guardianPhone.touched)">
-                    <div class="alert alert-danger">
-                        <span i18n="@@userDetailEditGuardianPhoneError">A valid phone number must be provided</span>
-                    </div>
-                </div>
+				<label
+					for="guardianPhone"
+					class="text-secondary"
+					i18n="@@userDetailEditGuardianPhoneTitle"
+					>Guardian's phone</label
+				>
+				<div class="input-group mb-3 input-group-sm" id="guardianPhone">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<fa-icon [icon]="'phone'"></fa-icon>
+						</span>
+					</div>
+					<input
+						type="text"
+						class="form-control"
+						i18n-placeholder="@@userDetailEditGuardianPhonePlaceholder"
+						placeholder="Guardian's phone "
+						formControlName="guardianPhone"
+						[ngClass]="{
+							'bl-input-invalid':
+								userDetailForm.controls.guardianPhone.invalid
+						}"
+					/>
+				</div>
+				<div
+					class="mt-2"
+					*ngIf="
+						userDetailForm.controls.guardianPhone.invalid &&
+						(userDetailForm.controls.guardianPhone.dirty ||
+							userDetailForm.controls.guardianPhone.touched)
+					"
+				>
+					<div class="alert alert-danger">
+						<span i18n="@@userDetailEditGuardianPhoneError"
+							>A valid phone number must be provided</span
+						>
+					</div>
+				</div>
 			</div>
-        </form>
+		</form>
 	</div>
 </div>
-
 
 <div class="row mt-5" *ngIf="userDetail">
 	<div class="col-12">
@@ -213,7 +433,11 @@
 			[disabled]="!canSubmit()"
 			class="btn btn-block"
 			(click)="onSubmit()"
-			[ngClass]="{'btn-success': canSubmit(), 'btn-outline-secondary': !canSubmit()}">
+			[ngClass]="{
+				'btn-success': canSubmit(),
+				'btn-outline-secondary': !canSubmit()
+			}"
+		>
 			<span i18n="@@userDetailEditSaveButton">Save</span>
 		</button>
 	</div>
