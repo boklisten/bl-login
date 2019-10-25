@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {LOGIN_MODULE_SETTINGS} from "../login-module-settings";
-import {AuthLoginService} from "../auth-login.service";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { LOGIN_MODULE_SETTINGS } from "../login-module-settings";
+import { AuthLoginService } from "../auth-login.service";
+import { StorageService } from "@wizardcoder/bl-connect";
 
 @Component({
-	selector: 'bl-login-auth',
-	templateUrl: './login-auth.component.html',
-	styleUrls: ['./login-auth.component.scss']
+	selector: "bl-login-auth",
+	templateUrl: "./login-auth.component.html",
+	styleUrls: ["./login-auth.component.scss"]
 })
 export class LoginAuthComponent implements OnInit {
 	public orUseEmailText: string;
@@ -14,33 +15,43 @@ export class LoginAuthComponent implements OnInit {
 	public navigationTitle: string;
 	public warning: boolean;
 	public warningText: string;
-	
-	constructor(private _router: Router, private _route: ActivatedRoute, private _authLoginService: AuthLoginService) {
-		this.orUseEmailText = 'or use your email to login';
-		this.forgotPasswordButtonText = 'forgot password?';
-		this.navigationTitle = 'Login';
+	private redirect: string;
+
+	constructor(
+		private _router: Router,
+		private _route: ActivatedRoute,
+		private _authLoginService: AuthLoginService,
+		private _storageService: StorageService
+	) {
+		this.orUseEmailText = "or use your email to login";
+		this.forgotPasswordButtonText = "forgot password?";
+		this.navigationTitle = "Login";
 		this.clearWarning();
 	}
-	
+
 	ngOnInit() {
+		try {
+			this.redirect = this._storageService.get("bl-redirect");
+		} catch (e) {}
 	}
-	
-	public  onLogin() {
-		this._authLoginService.login(LOGIN_MODULE_SETTINGS.successPath);
+
+	public onLogin() {
+		this._authLoginService.login(
+			this.redirect ? this.redirect : LOGIN_MODULE_SETTINGS.successPath
+		);
 	}
-	
+
 	public onForgotPassword() {
-		this._router.navigate(['./forgot'], {relativeTo: this._route});
+		this._router.navigate(["./forgot"], { relativeTo: this._route });
 	}
-	
+
 	public setWarning(msg: string) {
 		this.warning = true;
 		this.warningText = msg;
 	}
-	
+
 	public clearWarning() {
-		this.warningText = '';
+		this.warningText = "";
 		this.warning = false;
 	}
-	
 }
