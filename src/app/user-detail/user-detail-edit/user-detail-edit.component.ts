@@ -55,13 +55,13 @@ export class UserDetailEditComponent implements OnInit {
 			]),
 			firstName: new FormControl("", [
 				Validators.required,
-				Validators.pattern(nameValidatorRegex),
+				//Validators.pattern(nameValidatorRegex),
 
 				Validators.maxLength(40)
 			]),
 			lastName: new FormControl("", [
 				Validators.required,
-				Validators.pattern(nameValidatorRegex),
+				//Validators.pattern(nameValidatorRegex),
 				Validators.maxLength(40)
 			]),
 			phone: new FormControl("", [
@@ -91,8 +91,8 @@ export class UserDetailEditComponent implements OnInit {
 			]),
 			guardianName: new FormControl("", [
 				this.requiredIfUserUnder18(),
-				Validators.maxLength(40),
-				Validators.pattern(nameValidatorRegex)
+				Validators.maxLength(40)
+				//Validators.pattern(nameValidatorRegex)
 			]),
 			guardianEmail: new FormControl("", [
 				this.requiredIfUserUnder18(),
