@@ -1,23 +1,61 @@
-
-
 <div class="row">
-	<div class="col-12">
-		<a href="{{facebookLoginUrl}}">
-			<button class="bl-social-button btn btn-block btn-primary">
-				<fa-icon [icon]="['fab','facebook-square']" class="mr-2"></fa-icon>
-				<span i18n="@@socialLoginWithFacebook">Login with Facebook</span>
-			</button>
-		</a>
+	<div class="col-12 mt-2">
+		<div class="card bl-feide text-white p-3 ">
+			<a href="{{googleLoginUrl}}" class="text-white">
+				<div class="d-flex justify-content-between align-items-center">
+					<img src="assets/img/feide_logo.png" />
+					<fa-icon
+						[icon]="'chevron-right'"
+						class="mr-2 text-dark"
+					></fa-icon>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>
 
-<div class="row">
+<div class="row mt-2">
 	<div class="col-12">
-		<a href="{{googleLoginUrl}}">
-			<button class="bl-social-button btn btn-block btn-secondary">
-				<fa-icon [icon]="['fab', 'google']" class="mr-2"></fa-icon>
-				<span i18n="@@socialLoginWithGoogle">Login with Google</span>
-			</button>
-		</a>
+		<div class="card bl-facebook text-white p-3">
+			<a href="{{facebookLoginUrl}}" class="text-white">
+				<div class="d-flex justify-content-between align-items-center">
+					<span class="d-flex align-items-center">
+						<fa-icon
+							[icon]="['fab','facebook-square']"
+							size="2x"
+							class="mr-3"
+						></fa-icon>
+						<span i18n="@@socialLoginWithFacebook"
+							>Login with Facebook</span
+						>
+					</span>
+
+					<fa-icon [icon]="'chevron-right'" class="mr-2"></fa-icon>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="row mt-2">
+	<div class="col-12">
+		<div class="card bl-google text-white p-3 ">
+			<a href="{{googleLoginUrl}}" class="text-white">
+				<div class="d-flex justify-content-between align-items-center">
+					<span class="d-flex align-items-center">
+						<fa-icon
+							[icon]="['fab','google']"
+							size="2x"
+							class="mr-3"
+						></fa-icon>
+						<span i18n="@@socialLoginWithGoogle"
+							>Login with Google</span
+						>
+					</span>
+
+					<fa-icon [icon]="'chevron-right'" class="mr-2"></fa-icon>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>

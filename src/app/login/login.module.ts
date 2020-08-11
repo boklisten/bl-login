@@ -46,7 +46,8 @@ import {
 	faCheckCircle,
 	faTimesCircle,
 	faCircleNotch,
-	faSync
+	faSync,
+	faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
@@ -78,7 +79,8 @@ library.add(
 	faCheckCircle,
 	faTimesCircle,
 	faCircleNotch,
-	faSync
+	faSync,
+	faChevronRight
 );
 
 @NgModule({
