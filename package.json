@@ -1,6 +1,6 @@
 {
 	"name": "@wizardcoder/bl-login",
-	"version": "0.7.14",
+	"version": "0.7.15",
 	"license": "MIT",
 	"$schema": "./node_modules/ng-packagr/package.schema.json",
 	"scripts": {
