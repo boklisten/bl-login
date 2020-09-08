@@ -68,7 +68,7 @@
 		"karma-jasmine-html-reporter": "^0.2.2",
 		"moment": "^2.20.1",
 		"moment-es6": "^1.0.0",
-		"ng-packagr": "^3.0.6",
+		"ng-packagr": "^4.7.1",
 		"ngx-cookie": "^2.0.1",
 		"ngx-i18nsupport": "^0.16.3",
 		"prettier": "^1.16.1",
