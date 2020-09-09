@@ -6,14 +6,13 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
+		"watch": "ng serve",
 		"start-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"build": "ng build --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"test": "ng test --sourcemaps=false",
-		"lint": "ng lint",
-		"e2e": "ng e2e",
 		"extract-i18n": "ng xi18n --output-path src/locale --locale en && xliffmerge --profile xliffmerge.json en nb",
 		"build:lib": "ng-packagr -p package.json",
-		"lib:pub": "npm run build:lib && npm publish ./dist/@wizardcoder/bl-login",
+		"pub": "npm run build:lib && npm publish ./dist/@wizardcoder/bl-login",
 		"blink": "npm run build:lib && npm link dist/bl-login"
 	},
 	"ngPackage": {
@@ -30,7 +29,7 @@
 		]
 	},
 	"devDependencies": {
-		"@angular-devkit/build-angular": "^0.803.20",
+		"@angular-devkit/build-angular": "^0.13.4",
 		"@angular/animations": "^6.1.10",
 		"@angular/cli": "^6.1.10",
 		"@angular/common": "^6.1.10",
