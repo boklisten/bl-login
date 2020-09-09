@@ -10,7 +10,7 @@
 		"start-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"build": "ng build --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb",
 		"test": "ng test --sourcemaps=false",
-		"extract-i18n": "ng xi18n --output-path src/locale --locale en && xliffmerge --profile xliffmerge.json en nb",
+		"extract-i18n": "ng xi18n && xliffmerge --profile xliffmerge.json en nb",
 		"build:lib": "ng-packagr -p package.json",
 		"pub": "npm run build:lib && npm publish ./dist/@wizardcoder/bl-login",
 		"blink": "npm run build:lib && npm link dist/bl-login"
