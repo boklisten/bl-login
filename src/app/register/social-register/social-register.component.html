@@ -1,20 +1,62 @@
-
-
-
 <div class="row">
-	<div class="col-12">
-		<button class="bl-social-register-button btn btn-block btn-outline-primary" (click)="onFacebookRegister()">
-			<fa-icon [icon]="['fab', 'facebook-square']" class="mr-2"></fa-icon>
-			<span i18n="@@socialRegisterWithFacebook">Register with Facebook</span>
-		</button>
+	<div class="col-12 mt-2">
+		<div class="card bl-feide text-white p-3 " (click)="onFeideRegister()">
+			<div class="d-flex justify-content-between align-items-center">
+				<img src="assets/img/feide_logo.png" />
+				<fa-icon
+					[icon]="'chevron-right'"
+					class="mr-2 text-dark"
+				></fa-icon>
+			</div>
+		</div>
 	</div>
 </div>
 
-<div class="row">
+<div class="row mt-2">
 	<div class="col-12">
-        <button class="bl-social-register-button btn btn-block btn-outline-secondary" (click)="onGoogleRegister()">
-			<fa-icon [icon]="['fab', 'google']" class="mr-2"></fa-icon>
-			<span i18n="@@socialRegisterWithGoogle">Register with Google</span>
-        </button>
+		<div
+			class="card bl-facebook text-white p-3"
+			(click)="onFacebookRegister()"
+		>
+			<div class="d-flex justify-content-between align-items-center">
+				<span class="d-flex align-items-center">
+					<fa-icon
+						[icon]="['fab', 'facebook-square']"
+						size="2x"
+						class="mr-3"
+					></fa-icon>
+
+					<span i18n="@@socialRegisterWithFacebook"
+						>Register with Facebook</span
+					>
+				</span>
+
+				<fa-icon [icon]="'chevron-right'" class="mr-2"></fa-icon>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row mt-2">
+	<div class="col-12">
+		<div
+			class="card bl-google text-white p-3 "
+			(click)="onGoogleRegister()"
+		>
+			<div class="d-flex justify-content-between align-items-center">
+				<span class="d-flex align-items-center">
+					<fa-icon
+						[icon]="['fab', 'google']"
+						size="2x"
+						class="mr-3"
+					></fa-icon>
+					<span i18n="@@socialLoginWithGoogle"
+						>Login with Google</span
+					>
+				</span>
+
+				<fa-icon [icon]="'chevron-right'" class="mr-2"></fa-icon>
+			</div>
+		</div>
 	</div>
 </div>
