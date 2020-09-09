@@ -1,45 +1,65 @@
-
-
-<div class="row mb-2">
+<div class="row mb-5">
 	<div class="col-12 text-center text-secondary">
 		<h3 i18n="@@registerTitle">Register new user</h3>
 	</div>
 </div>
 
-
 <div class="row" *ngIf="agreementNotConfirmed">
 	<div class="col-12">
 		<ngb-alert (close)="clearWarning()">
 			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span i18n="the user must accept the user agreement before registering @@registerMustAgree">You must agree to our terms to register</span>
+			<span
+				i18n="the user must accept the user agreement before registering @@registerMustAgree"
+				>You must agree to our terms to register</span
+			>
 		</ngb-alert>
 	</div>
 </div>
 
+<bl-register-agreement
+	(confirmed)="onConfirmedAgreement($event)"
+	(dismissed)="onDismissedAgreement($event)"
+></bl-register-agreement>
 
-
-<bl-register-agreement (confirmed)="onConfirmedAgreement($event)" (dismissed)="onDismissedAgreement($event)"></bl-register-agreement>
-
-<hr>
-
-
-<bl-social-register [agreementConfirmed]="agreementConfirmed" (warning)="setWarning($event)"></bl-social-register>
-
-<div class="row mt-3 mb-3">
-    <div class="col-12 text-center">
-		<hr>
-		<h6 class="text-secondary" i18n="@@registerOrUseEmail">Or use your email to register</h6>
-    </div>
+<div class="row mt-3 mb-3" *ngIf="agreementConfirmed">
+	<div class="col-12 text-center">
+		<hr />
+		<h6
+			class="text-secondary"
+			i18n="@@registerPleaseRegisterWithThridParty"
+		>
+			Please register with one of our login providers
+		</h6>
+	</div>
 </div>
 
-<bl-local-register [agreementConfirmed]="agreementConfirmed" (registerWithoutAgreement)="onRegisterWithoutAgreement()" (registered)="onRegistered()"></bl-local-register>
+<bl-social-register
+	[agreementConfirmed]="agreementConfirmed"
+	(warning)="setWarning($event)"
+	*ngIf="agreementConfirmed"
+></bl-social-register>
 
+<div class="row mt-3 mb-3" *ngIf="agreementConfirmed">
+	<div class="col-12 text-center">
+		<hr />
+		<h6 class="text-secondary" i18n="@@registerOrUseEmail">
+			Or use your email to register
+		</h6>
+	</div>
+</div>
+
+<bl-local-register
+	*ngIf="agreementConfirmed"
+	[agreementConfirmed]="agreementConfirmed"
+	(registerWithoutAgreement)="onRegisterWithoutAgreement()"
+	(registered)="onRegistered()"
+></bl-local-register>
 
 <div class="row mt-5 justify-content-left">
-    <div class="col-auto">
-        <button class="btn btn-link btn-sm" routerLink="../login">
+	<div class="col-auto">
+		<button class="btn btn-link btn-sm" routerLink="../login">
 			<fa-icon [icon]="'chevron-left'" class="mr-2"></fa-icon>
 			<span i18n="@@registerGoToLoginPage">Go to login page</span>
-        </button>
-    </div>
+		</button>
+	</div>
 </div>

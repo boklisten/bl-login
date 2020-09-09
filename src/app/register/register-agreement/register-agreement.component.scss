@@ -1,13 +1,14 @@
+.bl-user-agreement-card {
+	cursor: pointer;
+}
 
-
-.bl-user-agreement-container {
-	margin-top: 20px;
+.bl-user-agreement-card:hover {
+	background-color: #d3d3d3;
 }
 
 .bl-checkbox {
 	text-align: center;
 	color: #6c757d;
-
 }
 
 .bl-modal {

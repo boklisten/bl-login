@@ -1,32 +1,68 @@
-<div class="row bl-user-agreement-container">
-	<div class="col-2" (click)="onUserAgreement(modalUserAgreement)">
-		<span *ngIf="!userAgreement">
-			<i class="far fa-square fa-2x bl-checkbox" ></i>
-			<fa-icon [icon]="['far', 'square']" size="2x" class="bl-checkbox"></fa-icon>
-		</span>
-		<span *ngIf="userAgreement">
-			<fa-icon [icon]="'check-square'" size="2x" class="bl-checkbox-checked"></fa-icon>
-		</span>
-	</div>
-	<div class="col-10 bl-checkbox-text">
-		<p i18n="@@registerAgreementIHaveUnderstood">
-			I have read and understood the user-agreement
-		</p>
+<div
+	class="card bl-user-agreement-card"
+	(click)="onUserAgreement(modalUserAgreement)"
+>
+	<div class="card-body">
+		<div class="row align-items-center">
+			<div class="col-3">
+				<span *ngIf="!userAgreement">
+					<i class="far fa-square fa-2x bl-checkbox"></i>
+					<fa-icon
+						[icon]="['far', 'square']"
+						size="3x"
+						class="bl-checkbox"
+					></fa-icon>
+				</span>
+				<span *ngIf="userAgreement">
+					<fa-icon
+						[icon]="'check-square'"
+						size="3x"
+						class="bl-checkbox-checked"
+					></fa-icon>
+				</span>
+			</div>
+			<div
+				class="col-9"
+				i18n="@@registerAgreementIHaveUnderstood"
+				*ngIf="userAgreement"
+			>
+				I have read and understood the user-agreement
+			</div>
+
+			<div
+				class="col-9"
+				i18n="@@registerAgreementYouMustAgree"
+				*ngIf="!userAgreement"
+			>
+				You must agree to our agreement to register.
+			</div>
+		</div>
 	</div>
 </div>
 
 <ng-template #modalUserAgreement let-c="close" let-d="dismiss">
 	<div class="modal-header bl-modal-header">
-    	<h4 class="modal-title" i18n="@@registerAgreementTitle">User agreement</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+		<h4 class="modal-title" i18n="@@registerAgreementTitle">
+			User agreement
+		</h4>
+		<button
+			type="button"
+			class="close"
+			aria-label="Close"
+			(click)="d('Cross click')"
+		>
 			<fa-icon [icon]="'times'"></fa-icon>
-        </button>
+		</button>
 	</div>
 
 	<bl-user-agreement-modal></bl-user-agreement-modal>
 
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-success" (click)="c('Close click')">
+		<button
+			type="button"
+			class="btn btn-outline-success"
+			(click)="c('Close click')"
+		>
 			<span i18n="@@registerDetailIAgree">I Agree</span>
 		</button>
 	</div>
