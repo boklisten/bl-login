@@ -12,11 +12,13 @@
 		<ngb-alert>
 			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
 			<span i18n="@@localRegisterUserAlreadyExistsError">
-				The user already exists
-			</span>.
-			<span i18n="@@localRegisterClickHereForLogin"
-				  routerLink="../login"
-				  class="bl-link font-weight-bold">
+				The user already exists </span
+			>.
+			<span
+				i18n="@@localRegisterClickHereForLogin"
+				routerLink="../login"
+				class="bl-link font-weight-bold"
+			>
 				Click here if you intended to login
 			</span>
 		</ngb-alert>
@@ -26,10 +28,12 @@
 <div class="row">
 	<div class="col-12">
 		<div class="bl-input input-group md-3">
-			<div class="bl-input-prepend input-group-prepend"
-				 placement="bottom"
-				 i18n-ngbTooltip="@@localRegisterEmail"
-				 ngbTooltip="Email">
+			<div
+				class="bl-input-prepend input-group-prepend"
+				placement="bottom"
+				i18n-ngbTooltip="@@localRegisterEmail"
+				ngbTooltip="Email"
+			>
 				<span class="input-group-text">
 					<fa-icon icon="at"></fa-icon>
 				</span>
@@ -42,33 +46,44 @@
 				[email]="true"
 				i18n-placeholder="@@localRegisterEmail"
 				placeholder="Email"
-				(focus)="true">
+				(focus)="(true)"
+			/>
 		</div>
 	</div>
 </div>
 
-<div class="row">
+<div class="row mt-2">
 	<div class="col-12">
 		<div class="bl-input input-group md-3">
-			<div class="bl-input-prepend input-group-prepend"
-				 placement="bottom"
-				 i18n-ngbTooltip="@@localRegisterPassword"
-				 ngbTooltip="Password">
-           <span class="input-group-text">
-			   <fa-icon icon="key"></fa-icon>
-		   </span>
+			<div
+				class="bl-input-prepend input-group-prepend"
+				placement="bottom"
+				i18n-ngbTooltip="@@localRegisterPassword"
+				ngbTooltip="Password"
+			>
+				<span class="input-group-text">
+					<fa-icon icon="key"></fa-icon>
+				</span>
 			</div>
-			<input type="password"
-				   class="form-control"
-				   id="blPassword"
-				   [(ngModel)]="password"
-				   i18n-placeholder="@@localRegisterPassword"
-				   placeholder="Password"
-				   (keyup.enter)="onRegister()">
+			<input
+				type="password"
+				class="form-control"
+				id="blPassword"
+				[(ngModel)]="password"
+				i18n-placeholder="@@localRegisterPassword"
+				placeholder="Password"
+				(keyup.enter)="onRegister()"
+			/>
 			<div class="input-group-append">
 				<button
-					[ngClass]="{'btn': true, 'btn-outline-secondary disabled': !showRegisterButton(), 'btn-success': showRegisterButton()}"
-					type="button" (click)="onRegister()">
+					[ngClass]="{
+						btn: true,
+						'btn-outline-secondary disabled': !showRegisterButton(),
+						'btn-success': showRegisterButton()
+					}"
+					type="button"
+					(click)="onRegister()"
+				>
 					<span i18n="@@localRegisterButton">Register</span>
 				</button>
 			</div>
