@@ -38,7 +38,7 @@
 	*ngIf="agreementConfirmed"
 ></bl-social-register>
 
-<div class="row mt-3 mb-3" *ngIf="agreementConfirmed">
+<div class="row mt-3 mb-3" *ngIf="agreementConfirmed && providers.local">
 	<div class="col-12 text-center">
 		<hr />
 		<h6 class="text-secondary" i18n="@@registerOrUseEmail">
@@ -48,7 +48,7 @@
 </div>
 
 <bl-local-register
-	*ngIf="agreementConfirmed"
+	*ngIf="agreementConfirmed && providers.local"
 	[agreementConfirmed]="agreementConfirmed"
 	(registerWithoutAgreement)="onRegisterWithoutAgreement()"
 	(registered)="onRegistered()"

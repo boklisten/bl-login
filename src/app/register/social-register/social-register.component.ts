@@ -3,7 +3,10 @@ import { APP_CONFIG } from "../../app_config";
 import { SocialRegisterService } from "./social-register.service";
 import { BlApiError } from "@wizardcoder/bl-model";
 import { Router } from "@angular/router";
-import { LOGIN_MODULE_SETTINGS } from "../../login/login-module-settings";
+import {
+	LOGIN_MODULE_SETTINGS,
+	LoginModuleSettings
+} from "../../login/login-module-settings";
 import { AuthLoginService } from "../../login/auth-login.service";
 
 @Component({
@@ -21,6 +24,7 @@ export class SocialRegisterComponent implements OnInit {
 	public registerGoogleText: string;
 	public registerFeideUrl: string;
 	public agreementNotConfirmedText: string;
+	public providers: LoginModuleSettings["providers"];
 
 	constructor(private _router: Router) {
 		this.registerFacebookText = "Register with Facebook";
@@ -31,6 +35,8 @@ export class SocialRegisterComponent implements OnInit {
 		this.registerFeideUrl = LOGIN_MODULE_SETTINGS.apiPath + "auth/feide";
 		this.agreementNotConfirmedText =
 			"You must agree to the user agreement before registering";
+
+		this.providers = LOGIN_MODULE_SETTINGS.providers;
 	}
 
 	ngOnInit() {}

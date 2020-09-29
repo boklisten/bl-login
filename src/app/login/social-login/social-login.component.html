@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="providers.feide">
 	<div class="col-12 mt-2">
 		<div class="card bl-feide text-white p-3 ">
 			<a href="{{ feideLoginUrl }}" class="text-white">
@@ -14,7 +14,7 @@
 	</div>
 </div>
 
-<div class="row mt-2">
+<div class="row mt-2" *ngIf="providers.facebook">
 	<div class="col-12">
 		<div class="card bl-facebook text-white p-3">
 			<a href="{{ facebookLoginUrl }}" class="text-white">
@@ -37,7 +37,7 @@
 	</div>
 </div>
 
-<div class="row mt-2">
+<div class="row mt-2" *ngIf="providers.google">
 	<div class="col-12">
 		<div class="card bl-google text-white p-3 ">
 			<a href="{{ googleLoginUrl }}" class="text-white">

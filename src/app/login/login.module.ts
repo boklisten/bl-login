@@ -152,6 +152,10 @@ export class LoginModule {
 			if (settings.permissions) {
 				LOGIN_MODULE_SETTINGS.permissions = settings.permissions;
 			}
+
+			if (settings.providers) {
+				LOGIN_MODULE_SETTINGS.providers = settings.providers;
+			}
 		}
 		return this;
 	}

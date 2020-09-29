@@ -6,7 +6,7 @@
 
 <bl-social-login></bl-social-login>
 
-<div class="row mt-3 mb-3">
+<div class="row mt-3 mb-3" *ngIf="providers.local">
 	<div class="col-12 text-center">
 		<hr />
 		<h6 class="text-secondary" i18n="@@loginAuthOrUseEmail">
@@ -15,9 +15,9 @@
 	</div>
 </div>
 
-<bl-local-login (loggedIn)="onLogin()"></bl-local-login>
+<bl-local-login (loggedIn)="onLogin()" *ngIf="providers.local"></bl-local-login>
 
-<div class="row mt-4 justify-content-end">
+<div class="row mt-4 justify-content-end" *ngIf="providers.local">
 	<div class="col-auto">
 		<button class="btn btn-link btn-sm" (click)="onForgotPassword()">
 			<span i18n="@@loginAuthForgotPassword">Forgot your password?</span>

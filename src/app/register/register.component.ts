@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthLoginService } from "../login/auth-login.service";
-import { LOGIN_MODULE_SETTINGS } from "../login/login-module-settings";
+import {
+	LOGIN_MODULE_SETTINGS,
+	LoginModuleSettings
+} from "../login/login-module-settings";
 import { StorageService } from "@wizardcoder/bl-connect";
 
 @Component({
@@ -20,6 +23,7 @@ export class RegisterComponent implements OnInit {
 	public warning: boolean;
 	public warningText: string;
 	private redirect: string;
+	public providers: LoginModuleSettings["providers"];
 
 	constructor(
 		private _router: Router,
@@ -34,6 +38,7 @@ export class RegisterComponent implements OnInit {
 		this._agreementNotConfirmedText =
 			"You need to confirm the agreement to register";
 		this.agreementNotConfirmed = false;
+		this.providers = LOGIN_MODULE_SETTINGS.providers;
 	}
 
 	ngOnInit() {

@@ -2,7 +2,10 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { APP_CONFIG } from "../../app_config";
 import { SocialLoginService } from "./social-login.service";
 import { BlApiError } from "@wizardcoder/bl-model";
-import { LOGIN_MODULE_SETTINGS } from "../login-module-settings";
+import {
+	LOGIN_MODULE_SETTINGS,
+	LoginModuleSettings
+} from "../login-module-settings";
 
 @Component({
 	selector: "bl-social-login",
@@ -18,6 +21,7 @@ export class SocialLoginComponent implements OnInit {
 	public facebookLoginUrl: string;
 	public googleLoginUrl: string;
 	public feideLoginUrl: string;
+	public providers: LoginModuleSettings["providers"];
 
 	constructor(private _socailLoginService: SocialLoginService) {
 		this.facebookLoginText = "Login with Facebook";
@@ -27,6 +31,7 @@ export class SocialLoginComponent implements OnInit {
 		this.googleLoginUrl = LOGIN_MODULE_SETTINGS.apiPath + "auth/google";
 		this.feideLoginUrl = LOGIN_MODULE_SETTINGS.apiPath + "auth/feide";
 		this.warning = new EventEmitter();
+		this.providers = LOGIN_MODULE_SETTINGS.providers;
 	}
 
 	ngOnInit() {}

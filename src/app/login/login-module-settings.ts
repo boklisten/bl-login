@@ -7,6 +7,12 @@ export interface LoginModuleSettings {
 	logoutPath: string;
 	permissionDeniedPath: string;
 	permissions: string[];
+	providers: {
+		local: boolean;
+		facebook: boolean;
+		google: boolean;
+		feide: boolean;
+	};
 }
 
 export let LOGIN_MODULE_SETTINGS: LoginModuleSettings = {
@@ -17,5 +23,11 @@ export let LOGIN_MODULE_SETTINGS: LoginModuleSettings = {
 	apiPath: "http://localhost:1337/",
 	logoutPath: "/auth/menu",
 	permissionDeniedPath: "/auth/permission/denied",
-	permissions: ["customer", "employee", "admin"]
+	permissions: ["customer", "employee", "manager", "admin"],
+	providers: {
+		local: true,
+		facebook: true,
+		google: true,
+		feide: false
+	}
 };

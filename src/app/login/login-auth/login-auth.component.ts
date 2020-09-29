@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { LOGIN_MODULE_SETTINGS } from "../login-module-settings";
+import {
+	LOGIN_MODULE_SETTINGS,
+	LoginModuleSettings
+} from "../login-module-settings";
 import { AuthLoginService } from "../auth-login.service";
 import { StorageService } from "@wizardcoder/bl-connect";
 
@@ -16,6 +19,7 @@ export class LoginAuthComponent implements OnInit {
 	public warning: boolean;
 	public warningText: string;
 	private redirect: string;
+	public providers: LoginModuleSettings["providers"];
 
 	constructor(
 		private _router: Router,
@@ -27,6 +31,7 @@ export class LoginAuthComponent implements OnInit {
 		this.forgotPasswordButtonText = "forgot password?";
 		this.navigationTitle = "Login";
 		this.clearWarning();
+		this.providers = LOGIN_MODULE_SETTINGS.providers;
 	}
 
 	ngOnInit() {
