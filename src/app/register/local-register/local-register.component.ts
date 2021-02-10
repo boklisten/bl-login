@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalRegisterService} from "./local-register.service";
 import * as EmailValidator from 'email-validator';
-import {BlApiError} from "@wizardcoder/bl-model";
-import {BlApiUserAlreadyExistsError} from "@wizardcoder/bl-model/dist/bl-api-error/bl-api-user-already-exists-error";
+import {BlApiError} from "@boklisten/bl-model";
+import {BlApiUserAlreadyExistsError} from "@boklisten/bl-model/dist/bl-api-error/bl-api-user-already-exists-error";
 
 @Component({
 	selector: 'bl-local-register',

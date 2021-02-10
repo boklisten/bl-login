@@ -5,7 +5,7 @@ import {
 	LOGIN_MODULE_SETTINGS,
 	LoginModuleSettings
 } from "../login/login-module-settings";
-import { StorageService } from "@wizardcoder/bl-connect";
+import { StorageService } from "@boklisten/bl-connect";
 
 @Component({
 	selector: "bl-register",

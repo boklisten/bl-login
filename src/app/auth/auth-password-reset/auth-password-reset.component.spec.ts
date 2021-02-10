@@ -4,7 +4,7 @@ import {AuthPasswordResetComponent} from './auth-password-reset.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
-import {PasswordResetService} from "@wizardcoder/bl-connect";
+import {PasswordResetService} from "@boklisten/bl-connect";
 
 
 

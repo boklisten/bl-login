@@ -3,11 +3,11 @@ import {
 	TokenService,
 	UserSessionService,
 	UserDetailService
-} from "@wizardcoder/bl-connect";
+} from "@boklisten/bl-connect";
 import { Observable, Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { LOGIN_MODULE_SETTINGS } from "./login-module-settings";
-import { UserPermission } from "@wizardcoder/bl-model";
+import { UserPermission } from "@boklisten/bl-model";
 
 @Injectable()
 export class AuthLoginService {

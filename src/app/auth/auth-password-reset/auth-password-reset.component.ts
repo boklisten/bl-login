@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {PasswordResetService} from "@wizardcoder/bl-connect";
-import {BlApiError} from "@wizardcoder/bl-model";
+import {PasswordResetService} from "@boklisten/bl-connect";
+import {BlApiError} from "@boklisten/bl-model";
 
 @Component({
 	selector: 'bl-auth-password-reset',

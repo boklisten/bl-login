@@ -2,7 +2,7 @@ import {TestBed, inject, ComponentFixture} from '@angular/core/testing';
 
 import {LocalLoginService} from './local-login.service';
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
-import {LoginService, TokenService} from "@wizardcoder/bl-connect";
+import {LoginService, TokenService} from "@boklisten/bl-connect";
 
 
 describe('LocalLoginService', () => {

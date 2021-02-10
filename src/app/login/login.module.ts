@@ -13,7 +13,7 @@ import { LoginRoutingModule } from "./login-routing.module";
 import { RegisterModule } from "../register/register.module";
 import { LoginMenuComponent } from "./login-menu/login-menu.component";
 import { LoginAuthComponent } from "./login-auth/login-auth.component";
-import { BlConnectModule } from "@wizardcoder/bl-connect";
+import { BlConnectModule } from "@boklisten/bl-connect";
 import { SocialLoginService } from "./social-login/social-login.service";
 import { LoginSuccessComponent } from "./login-success/login-success.component";
 import {

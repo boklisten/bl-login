@@ -5,7 +5,7 @@ import {
 	LoginModuleSettings
 } from "../login-module-settings";
 import { AuthLoginService } from "../auth-login.service";
-import { StorageService } from "@wizardcoder/bl-connect";
+import { StorageService } from "@boklisten/bl-connect";
 
 @Component({
 	selector: "bl-login-auth",

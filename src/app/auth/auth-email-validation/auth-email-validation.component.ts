@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {EmailValidationService, TokenService} from "@wizardcoder/bl-connect";
-import {BlApiError, BlApiNotFoundError} from "@wizardcoder/bl-model";
+import {EmailValidationService, TokenService} from "@boklisten/bl-connect";
+import {BlApiError, BlApiNotFoundError} from "@boklisten/bl-model";
 import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
 
 @Component({

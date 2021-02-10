@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AuthEmailValidationComponent} from './auth-email-validation.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {EmailValidationService, TokenService} from "@wizardcoder/bl-connect";
+import {EmailValidationService, TokenService} from "@boklisten/bl-connect";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {

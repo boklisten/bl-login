@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { APP_CONFIG } from "../../app_config";
 import { SocialLoginService } from "./social-login.service";
-import { BlApiError } from "@wizardcoder/bl-model";
+import { BlApiError } from "@boklisten/bl-model";
 import {
 	LOGIN_MODULE_SETTINGS,
 	LoginModuleSettings

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
-import { TokenService, StorageService } from "@wizardcoder/bl-connect";
+import { TokenService, StorageService } from "@boklisten/bl-connect";
 import { AuthLoginService } from "../../login/auth-login.service";
 import { LOGIN_MODULE_SETTINGS } from "../../login/login-module-settings";
 

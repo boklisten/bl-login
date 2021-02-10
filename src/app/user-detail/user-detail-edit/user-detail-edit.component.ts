@@ -10,8 +10,8 @@ import {
 	UserDetailService,
 	TokenService,
 	LoginService
-} from "@wizardcoder/bl-connect";
-import { UserDetail, BlApiError } from "@wizardcoder/bl-model";
+} from "@boklisten/bl-connect";
+import { UserDetail, BlApiError } from "@boklisten/bl-model";
 import {
 	AbstractControl,
 	FormBuilder,

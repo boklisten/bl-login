@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
-import {RegisterService} from '@wizardcoder/bl-connect';
-import {BlApiError} from "@wizardcoder/bl-model";
+import {RegisterService} from '@boklisten/bl-connect';
+import {BlApiError} from "@boklisten/bl-model";
 
 @Injectable()
 export class SocialRegisterService {

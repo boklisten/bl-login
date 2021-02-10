@@ -2,11 +2,11 @@ import { Component, Inject, Injectable, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LocalLoginService } from "../../login/local-login/local-login.service";
 import { RegisterDetailService } from "./register-detail.service";
-import { BlApiError, Branch, UserDetail } from "@wizardcoder/bl-model";
+import { BlApiError, Branch, UserDetail } from "@boklisten/bl-model";
 import { AuthLoginService } from "../../login/auth-login.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LOGIN_MODULE_SETTINGS } from "../../login/login-module-settings";
-import { BranchService, UserDetailService } from "@wizardcoder/bl-connect";
+import { BranchService, UserDetailService } from "@boklisten/bl-connect";
 import {
 	NgbDateAdapter,
 	NgbDatepickerConfig,

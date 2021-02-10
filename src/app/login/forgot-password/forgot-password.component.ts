@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as EmailValidator from 'email-validator';
-import {PasswordResetService} from "@wizardcoder/bl-connect";
-import {BlApiError} from "@wizardcoder/bl-model";
+import {PasswordResetService} from "@boklisten/bl-connect";
+import {BlApiError} from "@boklisten/bl-model";
 
 @Component({
 	selector: 'bl-forgot-password',

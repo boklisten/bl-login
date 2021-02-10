@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {LoginService} from "@wizardcoder/bl-connect";
-import {BlApiError, BlApiLoginRequiredError, BlApiPermissionDeniedError} from "@wizardcoder/bl-model";
+import {LoginService} from "@boklisten/bl-connect";
+import {BlApiError, BlApiLoginRequiredError, BlApiPermissionDeniedError} from "@boklisten/bl-model";
 
 @Injectable()
 export class LocalLoginService {

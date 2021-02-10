@@ -4,7 +4,7 @@ import {AuthTokenComponent} from './auth-token.component';
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TokenService} from "@wizardcoder/bl-connect";
+import {TokenService} from "@boklisten/bl-connect";
 import {AuthLoginService} from "../../login/auth-login.service";
 
 @Injectable()

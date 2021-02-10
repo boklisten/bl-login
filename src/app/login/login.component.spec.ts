@@ -5,7 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {LocalLoginService} from "./local-login/local-login.service";
 import {JwtHelperService, JwtModule} from "@auth0/angular-jwt";
 import {CookieModule} from "ngx-cookie";
-import {StorageService, TokenService} from "@wizardcoder/bl-connect";
+import {StorageService, TokenService} from "@boklisten/bl-connect";
 
 describe('LoginComponent', () => {
 	let component: LoginComponent;
