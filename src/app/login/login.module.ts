@@ -18,12 +18,10 @@ import { SocialLoginService } from "./social-login/social-login.service";
 import { LoginSuccessComponent } from "./login-success/login-success.component";
 import {
 	LOGIN_MODULE_SETTINGS,
-	LoginModuleSettings
+	LoginModuleSettings,
 } from "./login-module-settings";
 import { AuthModule } from "../auth/auth.module";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeModule, FaIconLibrary } from "@fortawesome/angular-fontawesome";
 
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 
@@ -47,7 +45,7 @@ import {
 	faTimesCircle,
 	faCircleNotch,
 	faSync,
-	faChevronRight
+	faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
@@ -57,49 +55,23 @@ import { UserDetailEditComponent } from "../user-detail/user-detail-edit/user-de
 import { BrowserModule } from "@angular/platform-browser";
 import { UserDetailModule } from "../user-detail/user-detail.module";
 
-library.add(
-	faPhone,
-	faTimes,
-	faAt,
-	faUser,
-	faBirthdayCake,
-	faCalendarAlt,
-	faAddressCard,
-	faGraduationCap,
-	faSquare,
-	faCheckSquare,
-	faKey,
-	faFacebookSquare,
-	faGoogle,
-	faChevronLeft,
-	faExclamationTriangle,
-	faUserPlus,
-	faSignInAlt,
-	faArrowRight,
-	faCheckCircle,
-	faTimesCircle,
-	faCircleNotch,
-	faSync,
-	faChevronRight
-);
-
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
 		RegisterModule,
-		NgbModule.forRoot(),
+		NgbModule,
 		LoginRoutingModule,
 		BlConnectModule,
 		AuthModule,
 		FontAwesomeModule,
-		UserDetailModule
+		UserDetailModule,
 	],
 	providers: [
 		LocalLoginService,
 		LocalRegisterService,
 		SocialLoginService,
-		AuthLoginService
+		AuthLoginService,
 	],
 	declarations: [
 		LoginComponent,
@@ -110,12 +82,41 @@ library.add(
 		LoginAuthComponent,
 		LoginSuccessComponent,
 		LoginPermissionFailureComponent,
-		LogoutComponent
+		LogoutComponent,
 	],
-	exports: [LoginComponent, UserDetailEditComponent]
+	exports: [LoginComponent, UserDetailEditComponent],
 })
 export class LoginModule {
-	public static withConfig(settings?: LoginModuleSettings) {
+	constructor(library: FaIconLibrary) {
+		library.addIcons(
+			faPhone,
+			faTimes,
+			faAt,
+			faUser,
+			faBirthdayCake,
+			faCalendarAlt,
+			faAddressCard,
+			faGraduationCap,
+			faSquare,
+			faCheckSquare,
+			faKey,
+			faFacebookSquare,
+			faGoogle,
+			faChevronLeft,
+			faExclamationTriangle,
+			faUserPlus,
+			faSignInAlt,
+			faArrowRight,
+			faCheckCircle,
+			faTimesCircle,
+			faCircleNotch,
+			faSync,
+			faChevronRight
+		);
+
+	}
+
+	public static withConfig(settings?: LoginModuleSettings):LoginModule {
 		if (settings) {
 			if (settings.successPath) {
 				LOGIN_MODULE_SETTINGS.successPath = settings.successPath;

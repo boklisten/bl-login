@@ -5,7 +5,7 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 @Component({
 	selector: "bl-register-agreement",
 	templateUrl: "./register-agreement.component.html",
-	styleUrls: ["./register-agreement.component.scss"]
+	styleUrls: ["./register-agreement.component.scss"],
 })
 export class RegisterAgreementComponent implements OnInit {
 	@Output() confirmed: EventEmitter<boolean> = new EventEmitter();
@@ -38,14 +38,14 @@ export class RegisterAgreementComponent implements OnInit {
 			.open(content, {
 				centered: true,
 				backdropClass: "bl-modal",
-				size: "lg"
+				size: "lg",
 			})
-			.result.then(result => {
+			.result.then((result) => {
 				this._closeResult = "closed with" + result;
 				this.userAgreement = true;
 				this.confirmed.emit(true);
 			})
-			.catch(reason => {
+			.catch((reason) => {
 				this._closeResult =
 					"Dismissed: " + this.getDismissReason(reason);
 				console.log(this._closeResult);

@@ -7,11 +7,7 @@ import { AuthLoginService } from "../../login/auth-login.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LOGIN_MODULE_SETTINGS } from "../../login/login-module-settings";
 import { BranchService, UserDetailService } from "@boklisten/bl-connect";
-import {
-	NgbDateAdapter,
-	NgbDatepickerConfig,
-	NgbDateStruct
-} from "@ng-bootstrap/ng-bootstrap";
+import { NgbDateAdapter, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 import { DateService } from "../../date/date.service";
 
 @Injectable()
@@ -21,7 +17,7 @@ export class NgbDateNativeAdapter extends NgbDateAdapter<Date> {
 			? {
 					year: date.getFullYear(),
 					month: date.getMonth() + 1,
-					day: date.getDate()
+					day: date.getDate(),
 			  }
 			: null;
 	}
@@ -35,7 +31,7 @@ export class NgbDateNativeAdapter extends NgbDateAdapter<Date> {
 	selector: "bl-register-detail",
 	templateUrl: "./register-detail.component.html",
 	styleUrls: ["./register-detail.component.scss"],
-	providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
+	providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }],
 })
 export class RegisterDetailComponent implements OnInit {
 	public registerDetailTitle: string;
@@ -63,16 +59,8 @@ export class RegisterDetailComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _branchService: BranchService,
 		private _userDetailService: UserDetailService,
-		private _ngbDatepickerConfig: NgbDatepickerConfig,
 		private _dateService: DateService
 	) {
-		this._ngbDatepickerConfig.minDate = { year: 1890, month: 1, day: 1 };
-		this._ngbDatepickerConfig.maxDate = {
-			year: new Date().getFullYear(),
-			month: new Date().getMonth() + 1,
-			day: new Date().getDate()
-		};
-
 		this._defaultGroup = {
 			name: "",
 			phone: "",
@@ -84,8 +72,8 @@ export class RegisterDetailComponent implements OnInit {
 			guardian: fb.group({
 				name: "",
 				phone: "",
-				email: ""
-			})
+				email: "",
+			}),
 		};
 
 		this.warning = false;
@@ -128,7 +116,7 @@ export class RegisterDetailComponent implements OnInit {
 			})
 			.catch((err: BlApiError) => {
 				this._router.navigate(["../../menu"], {
-					relativeTo: this._route
+					relativeTo: this._route,
 				});
 			});
 	}
@@ -160,7 +148,7 @@ export class RegisterDetailComponent implements OnInit {
 		return {
 			year: theDate.getFullYear(),
 			month: theDate.getMonth(),
-			day: theDate.getDay()
+			day: theDate.getDay(),
 		};
 	}
 
@@ -179,7 +167,7 @@ export class RegisterDetailComponent implements OnInit {
 				this.setUserDetail(userDetail);
 				this._userDetailService
 					.isValid(userDetail.id)
-					.then(valid => {
+					.then((valid) => {
 						this._router.navigateByUrl(
 							LOGIN_MODULE_SETTINGS.successPath
 						);

@@ -4,12 +4,12 @@ import {
 	Input,
 	OnChanges,
 	OnInit,
-	Output
+	Output,
 } from "@angular/core";
 import {
 	UserDetailService,
 	TokenService,
-	LoginService
+	LoginService,
 } from "@boklisten/bl-connect";
 import { UserDetail, BlApiError } from "@boklisten/bl-model";
 import {
@@ -18,7 +18,7 @@ import {
 	FormControl,
 	FormGroup,
 	ValidatorFn,
-	Validators
+	Validators,
 } from "@angular/forms";
 import { isNumber } from "util";
 import { NgbDateAdapter } from "@ng-bootstrap/ng-bootstrap";
@@ -29,7 +29,7 @@ import moment from "moment-es6";
 @Component({
 	selector: "bl-user-detail-edit",
 	templateUrl: "./user-detail-edit.component.html",
-	styleUrls: ["./user-detail-edit.component.scss"]
+	styleUrls: ["./user-detail-edit.component.scss"],
 })
 export class UserDetailEditComponent implements OnInit {
 	@Input() userDetail: UserDetail;
@@ -51,53 +51,53 @@ export class UserDetailEditComponent implements OnInit {
 
 		this.userDetailForm = this.formBuilder.group({
 			email: new FormControl({ value: "", disabled: true }, [
-				Validators.required
+				Validators.required,
 			]),
 			firstName: new FormControl("", [
 				Validators.required,
 				//Validators.pattern(nameValidatorRegex),
 
-				Validators.maxLength(40)
+				Validators.maxLength(40),
 			]),
 			lastName: new FormControl("", [
 				Validators.required,
 				//Validators.pattern(nameValidatorRegex),
-				Validators.maxLength(40)
+				Validators.maxLength(40),
 			]),
 			phone: new FormControl("", [
 				Validators.minLength(8),
 				Validators.maxLength(8),
-				this.isValidNumber()
+				this.isValidNumber(),
 			]),
 			address: new FormControl("", [
 				Validators.required,
-				Validators.maxLength(40)
+				Validators.maxLength(40),
 			]),
 			postCode: new FormControl("", [
 				Validators.required,
 				Validators.minLength(4),
 				Validators.maxLength(4),
-				this.isValidNumber()
+				this.isValidNumber(),
 			]),
 			postCity: new FormControl("", [
 				Validators.required,
-				Validators.maxLength(40)
+				Validators.maxLength(40),
 			]),
 			guardianPhone: new FormControl("", [
 				this.requiredIfUserUnder18(),
 				this.isValidNumber(),
 				Validators.maxLength(8),
-				Validators.minLength(8)
+				Validators.minLength(8),
 			]),
 			guardianName: new FormControl("", [
 				this.requiredIfUserUnder18(),
-				Validators.maxLength(40)
+				Validators.maxLength(40),
 				//Validators.pattern(nameValidatorRegex)
 			]),
 			guardianEmail: new FormControl("", [
 				this.requiredIfUserUnder18(),
-				Validators.email
-			])
+				Validators.email,
+			]),
 		});
 
 		this.userUnder18 = false;
@@ -175,8 +175,8 @@ export class UserDetailEditComponent implements OnInit {
 			guardian: {
 				name: formValues.guardianName,
 				phone: formValues.guardianPhone,
-				email: formValues.guardianEmail
-			}
+				email: formValues.guardianEmail,
+			},
 		};
 
 		this.patchValues.emit(patchedValues);
@@ -202,7 +202,7 @@ export class UserDetailEditComponent implements OnInit {
 			guardianEmail:
 				this.userDetail.guardian && this.userDetail.guardian.email
 					? this.userDetail.guardian.email
-					: ""
+					: "",
 		});
 		this.userDetail.dob = this.oldDob;
 	}
@@ -212,7 +212,7 @@ export class UserDetailEditComponent implements OnInit {
 			return "";
 		}
 
-		let fullNameSplit = fullName.split(" ");
+		const fullNameSplit = fullName.split(" ");
 
 		if (fullNameSplit.length == 1) {
 			return fullNameSplit[0];
@@ -252,21 +252,21 @@ export class UserDetailEditComponent implements OnInit {
 			this.userDetailForm.patchValue({
 				guardianEmail: "",
 				guardianName: "",
-				guardianPhone: ""
+				guardianPhone: "",
 			});
 		} else {
 			this.userDetailForm.controls.guardianEmail.setValidators([
 				Validators.email,
 				Validators.required,
-				Validators.maxLength(40)
+				Validators.maxLength(40),
 			]);
 			this.userDetailForm.controls.guardianName.setValidators([
 				Validators.maxLength(40),
-				Validators.required
+				Validators.required,
 			]);
 			this.userDetailForm.controls.guardianPhone.setValidators([
 				this.isValidNumber(),
-				Validators.required
+				Validators.required,
 			]);
 		}
 		this.userUnder18 = under18;

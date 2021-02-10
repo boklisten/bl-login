@@ -1,17 +1,18 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import {LocalLoginComponent} from './local-login.component';
+import { LocalLoginComponent } from "./local-login.component";
 
-describe('LocalLoginComponent', () => {
+describe("LocalLoginComponent", () => {
 	let component: LocalLoginComponent;
 	let fixture: ComponentFixture<LocalLoginComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [LocalLoginComponent]
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [LocalLoginComponent],
+			}).compileComponents();
 		})
-			.compileComponents();
-	}));
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(LocalLoginComponent);
@@ -19,7 +20,7 @@ describe('LocalLoginComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

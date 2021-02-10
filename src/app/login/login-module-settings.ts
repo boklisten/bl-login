@@ -15,7 +15,7 @@ export interface LoginModuleSettings {
 	};
 }
 
-export let LOGIN_MODULE_SETTINGS: LoginModuleSettings = {
+export const LOGIN_MODULE_SETTINGS: LoginModuleSettings = {
 	successPath: "/auth/success",
 	registerSuccessPath: "/auth/success",
 	userDetailNotValidPath: "/auth/register/detail",
@@ -28,6 +28,6 @@ export let LOGIN_MODULE_SETTINGS: LoginModuleSettings = {
 		local: true,
 		facebook: true,
 		google: true,
-		feide: false
-	}
+		feide: false,
+	},
 };

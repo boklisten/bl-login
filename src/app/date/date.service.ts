@@ -1,19 +1,16 @@
-import {Injectable} from '@angular/core';
-import moment from 'moment-es6';
+import { Injectable } from "@angular/core";
+import moment from "moment-es6";
 
 @Injectable()
 export class DateService {
-
-	constructor() {
-	}
+	constructor() {}
 
 	isUnder18(dob: Date | string) {
 		if (!(dob instanceof Date)) {
 			dob = new Date(dob);
 		}
-		const eighteenDate = moment().subtract(18, 'years');
+		const eighteenDate = moment().subtract(18, "years");
 
-		return (moment(dob).isAfter(eighteenDate));
+		return moment(dob).isAfter(eighteenDate);
 	}
-
 }

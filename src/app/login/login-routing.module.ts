@@ -22,58 +22,58 @@ const routes: Routes = [
 		children: [
 			{
 				path: "menu",
-				component: LoginMenuComponent
+				component: LoginMenuComponent,
 			},
 			{
 				path: "login",
-				component: LoginAuthComponent
+				component: LoginAuthComponent,
 			},
 			{
 				path: "login/forgot",
-				component: ForgotPasswordComponent
+				component: ForgotPasswordComponent,
 			},
 			{
 				path: "reset/:id",
-				component: AuthPasswordResetComponent
+				component: AuthPasswordResetComponent,
 			},
 			{
 				path: "email/confirm/:id",
-				component: AuthEmailValidationComponent
+				component: AuthEmailValidationComponent,
 			},
 			{
 				path: "social/failure",
-				component: AuthSocialFailureComponent
+				component: AuthSocialFailureComponent,
 			},
 			{
 				path: "success",
-				component: LoginSuccessComponent
+				component: LoginSuccessComponent,
 			},
 			{
 				path: "register",
-				component: RegisterComponent
+				component: RegisterComponent,
 			},
 			{
 				path: "register/detail",
-				component: RegisterDetailComponent
+				component: RegisterDetailComponent,
 			},
 			{
 				path: "token",
-				component: AuthTokenComponent
+				component: AuthTokenComponent,
 			},
 			{
 				path: "permission/denied",
-				component: LoginPermissionFailureComponent
+				component: LoginPermissionFailureComponent,
 			},
 			{
 				path: "logout",
-				component: LogoutComponent
-			}
-		]
-	}
+				component: LogoutComponent,
+			},
+		],
+	},
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
 export class LoginRoutingModule {}

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import {
 	TokenService,
 	UserSessionService,
-	UserDetailService
+	UserDetailService,
 } from "@boklisten/bl-connect";
 import { Observable, Subject } from "rxjs";
 import { Router } from "@angular/router";
@@ -42,7 +42,7 @@ export class AuthLoginService {
 			) {
 				this._userDetailService
 					.isValid(this._tokenService.getAccessTokenBody().details)
-					.then(validObject => {
+					.then((validObject) => {
 						this._login$.next(true);
 						if (!validObject.valid) {
 							this._router.navigateByUrl(

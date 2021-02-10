@@ -4,13 +4,13 @@ import { SocialLoginService } from "./social-login.service";
 import { BlApiError } from "@boklisten/bl-model";
 import {
 	LOGIN_MODULE_SETTINGS,
-	LoginModuleSettings
+	LoginModuleSettings,
 } from "../login-module-settings";
 
 @Component({
 	selector: "bl-social-login",
 	templateUrl: "./social-login.component.html",
-	styleUrls: ["./social-login.component.scss"]
+	styleUrls: ["./social-login.component.scss"],
 })
 export class SocialLoginComponent implements OnInit {
 	@Output() warning: EventEmitter<string>;

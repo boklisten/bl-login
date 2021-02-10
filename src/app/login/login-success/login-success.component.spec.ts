@@ -1,25 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { LoginSuccessComponent } from './login-success.component';
+import { LoginSuccessComponent } from "./login-success.component";
 
-describe('LoginSuccessComponent', () => {
-  let component: LoginSuccessComponent;
-  let fixture: ComponentFixture<LoginSuccessComponent>;
+describe("LoginSuccessComponent", () => {
+	let component: LoginSuccessComponent;
+	let fixture: ComponentFixture<LoginSuccessComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoginSuccessComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [LoginSuccessComponent],
+			}).compileComponents();
+		})
+	);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginSuccessComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(LoginSuccessComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it("should create", () => {
+		expect(component).toBeTruthy();
+	});
 });

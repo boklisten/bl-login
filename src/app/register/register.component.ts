@@ -3,14 +3,14 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AuthLoginService } from "../login/auth-login.service";
 import {
 	LOGIN_MODULE_SETTINGS,
-	LoginModuleSettings
+	LoginModuleSettings,
 } from "../login/login-module-settings";
 import { StorageService } from "@boklisten/bl-connect";
 
 @Component({
 	selector: "bl-register",
 	templateUrl: "./register.component.html",
-	styleUrls: ["./register.component.scss"]
+	styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
 	public orUseEmailRegisterText: string;

@@ -1,17 +1,17 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import {AuthSocialFailureComponent} from './auth-social-failure.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {Router} from "@angular/router";
+import { AuthSocialFailureComponent } from "./auth-social-failure.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { Router } from "@angular/router";
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 	@Input() spin: any;
 	@Input() size: any;
 }
 
-@Component({selector: 'ngb-alert', template: ''})
+@Component({ selector: "ngb-alert", template: "" })
 class NgbAlertStubComponent {
 	@Input() type: any;
 }
@@ -19,23 +19,22 @@ class NgbAlertStubComponent {
 @Injectable()
 class RouterStubService {}
 
-describe('AuthSocialFailureComponent', () => {
+describe("AuthSocialFailureComponent", () => {
 	let component: AuthSocialFailureComponent;
 	let fixture: ComponentFixture<AuthSocialFailureComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [
-				AuthSocialFailureComponent,
-				FaIconStubComponent,
-				NgbAlertStubComponent
-			],
-			providers: [
-				{provide: Router, useClass: RouterStubService}
-			]
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [
+					AuthSocialFailureComponent,
+					FaIconStubComponent,
+					NgbAlertStubComponent,
+				],
+				providers: [{ provide: Router, useClass: RouterStubService }],
+			}).compileComponents();
 		})
-			.compileComponents();
-	}));
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(AuthSocialFailureComponent);
@@ -43,7 +42,7 @@ describe('AuthSocialFailureComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

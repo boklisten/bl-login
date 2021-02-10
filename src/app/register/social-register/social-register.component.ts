@@ -5,14 +5,14 @@ import { BlApiError } from "@boklisten/bl-model";
 import { Router } from "@angular/router";
 import {
 	LOGIN_MODULE_SETTINGS,
-	LoginModuleSettings
+	LoginModuleSettings,
 } from "../../login/login-module-settings";
 import { AuthLoginService } from "../../login/auth-login.service";
 
 @Component({
 	selector: "bl-social-register",
 	templateUrl: "./social-register.component.html",
-	styleUrls: ["./social-register.component.scss"]
+	styleUrls: ["./social-register.component.scss"],
 })
 export class SocialRegisterComponent implements OnInit {
 	@Output() warning: EventEmitter<string> = new EventEmitter();

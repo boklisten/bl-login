@@ -1,73 +1,95 @@
 <div class="row mt-2" *ngIf="waiting">
 	<div class="col-12 text-center">
 		<div class="alert alert-warning">
-			<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'2x'"></fa-icon>
+			<fa-icon
+				[icon]="'circle-notch'"
+				[spin]="true"
+				[size]="'2x'"
+			></fa-icon>
 		</div>
 	</div>
 </div>
 
 <div *ngIf="!waiting">
-    <div class="row mt-2 justify-content-center" *ngIf="emailConfirmed">
-        <div class="col-12 text-center mt-2">
-            <div class="alert alert-success">
-                <b>
-                    <fa-icon [icon]="'check-circle'" class="mr-2"></fa-icon>
-                    <span i18n="@@emailValidationEmailConfirmed">Email was confirmed</span>
-                </b>
-            </div>
-        </div>
-    </div>
-
-	<div class="row mt-2 justify-content-center" *ngIf="connectionError">
-        <div class="col-12 text-center mt-2">
-            <div class="alert alert-danger">
-                <b>
-                    <fa-icon [icon]="'times-circle'" class="mr-2"></fa-icon>
-                    <span i18n="@@emailValidationNoConnection">Could not connect to the server</span>
-                </b>
-            </div>
-        </div>
+	<div class="row mt-2 justify-content-center" *ngIf="emailConfirmed">
+		<div class="col-12 text-center mt-2">
+			<div class="alert alert-success">
+				<b>
+					<fa-icon [icon]="'check-circle'" class="mr-2"></fa-icon>
+					<span i18n="@@emailValidationEmailConfirmed"
+						>Email was confirmed</span
+					>
+				</b>
+			</div>
+		</div>
 	</div>
 
-    <div class="row mt-2 justify-content-center" *ngIf="emailValidationError && !newLinkSent">
-        <div class="col-12 text-center mt-2">
-            <div class="alert alert-danger">
-                <b>
-                    <fa-icon [icon]="'times-circle'" class="mr-2"></fa-icon>
-                    <span i18n="@@emailValidationConfirmError">Email could not be confirmed.</span>
-                </b>
-                <span i18n="@@emailValidationLinkMayBeExpired">The link may be expired.</span>
-            </div>
-        </div>
+	<div class="row mt-2 justify-content-center" *ngIf="connectionError">
+		<div class="col-12 text-center mt-2">
+			<div class="alert alert-danger">
+				<b>
+					<fa-icon [icon]="'times-circle'" class="mr-2"></fa-icon>
+					<span i18n="@@emailValidationNoConnection"
+						>Could not connect to the server</span
+					>
+				</b>
+			</div>
+		</div>
+	</div>
 
-        <div class="col-12" *ngIf="isLoggedIn()">
-            <button class="btn btn-link btn-block" (click)="sendNewConfirmationLink()">
-                <span i18n="@@emailValidationClickForNewLink">Click here to send a new confirmation link</span>
-            </button>
-        </div>
+	<div
+		class="row mt-2 justify-content-center"
+		*ngIf="emailValidationError && !newLinkSent"
+	>
+		<div class="col-12 text-center mt-2">
+			<div class="alert alert-danger">
+				<b>
+					<fa-icon [icon]="'times-circle'" class="mr-2"></fa-icon>
+					<span i18n="@@emailValidationConfirmError"
+						>Email could not be confirmed.</span
+					>
+				</b>
+				<span i18n="@@emailValidationLinkMayBeExpired"
+					>The link may be expired.</span
+				>
+			</div>
+		</div>
 
-        <div class="col-12" *ngIf="!isLoggedIn()">
-            <div class="alert alert-warning">
-                <fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-                <span i18n="@@emailValidationNotLoggedInError">You must login to send a new confirmation link</span>
-            </div>
+		<div class="col-12" *ngIf="isLoggedIn()">
+			<button
+				class="btn btn-link btn-block"
+				(click)="sendNewConfirmationLink()"
+			>
+				<span i18n="@@emailValidationClickForNewLink"
+					>Click here to send a new confirmation link</span
+				>
+			</button>
+		</div>
 
-            <button class="btn btn-link btn-block" (click)="goToLogin()">
-                <span i18n="@@emailValidationClickToLogin">Click her to login</span>
-            </button>
-        </div>
-    </div>
+		<div class="col-12" *ngIf="!isLoggedIn()">
+			<div class="alert alert-warning">
+				<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+				<span i18n="@@emailValidationNotLoggedInError"
+					>You must login to send a new confirmation link</span
+				>
+			</div>
 
+			<button class="btn btn-link btn-block" (click)="goToLogin()">
+				<span i18n="@@emailValidationClickToLogin"
+					>Click her to login</span
+				>
+			</button>
+		</div>
+	</div>
 
-
-
-    <div class="row mt-2 justify-content-center" *ngIf="newLinkSent">
-        <div class="col-12 text-center mt-2">
-            <div class="alert alert-success">
-                <fa-icon [icon]="'check-circle'" class="mr-2"></fa-icon>
-                <span i18n="@@emailValidationNewLinkSent">A new confirmation link has been sent to your email.</span>
-            </div>
-        </div>
-    </div>
+	<div class="row mt-2 justify-content-center" *ngIf="newLinkSent">
+		<div class="col-12 text-center mt-2">
+			<div class="alert alert-success">
+				<fa-icon [icon]="'check-circle'" class="mr-2"></fa-icon>
+				<span i18n="@@emailValidationNewLinkSent"
+					>A new confirmation link has been sent to your email.</span
+				>
+			</div>
+		</div>
+	</div>
 </div>
-

@@ -1,25 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { RegisterDetailComponent } from './register-detail.component';
+import { RegisterDetailComponent } from "./register-detail.component";
 
-describe('RegisterDetailComponent', () => {
-  let component: RegisterDetailComponent;
-  let fixture: ComponentFixture<RegisterDetailComponent>;
+describe("RegisterDetailComponent", () => {
+	let component: RegisterDetailComponent;
+	let fixture: ComponentFixture<RegisterDetailComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RegisterDetailComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [RegisterDetailComponent],
+			}).compileComponents();
+		})
+	);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterDetailComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(RegisterDetailComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it("should create", () => {
+		expect(component).toBeTruthy();
+	});
 });

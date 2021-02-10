@@ -1,4 +1,3 @@
-
 <div class="row mt-5">
 	<div class="col-12 text-center text-danger">
 		<fa-icon [icon]="'exclamation-triangle'" [size]="'3x'"></fa-icon>
@@ -10,15 +9,24 @@
 	</div>
 	<div class="col-12">
 		<p>
-			<b i18n="@@loginPermissionFailureNotRightPermission">You don't have the right permission to access this content. You have been logged out.</b>
+			<b i18n="@@loginPermissionFailureNotRightPermission"
+				>You don't have the right permission to access this content. You
+				have been logged out.</b
+			>
 		</p>
-		<p i18n="@@loginPermissionFailureWhatToDo">You can try login with another user or ask an administrator for details.</p>
+		<p i18n="@@loginPermissionFailureWhatToDo">
+			You can try login with another user or ask an administrator for
+			details.
+		</p>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-12">
-		<button class="btn btn-lg btn-block btn-outline-success" routerLink="/auth/login">
+		<button
+			class="btn btn-lg btn-block btn-outline-success"
+			routerLink="/auth/login"
+		>
 			<fa-icon [icon]="'sign-in-alt'" class="mr-2"></fa-icon>
 			<span i18n="@@loginPermissionFailureLoginButton">Login</span>
 		</button>

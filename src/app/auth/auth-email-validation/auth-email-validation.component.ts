@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {EmailValidationService, TokenService} from "@boklisten/bl-connect";
-import {BlApiError, BlApiNotFoundError} from "@boklisten/bl-model";
-import {LOGIN_MODULE_SETTINGS} from "../../login/login-module-settings";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { EmailValidationService, TokenService } from "@boklisten/bl-connect";
+import { BlApiError, BlApiNotFoundError } from "@boklisten/bl-model";
+import { LOGIN_MODULE_SETTINGS } from "../../login/login-module-settings";
 
 @Component({
-	selector: 'bl-auth-email-validation',
-	templateUrl: './auth-email-validation.component.html',
-	styleUrls: ['./auth-email-validation.component.scss']
+	selector: "bl-auth-email-validation",
+	templateUrl: "./auth-email-validation.component.html",
+	styleUrls: ["./auth-email-validation.component.scss"],
 })
 export class AuthEmailValidationComponent implements OnInit {
 	private _id: string;
@@ -17,35 +17,40 @@ export class AuthEmailValidationComponent implements OnInit {
 	public newLinkSent: boolean;
 	public waiting: boolean;
 
-	constructor(private _router: Router,
-				private _route: ActivatedRoute,
-				private _emailValidationService: EmailValidationService,
-				private _tokenService: TokenService) {
+	constructor(
+		private _router: Router,
+		private _route: ActivatedRoute,
+		private _emailValidationService: EmailValidationService,
+		private _tokenService: TokenService
+	) {
 		this.emailConfirmed = false;
 		this.emailValidationError = false;
 		this.newLinkSent = false;
 	}
 
 	ngOnInit() {
-		this._id = this._route.snapshot.paramMap.get('id');
+		this._id = this._route.snapshot.paramMap.get("id");
 		this.waiting = true;
 
-		this._emailValidationService.validateConfirmationLink(this._id).then(() => {
-			this.emailConfirmed = true;
-			this.waiting = false;
-			this.goToHome();
-		}).catch((emailerr) => {
-			this.waiting = false;
-			if (emailerr instanceof BlApiNotFoundError) {
-				this.emailValidationError = true;
-			} else if (emailerr instanceof BlApiError) {
-				if (emailerr.msg === 'could not connect') {
-					this.connectionError = true;
+		this._emailValidationService
+			.validateConfirmationLink(this._id)
+			.then(() => {
+				this.emailConfirmed = true;
+				this.waiting = false;
+				this.goToHome();
+			})
+			.catch((emailerr) => {
+				this.waiting = false;
+				if (emailerr instanceof BlApiNotFoundError) {
+					this.emailValidationError = true;
+				} else if (emailerr instanceof BlApiError) {
+					if (emailerr.msg === "could not connect") {
+						this.connectionError = true;
+					}
+				} else {
+					this.emailValidationError = true;
 				}
-			} else {
-				this.emailValidationError = true;
-			}
-		});
+			});
 	}
 
 	goToHome() {
@@ -57,7 +62,7 @@ export class AuthEmailValidationComponent implements OnInit {
 	}
 
 	goToLogin() {
-		this._router.navigate(['/auth/login']);
+		this._router.navigate(["/auth/login"]);
 	}
 
 	sendNewConfirmationLink() {
@@ -67,17 +72,16 @@ export class AuthEmailValidationComponent implements OnInit {
 		const userDetailId = this._tokenService.getAccessTokenBody().details;
 		const email = this._tokenService.getAccessTokenBody().username;
 
-		this._emailValidationService.requestNewConfirmationLink(userDetailId, email).then(() => {
-			this.waiting = false;
-			this.newLinkSent = true;
+		this._emailValidationService
+			.requestNewConfirmationLink(userDetailId, email)
+			.then(() => {
+				this.waiting = false;
+				this.newLinkSent = true;
 
-			setTimeout(() => {
-				this.goToHome();
-			}, 2500);
-
-		}).catch((blApiError: BlApiError) => {
-
-		});
+				setTimeout(() => {
+					this.goToHome();
+				}, 2500);
+			})
+			.catch((blApiError: BlApiError) => {});
 	}
-
 }

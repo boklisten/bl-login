@@ -1,12 +1,9 @@
-
-
-
-export let  APP_CONFIG = {
+export const APP_CONFIG = {
 	token: {
-		refreshTokenName: 'refresh_token',
-		accessTokenName: 'access_token'
+		refreshTokenName: "refresh_token",
+		accessTokenName: "access_token",
 	},
 	url: {
-		base: 'https://localhost:1337/'
-	}
+		base: "https://localhost:1337/",
+	},
 };

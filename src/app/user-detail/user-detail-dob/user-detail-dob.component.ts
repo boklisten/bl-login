@@ -1,12 +1,19 @@
-import {Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
-import moment from 'moment-es6';
-import {DatepickerOptions} from "ng2-datepicker";
-import * as nbLocale from 'date-fns/locale/nb';
+import {
+	Component,
+	DoCheck,
+	EventEmitter,
+	Input,
+	OnChanges,
+	OnInit,
+	Output,
+} from "@angular/core";
+import moment from "moment-es6";
+import * as nbLocale from "date-fns/locale/nb";
 
 @Component({
-	selector: 'bl-user-detail-dob',
-	templateUrl: './user-detail-dob.component.html',
-	styleUrls: ['./user-detail-dob.component.scss']
+	selector: "bl-user-detail-dob",
+	templateUrl: "./user-detail-dob.component.html",
+	styleUrls: ["./user-detail-dob.component.scss"],
 })
 export class UserDetailDobComponent implements OnInit {
 	@Input() dob: Date;
@@ -17,8 +24,6 @@ export class UserDetailDobComponent implements OnInit {
 	dateInvalidError: boolean;
 	public showDateStringFormat: boolean;
 
-	datepickerOptions: DatepickerOptions;
-
 	constructor() {
 		this.dobChange = new EventEmitter<Date>();
 		this.under18 = new EventEmitter<boolean>();
@@ -27,26 +32,17 @@ export class UserDetailDobComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.datepickerOptions = {
-			minYear: 1904,
-			maxYear: new Date().getFullYear(),
-			locale: nbLocale,
-			firstCalendarDay: 1,
-			displayFormat: 'DD.MM.YYYY'
-		};
-
-		const dateField = document.getElementById('blDateField');
+		const dateField = document.getElementById("blDateField");
 		if (dateField) {
-			dateField.setAttribute('type', 'date');
-			if (dateField['type'] !== 'date') {
+			dateField.setAttribute("type", "date");
+			if (dateField["type"] !== "date") {
 				this.showDateStringFormat = true;
 			}
 		}
 
-
 		if (moment(this.dob).isValid()) {
-			this.dobInput = moment(this.dob).format('YYYY-MM-DD');
-			if (!moment(this.dob).isSame(new Date(), 'day')) {
+			this.dobInput = moment(this.dob).format("YYYY-MM-DD");
+			if (!moment(this.dob).isSame(new Date(), "day")) {
 				this.emitUnder18(this.dob); // should check under 18 on init
 			}
 		} else {
@@ -58,11 +54,10 @@ export class UserDetailDobComponent implements OnInit {
 		this.dateInvalidError = false;
 		let momentDate = null;
 
-
 		if (moment(new Date(this.dobInput)).isValid()) {
 			momentDate = moment(new Date(this.dobInput));
 		} else {
-			momentDate = moment(this.dobInput.toString(), 'DD.MM.YYYY');
+			momentDate = moment(this.dobInput.toString(), "DD.MM.YYYY");
 		}
 
 		if (!momentDate) {
@@ -89,7 +84,8 @@ export class UserDetailDobComponent implements OnInit {
 	}
 
 	isUnder18(date) {
-		return moment(date).isSameOrAfter(moment(new Date()).subtract(18, 'years'));
+		return moment(date).isSameOrAfter(
+			moment(new Date()).subtract(18, "years")
+		);
 	}
-
 }

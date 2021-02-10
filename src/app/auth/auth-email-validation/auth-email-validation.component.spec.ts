@@ -1,11 +1,11 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import {AuthEmailValidationComponent} from './auth-email-validation.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
-import {EmailValidationService, TokenService} from "@boklisten/bl-connect";
+import { AuthEmailValidationComponent } from "./auth-email-validation.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { EmailValidationService, TokenService } from "@boklisten/bl-connect";
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 	@Input() spin: any;
@@ -16,50 +16,52 @@ class FaIconStubComponent {
 class RouterStubService {}
 
 @Injectable()
-class TokenStubService {
-}
+class TokenStubService {}
 
 @Injectable()
 class ActivatedRouteStubService {
 	snapshot = {
 		paramMap: {
 			get: (id: any) => {
-				return '';
-			}
-		}
+				return "";
+			},
+		},
 	};
 }
 
 @Injectable()
 class EmailValidationStubService {
 	validateConfirmationLink(id: string) {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
-
-
-describe('AuthEmailValidationComponent', () => {
+describe("AuthEmailValidationComponent", () => {
 	let component: AuthEmailValidationComponent;
 	let fixture: ComponentFixture<AuthEmailValidationComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [
-				AuthEmailValidationComponent,
-				FaIconStubComponent
-			],
-			providers: [
-				{provide: Router, useClass: RouterStubService},
-				{provide: ActivatedRoute, useClass: ActivatedRouteStubService},
-				{provide: TokenService, useClass: TokenStubService},
-				{provide: EmailValidationService, useClass: EmailValidationStubService}
-			]
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [
+					AuthEmailValidationComponent,
+					FaIconStubComponent,
+				],
+				providers: [
+					{ provide: Router, useClass: RouterStubService },
+					{
+						provide: ActivatedRoute,
+						useClass: ActivatedRouteStubService,
+					},
+					{ provide: TokenService, useClass: TokenStubService },
+					{
+						provide: EmailValidationService,
+						useClass: EmailValidationStubService,
+					},
+				],
+			}).compileComponents();
 		})
-			.compileComponents();
-	}));
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(AuthEmailValidationComponent);
@@ -67,7 +69,7 @@ describe('AuthEmailValidationComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

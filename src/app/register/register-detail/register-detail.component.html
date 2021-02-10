@@ -1,4 +1,3 @@
-
 <div class="row mb-2">
 	<div class="col-12 text-center text-secondary">
 		<h3 i18n="@@registerDetailTitle">Register user details</h3>
@@ -8,7 +7,10 @@
 <div class="row">
 	<div class="col-12 text-center">
 		<p>
-			<span i18n="@@registerDetailUpdateDetailsFor">Update the details for</span> <strong>{{username}}</strong>
+			<span i18n="@@registerDetailUpdateDetailsFor"
+				>Update the details for</span
+			>
+			<strong>{{ username }}</strong>
 		</p>
 	</div>
 </div>
@@ -17,7 +19,9 @@
 	<div class="col-12">
 		<ngb-alert type="warning">
 			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span i18n="@@registerDetailErrorMsg">User details could not be updated</span>
+			<span i18n="@@registerDetailErrorMsg"
+				>User details could not be updated</span
+			>
 		</ngb-alert>
 	</div>
 </div>
@@ -26,20 +30,24 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="bl-input input-group">
-                <div class="bl-input-prepend input-group-prepend"
-					 placement="bottom"
-					 i18n-ngbTooltip="@@registerDetailFullName"
-					 ngbTooltip="Full name">
-                    <span class="input-group-text">
+				<div
+					class="bl-input-prepend input-group-prepend"
+					placement="bottom"
+					i18n-ngbTooltip="@@registerDetailFullName"
+					ngbTooltip="Full name"
+				>
+					<span class="input-group-text">
 						<fa-icon [icon]="'user'"></fa-icon>
-                    </span>
-                </div>
-                <input type="text"
-					   formControlName="name"
-					   class="form-control"
-					   i18n-placeholder="@@registerDetailFullName"
-					   placeholder="Full name"
-					   (keyup.enter)="onUpdateDetails()">
+					</span>
+				</div>
+				<input
+					type="text"
+					formControlName="name"
+					class="form-control"
+					i18n-placeholder="@@registerDetailFullName"
+					placeholder="Full name"
+					(keyup.enter)="onUpdateDetails()"
+				/>
 			</div>
 		</div>
 	</div>
@@ -47,20 +55,24 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="bl-input input-group">
-                <div class="bl-input-prepend input-group-prepend"
-					 placement="bottom"
-					 i18n-ngbTooltip="@@registerDetailPhoneNumber"
-					 ngbTooltip="Phone number">
-                    <span class="input-group-text">
+				<div
+					class="bl-input-prepend input-group-prepend"
+					placement="bottom"
+					i18n-ngbTooltip="@@registerDetailPhoneNumber"
+					ngbTooltip="Phone number"
+				>
+					<span class="input-group-text">
 						<fa-icon [icon]="'phone'"></fa-icon>
-                    </span>
-                </div>
-                <input type="number"
-					   formControlName="phone"
-					   i18n-placeholder="@@registerDetailPhoneNumber"
-					   class="form-control"
-					   placeholder="Phone number"
-					   (keyup.enter)="onUpdateDetails()">
+					</span>
+				</div>
+				<input
+					type="number"
+					formControlName="phone"
+					i18n-placeholder="@@registerDetailPhoneNumber"
+					class="form-control"
+					placeholder="Phone number"
+					(keyup.enter)="onUpdateDetails()"
+				/>
 			</div>
 		</div>
 	</div>
@@ -68,23 +80,29 @@
 	<div class="row mt-4">
 		<div class="col-12">
 			<div class="bl-input input-group md-3">
-                <div class="bl-input-prepend input-group-prepend"
-					 placement="bottom"
-					 i18n-ngbTooltip="@@registerDetailBirthday"
-					 ngbTooltip="Birthday">
-                    <span class="input-group-text">
+				<div
+					class="bl-input-prepend input-group-prepend"
+					placement="bottom"
+					i18n-ngbTooltip="@@registerDetailBirthday"
+					ngbTooltip="Birthday"
+				>
+					<span class="input-group-text">
 						<fa-icon [icon]="'birthday-cake'"></fa-icon>
-                    </span>
-                </div>
-                <input ngbDatepicker #d="ngbDatepicker"
+					</span>
+				</div>
+				<!--<input ngbDatepicker #d="ngbDatepicker"
 					   type="text" formControlName="dob"
 					   class="form-control"
 					   i18n-placeholder="@@registerDetailBirthday"
 					   placeholder="Birthday"
-					   (keyup.enter)="onUpdateDetails()">
+					   (keyup.enter)="onUpdateDetails()">-->
 
 				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+					<button
+						class="btn btn-outline-secondary"
+						(click)="d.toggle()"
+						type="button"
+					>
 						<fa-icon [icon]="'calendar-alt'"></fa-icon>
 					</button>
 				</div>
@@ -94,149 +112,185 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="bl-input input-group md-3">
-                <div class="bl-input-prepend input-group-prepend"
-					 placement="bottom"
-					 i18n-ngbTooltip="@@registerDetailAddress"
-					 ngbTooltip="Address">
-                    <span class="input-group-text">
+				<div
+					class="bl-input-prepend input-group-prepend"
+					placement="bottom"
+					i18n-ngbTooltip="@@registerDetailAddress"
+					ngbTooltip="Address"
+				>
+					<span class="input-group-text">
 						<fa-icon [icon]="'address-card'"></fa-icon>
-                    </span>
-                </div>
-                <input type="text"
-					   formControlName="address"
-					   class="form-control"
-					   i18n-placeholder="@@registerDetailAddress"
-					   placeholder="Address"
-					   (keyup.enter)="onUpdateDetails()">
+					</span>
+				</div>
+				<input
+					type="text"
+					formControlName="address"
+					class="form-control"
+					i18n-placeholder="@@registerDetailAddress"
+					placeholder="Address"
+					(keyup.enter)="onUpdateDetails()"
+				/>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-12">
 			<div class="bl-input input-group md-3">
-                <div class="bl-input-prepend input-group-prepend"
-					 placement="bottom"
-					 i18n-ngbTooltip="@@registerDetailAddress"
-					 ngbTooltip="Address">
-                    <span class="input-group-text">
+				<div
+					class="bl-input-prepend input-group-prepend"
+					placement="bottom"
+					i18n-ngbTooltip="@@registerDetailAddress"
+					ngbTooltip="Address"
+				>
+					<span class="input-group-text">
 						<fa-icon [icon]="'address-card'"></fa-icon>
-                    </span>
-                </div>
-				<input type="number"
-					   formControlName="postCode"
-					   class="form-control"
-					   i18n-placeholder="@@registerDetailPostCode"
-					   placeholder="Post code"
-					   (keyup.enter)="onUpdateDetails()">
-				<input type="text"
-					   formControlName="postCity"
-					   class="form-control"
-					   i18n-placeholder="@@registerDetailPostCity"
-					   placeholder="Post city"
-					   (keyup.enter)="onUpdateDetails()">
+					</span>
+				</div>
+				<input
+					type="number"
+					formControlName="postCode"
+					class="form-control"
+					i18n-placeholder="@@registerDetailPostCode"
+					placeholder="Post code"
+					(keyup.enter)="onUpdateDetails()"
+				/>
+				<input
+					type="text"
+					formControlName="postCity"
+					class="form-control"
+					i18n-placeholder="@@registerDetailPostCity"
+					placeholder="Post city"
+					(keyup.enter)="onUpdateDetails()"
+				/>
 			</div>
 		</div>
 	</div>
 
-
-
 	<div class="row mt-4">
 		<div class="col-12">
 			<div class="bl-input input-group mb-3">
-				<div class="input-group-prepend"
-					 i18n-ngbTooltip="@@registerDetailBranch"
-					 ngbTooltip="Branch"
-					 placement="bottom">
+				<div
+					class="input-group-prepend"
+					i18n-ngbTooltip="@@registerDetailBranch"
+					ngbTooltip="Branch"
+					placement="bottom"
+				>
 					<label class="input-group-text" for="inputGroupSelect01">
 						<fa-icon [icon]="'graduation-cap'"></fa-icon>
 					</label>
 				</div>
-				<select class="custom-select"
-						id="inputGroupSelect01"
-						formControlName="branch"
-						i18n-placeholder="@@registerDetailBranch"
-						placeholder="Branch">
+				<select
+					class="custom-select"
+					id="inputGroupSelect01"
+					formControlName="branch"
+					i18n-placeholder="@@registerDetailBranch"
+					placeholder="Branch"
+				>
 					<option value="" disabled selected>
 						<span i18n="@@registerDetailBranch">Branch</span>
 					</option>
-					<option *ngFor="let branch of branches" value="{{branch.id}}">{{branch.name}}</option>
+					<option
+						*ngFor="let branch of branches"
+						value="{{ branch.id }}"
+					>
+						{{ branch.name }}
+					</option>
 				</select>
 			</div>
 		</div>
 	</div>
 
-
-	<div class="row mt-4" *ngIf="showGuardianRegister()" formGroupName="guardian">
+	<div
+		class="row mt-4"
+		*ngIf="showGuardianRegister()"
+		formGroupName="guardian"
+	>
 		<div class="col-12">
 			<div class="row">
 				<div class="col-12 text-center">
-					<h4 i18n="@@registerDetailGuardianTitle">Guardian details</h4>
+					<h4 i18n="@@registerDetailGuardianTitle">
+						Guardian details
+					</h4>
 				</div>
 				<div class="col-12">
 					<p>
 						<span i18n="@@registerDetailGuardianUnder18Info">
-							Since you are under the age of 18, we need details about your guardian. You can read more about why we need this by
-							visiting our
+							Since you are under the age of 18, we need details
+							about your guardian. You can read more about why we
+							need this by visiting our
 						</span>
-						<a routerLink="{{userAgreementUrl}}">
-							<span i18n="@@registerDetailGuardianUserAgreement">user agreement page</span></a>
+						<a routerLink="{{ userAgreementUrl }}">
+							<span i18n="@@registerDetailGuardianUserAgreement"
+								>user agreement page</span
+							></a
+						>
 					</p>
-
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-12">
-                    <div class="bl-input input-group md-3">
-                        <div class="bl-input-prepend input-group-prepend"
-							 placement="bottom"
-							 i18n-nbgTooltip="@@registerDetailGuardianFullName"
-							 ngbTooltip="Guardian full name">
-                            <span class="input-group-text">
+					<div class="bl-input input-group md-3">
+						<div
+							class="bl-input-prepend input-group-prepend"
+							placement="bottom"
+							i18n-nbgTooltip="@@registerDetailGuardianFullName"
+							ngbTooltip="Guardian full name"
+						>
+							<span class="input-group-text">
 								<fa-icon [icon]="'user'"></fa-icon>
-                            </span>
-                        </div>
-                        <input type="text"
-							   formControlName="name"
-							   class="form-control"
-							   i18n-placeholder="@@registerDetailGuardianFullName"
-							   placeholder="Guardian full name"
-							   (keyup.enter)="onUpdateDetails()">
-                    </div>
+							</span>
+						</div>
+						<input
+							type="text"
+							formControlName="name"
+							class="form-control"
+							i18n-placeholder="@@registerDetailGuardianFullName"
+							placeholder="Guardian full name"
+							(keyup.enter)="onUpdateDetails()"
+						/>
+					</div>
 
 					<div class="bl-input input-group md-3">
-                        <div class="bl-input-prepend input-group-prepend"
-							 placement="bottom"
-							 i18n-ngbTooltip="@@registerDetailGuardianEmail"
-							 ngbTooltip="Guardian email">
-                            <span class="input-group-text">
+						<div
+							class="bl-input-prepend input-group-prepend"
+							placement="bottom"
+							i18n-ngbTooltip="@@registerDetailGuardianEmail"
+							ngbTooltip="Guardian email"
+						>
+							<span class="input-group-text">
 								<fa-icon [icon]="'at'"></fa-icon>
-                            </span>
-                        </div>
-                        <input type="email"
-							   formControlName="email"
-							   class="form-control"
-							   i18n-placeholder="@@registerDetailGuardianEmail"
-							   placeholder="Guardian email"
-							   (keyup.enter)="onUpdateDetails()">
-                    </div>
+							</span>
+						</div>
+						<input
+							type="email"
+							formControlName="email"
+							class="form-control"
+							i18n-placeholder="@@registerDetailGuardianEmail"
+							placeholder="Guardian email"
+							(keyup.enter)="onUpdateDetails()"
+						/>
+					</div>
 
-                    <div class="bl-input input-group md-3">
-                        <div class="bl-input-prepend input-group-prepend"
-							 placement="bottom"
-							 i18n-ngbTooltip="@@registerDetailGuardianPhone"
-							 ngbTooltip="Guardian phone">
-                            <span class="input-group-text">
-                                <fa-icon [icon]="'phone'"></fa-icon>
-                            </span>
-                        </div>
-                        <input type="number"
-							   formControlName="phone"
-							   class="form-control"
-							   i18n-placeholder="@@registerDetailGuardianPhone"
-							   placeholder="Guardian phone"
-							   (keyup.enter)="onUpdateDetails()">
-
-                    </div>
+					<div class="bl-input input-group md-3">
+						<div
+							class="bl-input-prepend input-group-prepend"
+							placement="bottom"
+							i18n-ngbTooltip="@@registerDetailGuardianPhone"
+							ngbTooltip="Guardian phone"
+						>
+							<span class="input-group-text">
+								<fa-icon [icon]="'phone'"></fa-icon>
+							</span>
+						</div>
+						<input
+							type="number"
+							formControlName="phone"
+							class="form-control"
+							i18n-placeholder="@@registerDetailGuardianPhone"
+							placeholder="Guardian phone"
+							(keyup.enter)="onUpdateDetails()"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -244,15 +298,24 @@
 
 	<div class="row mt-5">
 		<div class="col-12">
-			<button type="button" class="btn btn-block btn-outline-success" (click)="onUpdateDetails()">
-				<span i18n="@@registerDetailUpdateDetailButton">Update details</span>
+			<button
+				type="button"
+				class="btn btn-block btn-outline-success"
+				(click)="onUpdateDetails()"
+			>
+				<span i18n="@@registerDetailUpdateDetailButton"
+					>Update details</span
+				>
 			</button>
 		</div>
 		<div class="col-12 mt-2">
-			<button type="button" class="btn btn-block btn-link" (click)="onDoItLater()">
+			<button
+				type="button"
+				class="btn btn-block btn-link"
+				(click)="onDoItLater()"
+			>
 				<span i18n="@@registerDetailGoBackButton">Go back</span>
 			</button>
 		</div>
 	</div>
-
 </form>

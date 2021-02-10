@@ -1,18 +1,18 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {LocalRegisterService} from "./local-register.service";
-import * as EmailValidator from 'email-validator';
-import {BlApiError} from "@boklisten/bl-model";
-import {BlApiUserAlreadyExistsError} from "@boklisten/bl-model/dist/bl-api-error/bl-api-user-already-exists-error";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { LocalRegisterService } from "./local-register.service";
+import * as EmailValidator from "email-validator";
+import { BlApiError } from "@boklisten/bl-model";
+import { BlApiUserAlreadyExistsError } from "@boklisten/bl-model/dist/bl-api-error/bl-api-user-already-exists-error";
 
 @Component({
-	selector: 'bl-local-register',
-	templateUrl: './local-register.component.html',
-	styleUrls: ['./local-register.component.scss']
+	selector: "bl-local-register",
+	templateUrl: "./local-register.component.html",
+	styleUrls: ["./local-register.component.scss"],
 })
 export class LocalRegisterComponent implements OnInit {
-
 	@Input() agreementConfirmed: boolean;
-	@Output() registerWithoutAgreement: EventEmitter<boolean> = new EventEmitter();
+	@Output()
+	registerWithoutAgreement: EventEmitter<boolean> = new EventEmitter();
 	@Output() registered: EventEmitter<boolean> = new EventEmitter();
 
 	public email: string;
@@ -36,27 +36,24 @@ export class LocalRegisterComponent implements OnInit {
 
 	public registerError: boolean;
 
-
 	constructor(private _localRegisterService: LocalRegisterService) {
-		this.email = '';
-		this.password = '';
-		this.tooltipEmail = 'Email';
-		this.tooltipPassword = 'Password';
-		this.placeholderEmail = 'Email';
-		this.placeholderPassword = 'Password';
+		this.email = "";
+		this.password = "";
+		this.tooltipEmail = "Email";
+		this.tooltipPassword = "Password";
+		this.placeholderEmail = "Email";
+		this.placeholderPassword = "Password";
 		this.warning = false;
-		this.warningText = '';
-		this.registerButtonText = 'Register';
+		this.warningText = "";
+		this.registerButtonText = "Register";
 		this.registerError = false;
 
-		this.passwordToShort = 'Password is to short, needs to be at least 6 characters';
-		this.emailNotValid = 'Email is not valid';
-
+		this.passwordToShort =
+			"Password is to short, needs to be at least 6 characters";
+		this.emailNotValid = "Email is not valid";
 	}
 
-	ngOnInit() {
-
-	}
+	ngOnInit() {}
 
 	public onRegister() {
 		this.clearWarning();
@@ -78,20 +75,22 @@ export class LocalRegisterComponent implements OnInit {
 			return;
 		}
 
-		this._localRegisterService.register(this.email, this.password).then(() => {
-			this.registered.emit(true);
-		}).catch((blApiErr: BlApiError) => {
-
-			if (blApiErr instanceof BlApiUserAlreadyExistsError) {
-				this.userAlreadyExistsError = true;
-			} else {
-				this.registerError = true;
-			}
-		});
+		this._localRegisterService
+			.register(this.email, this.password)
+			.then(() => {
+				this.registered.emit(true);
+			})
+			.catch((blApiErr: BlApiError) => {
+				if (blApiErr instanceof BlApiUserAlreadyExistsError) {
+					this.userAlreadyExistsError = true;
+				} else {
+					this.registerError = true;
+				}
+			});
 	}
 
 	public showRegisterButton() {
-		return (EmailValidator.validate(this.email) && this.password.length > 0);
+		return EmailValidator.validate(this.email) && this.password.length > 0;
 	}
 
 	private setWarning(msg: string) {
@@ -100,8 +99,7 @@ export class LocalRegisterComponent implements OnInit {
 	}
 
 	public clearWarning() {
-		this.warningText = '';
+		this.warningText = "";
 		this.warning = false;
 	}
-
 }

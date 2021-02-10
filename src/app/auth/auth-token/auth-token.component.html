@@ -6,10 +6,11 @@
 
 <div class="row justify-content-center mt-2" *ngIf="!addTokensError">
 	<div class="col-auto">
-		<h6 i18n="@@authTokenComponentWeAreLoggingYouIn">We are logging you in, please wait</h6>
+		<h6 i18n="@@authTokenComponentWeAreLoggingYouIn">
+			We are logging you in, please wait
+		</h6>
 	</div>
 </div>
-
 
 <div class="row justify-content-center mt-2" *ngIf="addTokensError">
 	<div class="col-12">
@@ -17,9 +18,11 @@
 			<span i18n="@@authTokenFailedToLoginError">
 				Failed to log you in.
 			</span>
-			<span i18n="@@authTokenTryToLoginAgain"
-				  (click)="onLoginAgainClick()"
-				  class="bl-link font-weight-bold">
+			<span
+				i18n="@@authTokenTryToLoginAgain"
+				(click)="onLoginAgainClick()"
+				class="bl-link font-weight-bold"
+			>
 				Click here to try again
 			</span>
 		</div>

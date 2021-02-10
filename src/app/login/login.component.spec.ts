@@ -1,35 +1,36 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import {LoginComponent} from './login.component';
-import {HttpClientModule} from "@angular/common/http";
-import {LocalLoginService} from "./local-login/local-login.service";
-import {JwtHelperService, JwtModule} from "@auth0/angular-jwt";
-import {CookieModule} from "ngx-cookie";
-import {StorageService, TokenService} from "@boklisten/bl-connect";
+import { LoginComponent } from "./login.component";
+import { HttpClientModule } from "@angular/common/http";
+import { LocalLoginService } from "./local-login/local-login.service";
+import { JwtHelperService, JwtModule } from "@auth0/angular-jwt";
+import { CookieModule } from "ngx-cookie";
+import { StorageService, TokenService } from "@boklisten/bl-connect";
 
-describe('LoginComponent', () => {
+describe("LoginComponent", () => {
 	let component: LoginComponent;
 	let fixture: ComponentFixture<LoginComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
 				imports: [
 					HttpClientModule,
 					JwtModule.forRoot({
 						config: {
 							whitelistedDomains: [],
 							tokenGetter: () => {
-								return '';
-							}
-						}
+								return "";
+							},
+						},
 					}),
-					CookieModule.forChild()
+					CookieModule.forChild(),
 				],
 				declarations: [LoginComponent],
-				providers: [LocalLoginService, TokenService, StorageService]
-			})
-			.compileComponents();
-	}));
+				providers: [LocalLoginService, TokenService, StorageService],
+			}).compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(LoginComponent);
@@ -37,7 +38,7 @@ describe('LoginComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should be created', () => {
+	it("should be created", () => {
 		expect(component).toBeTruthy();
 	});
 });

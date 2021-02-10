@@ -7,7 +7,7 @@ import { LOGIN_MODULE_SETTINGS } from "../../login/login-module-settings";
 @Component({
 	selector: "bl-auth-token",
 	templateUrl: "./auth-token.component.html",
-	styleUrls: ["./auth-token.component.scss"]
+	styleUrls: ["./auth-token.component.scss"],
 })
 export class AuthTokenComponent implements OnInit {
 	public addTokensError: boolean;

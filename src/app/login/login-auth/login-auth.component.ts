@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import {
 	LOGIN_MODULE_SETTINGS,
-	LoginModuleSettings
+	LoginModuleSettings,
 } from "../login-module-settings";
 import { AuthLoginService } from "../auth-login.service";
 import { StorageService } from "@boklisten/bl-connect";
@@ -10,7 +10,7 @@ import { StorageService } from "@boklisten/bl-connect";
 @Component({
 	selector: "bl-login-auth",
 	templateUrl: "./login-auth.component.html",
-	styleUrls: ["./login-auth.component.scss"]
+	styleUrls: ["./login-auth.component.scss"],
 })
 export class LoginAuthComponent implements OnInit {
 	public orUseEmailText: string;

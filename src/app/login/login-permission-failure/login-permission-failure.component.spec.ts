@@ -1,25 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { LoginPermissionFailureComponent } from './login-permission-failure.component';
+import { LoginPermissionFailureComponent } from "./login-permission-failure.component";
 
-describe('LoginPermissionFailureComponent', () => {
-  let component: LoginPermissionFailureComponent;
-  let fixture: ComponentFixture<LoginPermissionFailureComponent>;
+describe("LoginPermissionFailureComponent", () => {
+	let component: LoginPermissionFailureComponent;
+	let fixture: ComponentFixture<LoginPermissionFailureComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoginPermissionFailureComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [LoginPermissionFailureComponent],
+			}).compileComponents();
+		})
+	);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginPermissionFailureComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(LoginPermissionFailureComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it("should create", () => {
+		expect(component).toBeTruthy();
+	});
 });

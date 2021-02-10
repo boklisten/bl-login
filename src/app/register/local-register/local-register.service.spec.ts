@@ -1,15 +1,18 @@
-import {TestBed, inject} from '@angular/core/testing';
+import { TestBed, inject } from "@angular/core/testing";
 
-import {LocalRegisterService} from './local-register.service';
+import { LocalRegisterService } from "./local-register.service";
 
-describe('LocalRegisterService', () => {
+describe("LocalRegisterService", () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [LocalRegisterService]
+			providers: [LocalRegisterService],
 		});
 	});
-	
-	it('should be created', inject([LocalRegisterService], (service: LocalRegisterService) => {
-		expect(service).toBeTruthy();
-	}));
+
+	it("should be created", inject(
+		[LocalRegisterService],
+		(service: LocalRegisterService) => {
+			expect(service).toBeTruthy();
+		}
+	));
 });
