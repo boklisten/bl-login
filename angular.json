@@ -25,7 +25,15 @@
 						"polyfills": "src/polyfills.ts",
 						"assets": ["src/assets", "src/favicon.ico"],
 						"styles": ["src/styles.scss"],
-						"scripts": []
+						"scripts": [],
+     					"allowedCommonJsDependencies": [
+     					   "@boklisten/bl-model",
+							"moment-es6",
+							"util",
+							"file-saver",
+							"rxjs/internal/Subject",
+							"@boklisten/bl-model/dist/bl-api-error/bl-api-username-and-password-error"
+     					]
 					},
 					"configurations": {
 						"production": {

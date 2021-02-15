@@ -54,7 +54,7 @@ const routes: Routes = [
 			},
 			{
 				path: "register/detail",
-				component: RegisterDetailComponent,
+				component: UserDetailEditComponent,
 			},
 			{
 				path: "token",

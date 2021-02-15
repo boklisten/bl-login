@@ -1,91 +1,75 @@
-import {
-	Component,
-	DoCheck,
-	EventEmitter,
-	Input,
-	OnChanges,
-	OnInit,
-	Output,
-} from "@angular/core";
-import moment from "moment-es6";
-import * as nbLocale from "date-fns/locale/nb";
+import {Component, EventEmitter, Injectable, Input, Output} from '@angular/core';
+import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import moment from 'moment';
+
+/**
+ * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
+ */
+@Injectable()
+export class CustomDateParserFormatter extends NgbDateParserFormatter {
+
+  readonly DELIMITER = '/';
+
+  parse(value: string): NgbDateStruct | null {
+    if (value) {
+      const date = value.split(this.DELIMITER);
+      return {
+        day : parseInt(date[0], 10),
+        month : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    return null;
+  }
+
+  format(date: NgbDateStruct | null): string {
+	let day;
+	let month;
+	if (date) {
+		day = date.day < 10 ? "0" + date.day : date.day;
+		month = date.month < 10 ? "0" + date.month : date.month;
+	}
+
+    return date ? day + this.DELIMITER + month + this.DELIMITER + date.year : '';
+  }
+}
 
 @Component({
 	selector: "bl-user-detail-dob",
 	templateUrl: "./user-detail-dob.component.html",
 	styleUrls: ["./user-detail-dob.component.scss"],
+
+  providers: [
+    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
+  ]
 })
-export class UserDetailDobComponent implements OnInit {
-	@Input() dob: Date;
-	@Output() dobChange: EventEmitter<Date>;
+export class UserDetailDobComponent {
 	@Output() under18: EventEmitter<boolean>;
 	@Output() dateChange: EventEmitter<Date>;
-	dobInput: string;
-	dateInvalidError: boolean;
-	public showDateStringFormat: boolean;
+	@Input() dob: Date;
+	@Output() dobChange: EventEmitter<Date>;
 
-	constructor() {
-		this.dobChange = new EventEmitter<Date>();
-		this.under18 = new EventEmitter<boolean>();
-		this.dateChange = new EventEmitter<Date>();
-		this.dateInvalidError = false;
-	}
+  constructor(private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>) {
+	  this.under18 = new EventEmitter();
+	  this.dateChange = new EventEmitter();
+	  this.dobChange = new EventEmitter();
+  }
 
-	ngOnInit() {
-		const dateField = document.getElementById("blDateField");
-		if (dateField) {
-			dateField.setAttribute("type", "date");
-			if (dateField["type"] !== "date") {
-				this.showDateStringFormat = true;
-			}
-		}
+  onDobChange() {
+	  this.dateChange.emit(this.dob)
+	  this.dobChange.emit(this.dob)
+	  if (this.isUnder18()) {
+		  this.under18.emit(true);
+	  } else {
+		  this.under18.emit(false)
+	  }
+  }
 
-		if (moment(this.dob).isValid()) {
-			this.dobInput = moment(this.dob).format("YYYY-MM-DD");
-			if (!moment(this.dob).isSame(new Date(), "day")) {
-				this.emitUnder18(this.dob); // should check under 18 on init
-			}
-		} else {
-			this.dobInput = moment().toString();
-		}
-	}
+  isUnder18() {
+	  return moment(this.dob).isSameOrAfter(moment().subtract(18, "years"))
+  }
 
-	public onDobChange() {
-		this.dateInvalidError = false;
-		let momentDate = null;
-
-		if (moment(new Date(this.dobInput)).isValid()) {
-			momentDate = moment(new Date(this.dobInput));
-		} else {
-			momentDate = moment(this.dobInput.toString(), "DD.MM.YYYY");
-		}
-
-		if (!momentDate) {
-			this.dateInvalidError = true;
-			return;
-		}
-
-		this.setDates(moment(momentDate).toDate());
-	}
-
-	setDates(dob: Date) {
-		this.dob = dob;
-		this.dobChange.emit(this.dob);
-		this.dateChange.emit(this.dob);
-		this.emitUnder18(this.dob);
-	}
-
-	emitUnder18(date: Date) {
-		if (this.isUnder18(date)) {
-			this.under18.emit(true);
-		} else {
-			this.under18.emit(false);
-		}
-	}
-
-	isUnder18(date) {
-		return moment(date).isSameOrAfter(
-			moment(new Date()).subtract(18, "years")
-		);
-	}
+  get today() {
+    return this.dateAdapter.toModel(this.ngbCalendar.getToday())!;
+  }
 }

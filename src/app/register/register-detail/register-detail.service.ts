@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { AccessToken, BlApiError, UserDetail } from "@boklisten/bl-model";
+import { BlApiError, UserDetail } from "@boklisten/bl-model";
 import { APP_CONFIG } from "../../app_config";
 import { TokenService, UserDetailService } from "@boklisten/bl-connect";
 
