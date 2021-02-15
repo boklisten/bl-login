@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Injectable, Input, Output} from '@angular/core';
 import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import moment from 'moment';
+import moment from 'moment-es6';
 
 /**
  * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
@@ -48,14 +48,19 @@ export class UserDetailDobComponent {
 	@Output() dateChange: EventEmitter<Date>;
 	@Input() dob: Date;
 	@Output() dobChange: EventEmitter<Date>;
+  dateInvalidError: boolean;
 
   constructor(private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>) {
 	  this.under18 = new EventEmitter();
 	  this.dateChange = new EventEmitter();
 	  this.dobChange = new EventEmitter();
+    this.dateInvalidError = false;
   }
 
   onDobChange() {
+    this.dateInvalidError = !moment(this.dob).isValid();
+    if (this.dateInvalidError) return
+
 	  this.dateChange.emit(this.dob)
 	  this.dobChange.emit(this.dob)
 	  if (this.isUnder18()) {
