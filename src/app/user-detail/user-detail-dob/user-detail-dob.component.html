@@ -19,6 +19,8 @@
 				(change)="onDobChange()"
 				id="blDateField"
 				title="dob"
+				[minDate]="{ year: 1900, month: 1, day: 1 }"
+				[maxDate]="maxDate"
 			/>
 			<div class="input-group-append">
 				<button

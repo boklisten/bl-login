@@ -21,7 +21,10 @@ import {
 	LoginModuleSettings,
 } from "./login-module-settings";
 import { AuthModule } from "../auth/auth.module";
-import { FontAwesomeModule, FaIconLibrary } from "@fortawesome/angular-fontawesome";
+import {
+	FontAwesomeModule,
+	FaIconLibrary,
+} from "@fortawesome/angular-fontawesome";
 
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 
@@ -113,10 +116,9 @@ export class LoginModule {
 			faSync,
 			faChevronRight
 		);
-
 	}
 
-	public static withConfig(settings?: LoginModuleSettings):LoginModule {
+	public static withConfig(settings?: LoginModuleSettings): LoginModule {
 		if (settings) {
 			if (settings.successPath) {
 				LOGIN_MODULE_SETTINGS.successPath = settings.successPath;

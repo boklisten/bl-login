@@ -3,7 +3,7 @@
 `bl-login` is a login and registration module for Boklisten.no. This README is
 for development and technical documentation. For a deep-dive into what
 `bl-login` is and can do [please read our
-documentation](https://github.com/holskil/bl-doc/blob/master/bl-login#summary)
+documentation](https://github.com/boklisten/bl-doc/blob/master/bl-login#summary)
 
 -   [Requirements](#requirements)
 -   [How to run](#how-to-run)
@@ -20,7 +20,7 @@ documentation](https://github.com/holskil/bl-doc/blob/master/bl-login#summary)
 
 # How to run
 
-1. Clone this repo to your own computer `git clone https://github.com/holskil/bl-login`
+1. Clone this repo to your own computer `git clone https://github.com/boklisten/bl-login`
 2. Navigate into the newly created `bl-login` folder
 3. Install npm modules `npm i`
 4. Ensure that `bl-api` is running on `http://localhost:1337`

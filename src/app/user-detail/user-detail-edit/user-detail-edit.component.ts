@@ -116,7 +116,7 @@ export class UserDetailEditComponent implements OnInit {
 			postCity: "oslo",
 			country: "norway",
 			branch: "branch1",
-			dob: "2020-11-24T18:41:12.475Z"
+			dob: "2000-11-24T18:41:12.475Z",
 		} as any;
 		*/
 		if (
