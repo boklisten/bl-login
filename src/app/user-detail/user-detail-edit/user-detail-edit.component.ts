@@ -2,7 +2,6 @@ import {
 	Component,
 	EventEmitter,
 	Input,
-	OnChanges,
 	OnInit,
 	Output,
 } from "@angular/core";
@@ -11,7 +10,7 @@ import {
 	TokenService,
 	LoginService,
 } from "@boklisten/bl-connect";
-import { UserDetail, BlApiError } from "@boklisten/bl-model";
+import { UserDetail } from "@boklisten/bl-model";
 import {
 	AbstractControl,
 	FormBuilder,
@@ -20,9 +19,6 @@ import {
 	ValidatorFn,
 	Validators,
 } from "@angular/forms";
-import { isNumber } from "util";
-import { NgbDateAdapter } from "@ng-bootstrap/ng-bootstrap";
-import { NgbDateNativeAdapter } from "../../register/register-detail/register-detail.component";
 
 import moment from "moment-es6";
 

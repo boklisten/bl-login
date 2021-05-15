@@ -29,11 +29,16 @@
 						"allowedCommonJsDependencies": [
 							"@boklisten/bl-model",
 							"moment-es6",
-							"util",
 							"file-saver",
 							"rxjs/internal/Subject",
 							"@boklisten/bl-model/dist/bl-api-error/bl-api-username-and-password-error"
-						]
+						],
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"buildOptimizer": false,
+							"sourceMap": true,
+							"optimization": false,
+							"namedChunks": true
 					},
 					"configurations": {
 						"production": {
