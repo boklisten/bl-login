@@ -82,7 +82,12 @@ export class UserDetailDobComponent {
 
 	onDobChange() {
 		this.dateInvalidError = !moment(this.dob).isValid();
-		if (this.dateInvalidError) return;
+		if (this.dateInvalidError) {
+			this.dateChange.emit(null);
+			this.dobChange.emit(null);
+			this.under18.emit(false);
+			return;
+		}
 
 		this.dateChange.emit(this.dob);
 		this.dobChange.emit(this.dob);
