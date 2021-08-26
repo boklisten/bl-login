@@ -147,8 +147,25 @@ export class UserDetailEditComponent implements OnInit {
 		};
 	}
 
-	isDobValid() {
-		return this.userDetail.dob !== this.defaultDate;
+	isDobValid(): boolean {
+		if (!this.userDetail) return false;
+		const dateFormat = "DD/MM/YYYY";
+		const isValidDate = moment(
+			moment(this.userDetail.dob).format(dateFormat),
+			dateFormat,
+			true
+		).isValid();
+		return (
+			this.userDetail.dob !== this.defaultDate &&
+			isValidDate &&
+			moment(this.userDetail.dob).isSameOrBefore(
+				moment().subtract(12, "years"),
+				"day"
+			) &&
+			moment(this.userDetail.dob).isSameOrAfter(
+				moment().subtract(100, "years")
+			)
+		);
 	}
 
 	requiredIfUserUnder18(): ValidatorFn {
@@ -274,15 +291,17 @@ export class UserDetailEditComponent implements OnInit {
 		this.checkIfCanSave();
 	}
 
-	public checkIfCanSave() {
+	public checkIfCanSave(): void {
 		if (
 			this.userDetailForm.valid &&
-			(this.userDetailForm.touched || this.userDetailForm.dirty)
+			(this.userDetailForm.touched || this.userDetailForm.dirty) &&
+			this.isDobValid()
 		) {
 			this.canSave = true;
 		} else if (
 			this.userDetailForm.valid &&
-			this.oldDob !== this.userDetail.dob
+			this.oldDob !== this.userDetail.dob &&
+			this.isDobValid()
 		) {
 			this.canSave = true;
 		} else {

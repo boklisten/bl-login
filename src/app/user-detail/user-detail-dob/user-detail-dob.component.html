@@ -13,7 +13,7 @@
 				name="dob"
 				[ngClass]="{ 'bl-input-invalid': dateInvalidError }"
 				i18n-placeholder="@@userDetailDob"
-				placeholder="dd-mm-yyyy"
+				placeholder="dd/mm/yyyy"
 				[(ngModel)]="dob"
 				(dateSelect)="onDobChange()"
 				(change)="onDobChange()"
@@ -21,6 +21,8 @@
 				title="dob"
 				[minDate]="{ year: 1900, month: 1, day: 1 }"
 				[maxDate]="maxDate"
+				autocomplete="bday"
+				required
 			/>
 			<div class="input-group-append">
 				<button
