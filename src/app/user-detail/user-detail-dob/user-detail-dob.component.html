@@ -12,7 +12,6 @@
 				class="form-control"
 				name="dob"
 				[ngClass]="{ 'bl-input-invalid': dateInvalidError }"
-				i18n-placeholder="@@userDetailDob"
 				placeholder="dd/mm/yyyy"
 				[(ngModel)]="dob"
 				(dateSelect)="onDobChange()"
