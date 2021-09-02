@@ -65,7 +65,7 @@ export class UserDetailDobComponent {
 	@Output() dobChange: EventEmitter<Date>;
 	dateInvalidError: boolean;
 	maxDate = {
-		year: moment().subtract(12, "years").year(),
+		year: moment().subtract(10, "years").year(),
 		month: 12,
 		day: 31,
 	};

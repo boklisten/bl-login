@@ -159,7 +159,7 @@ export class UserDetailEditComponent implements OnInit {
 			this.userDetail.dob !== this.defaultDate &&
 			isValidDate &&
 			moment(this.userDetail.dob).isSameOrBefore(
-				moment().subtract(12, "years"),
+				moment().subtract(10, "years"),
 				"day"
 			) &&
 			moment(this.userDetail.dob).isSameOrAfter(
