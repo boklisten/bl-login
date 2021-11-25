@@ -5,7 +5,7 @@ import { RegisterDetailComponent } from "./register-detail/register-detail.compo
 import { RegisterComponent } from "./register.component";
 import { SocialRegisterComponent } from "./social-register/social-register.component";
 import { LocalRegisterComponent } from "./local-register/local-register.component";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModule, NgbCollapseModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RegisterAgreementComponent } from "./register-agreement/register-agreement.component";
 import { UserAgreementModalComponent } from "./user-agreement-modal/user-agreement-modal.component";
@@ -24,6 +24,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 		ReactiveFormsModule,
 		RouterModule,
 		NgbModule,
+		NgbCollapseModule,
 		BlConnectModule,
 		FontAwesomeModule,
 	],

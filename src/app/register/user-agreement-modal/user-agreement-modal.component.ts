@@ -6,7 +6,10 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./user-agreement-modal.component.scss"],
 })
 export class UserAgreementModalComponent implements OnInit {
+	public isCollapsed: boolean;
 	constructor() {}
 
-	ngOnInit() {}
+	ngOnInit(): void {
+		this.isCollapsed = true;
+	}
 }
