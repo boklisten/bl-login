@@ -46,8 +46,7 @@ export class UserDetailEditComponent implements OnInit {
 		private formBuilder: FormBuilder
 	) {
 		this.patchValues = new EventEmitter<any>();
-		const nameValidatorRegex =
-			/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){},.|~<>;:[\]]{2,}$/;
+		const nameValidatorRegex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){},.|~<>;:[\]]{2,}$/;
 
 		this.userDetailForm = this.formBuilder.group({
 			email: new FormControl({ value: "", disabled: true }, [
