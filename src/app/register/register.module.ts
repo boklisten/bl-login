@@ -8,7 +8,6 @@ import { LocalRegisterComponent } from "./local-register/local-register.componen
 import { NgbModule, NgbCollapseModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RegisterAgreementComponent } from "./register-agreement/register-agreement.component";
-import { UserAgreementModalComponent } from "./user-agreement-modal/user-agreement-modal.component";
 import { RegisterDetailService } from "./register-detail/register-detail.service";
 import { SocialRegisterService } from "./social-register/social-register.service";
 import { BlConnectModule } from "@boklisten/bl-connect";
@@ -40,7 +39,6 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 		SocialRegisterComponent,
 		LocalRegisterComponent,
 		RegisterAgreementComponent,
-		UserAgreementModalComponent,
 	],
 	exports: [RegisterComponent, RegisterDetailComponent],
 })
