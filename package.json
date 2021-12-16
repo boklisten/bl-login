@@ -73,7 +73,7 @@
 		"ng-packagr": "^11.2.0",
 		"ngx-cookie": "^5.0.1",
 		"ngx-i18nsupport": "^0.17.1",
-		"prettier": "^2.2.1",
+		"prettier": "^2.3.0",
 		"protractor": "~7.0.0",
 		"rxjs": "^6.6.3",
 		"ts-node": "~9.1.1",
