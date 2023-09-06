@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { LocalLoginService } from "./local-login.service";
 import * as EmailValidator from "email-validator";
 import {
@@ -6,8 +6,8 @@ import {
 	BlApiLoginRequiredError,
 	BlApiPermissionDeniedError,
 } from "@boklisten/bl-model";
-import { BlApiUsernameAndPasswordError } from "@boklisten/bl-model/dist/bl-api-error/bl-api-username-and-password-error";
-import { BlApiUserAlreadyExistsError } from "@boklisten/bl-model/dist/bl-api-error/bl-api-user-already-exists-error";
+import { BlApiUsernameAndPasswordError } from "@boklisten/bl-model/bl-api-error/bl-api-username-and-password-error";
+import { BlApiUserAlreadyExistsError } from "@boklisten/bl-model/bl-api-error/bl-api-user-already-exists-error";
 
 @Component({
 	selector: "bl-local-login",
