@@ -13,10 +13,8 @@ documentation](https://github.com/boklisten/bl-doc/blob/master/bl-login#summary)
 
 # Requirements
 
--   NodeJS v8.0 or higher
--   Typescript v3.0 or higher
--   NPM v6.14.0 or higher
--   bl-api v1.11.2 or higher
+-   NodeJS v10.0 or higher
+-   Python <3.11 or [fix node-gyp](https://stackoverflow.com/a/75260066)
 
 # How to run
 
