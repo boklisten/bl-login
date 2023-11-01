@@ -12,7 +12,7 @@
 		"lint": "eslint . --ignore-path .gitignore --fix",
 		"test": "ng test --sourcemaps=false",
 		"build:lib": "ng-packagr -p package.json",
-		"pub": "npm run build:lib && npm publish ./dist/@boklisten/bl-login",
+		"pub": "npm run build:lib && cd dist/@boklisten/bl-login && npm publish",
 		"blink": "npm run build:lib && npm link dist/bl-login"
 	},
 	"ngPackage": {
