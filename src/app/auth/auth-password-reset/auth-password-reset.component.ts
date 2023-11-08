@@ -14,6 +14,7 @@ export class AuthPasswordResetComponent implements OnInit {
 	public warning: boolean;
 	public password: string;
 	public passwordNotValid: boolean;
+	private resetToken: string;
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class AuthPasswordResetComponent implements OnInit {
 
 	ngOnInit() {
 		this.id = this._route.snapshot.paramMap.get("id");
+		this.resetToken = this._route.snapshot.queryParamMap.get("resetToken");
 	}
 
 	public onSetNewPassword() {
@@ -44,7 +46,7 @@ export class AuthPasswordResetComponent implements OnInit {
 		}
 
 		this._passwordResetService
-			.setNewPassword(this.password, this.id)
+			.setNewPassword(this.password, this.id, this.resetToken)
 			.then(() => {
 				this.success = true;
 			})
