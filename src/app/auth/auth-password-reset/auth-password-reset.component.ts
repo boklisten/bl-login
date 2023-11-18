@@ -36,10 +36,7 @@ export class AuthPasswordResetComponent implements OnInit {
 		this.warning = false;
 		this.success = false;
 
-		if (
-			!this.password ||
-			this.password.length < 6
-		) {
+		if (!this.password || this.password.length < 6) {
 			this.passwordNotValid = true;
 			return;
 		}
