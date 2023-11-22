@@ -6,8 +6,8 @@ import {
 	BlApiLoginRequiredError,
 	BlApiPermissionDeniedError,
 } from "@boklisten/bl-model";
-import { BlApiUsernameAndPasswordError } from "@boklisten/bl-model/bl-api-error/bl-api-username-and-password-error";
-import { BlApiUserAlreadyExistsError } from "@boklisten/bl-model/bl-api-error/bl-api-user-already-exists-error";
+import { BlApiUsernameAndPasswordError } from "@boklisten/bl-model";
+import { BlApiUserAlreadyExistsError } from "@boklisten/bl-model";
 
 @Component({
 	selector: "bl-local-login",

@@ -13,7 +13,6 @@ documentation](https://github.com/boklisten/bl-doc/blob/master/bl-login#summary)
 
 # Requirements
 
--   NodeJS v10.0 or higher
 -   Python <3.11 or [fix node-gyp](https://stackoverflow.com/a/75260066)
 
 # How to run
