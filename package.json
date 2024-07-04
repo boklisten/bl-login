@@ -1,6 +1,6 @@
 {
 	"name": "@boklisten/bl-login",
-	"version": "1.2.22",
+	"version": "1.2.24",
 	"license": "MIT",
 	"$schema": "./node_modules/ng-packagr/package.schema.json",
 	"scripts": {
@@ -41,7 +41,7 @@
 		"@angular/platform-browser": "^11.1.2",
 		"@angular/platform-browser-dynamic": "^11.1.2",
 		"@angular/router": "^11.1.2",
-		"@boklisten/bl-model": "^0.25.26",
+		"@boklisten/bl-model": "^0.26.2",
 		"@fortawesome/angular-fontawesome": "^0.8.2",
 		"@fortawesome/fontawesome-svg-core": "^1.2.34",
 		"@fortawesome/free-brands-svg-icons": "^5.15.2",
