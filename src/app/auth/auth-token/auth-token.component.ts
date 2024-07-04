@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { TokenService, StorageService } from "@boklisten/bl-connect";
 import { AuthLoginService } from "../../login/auth-login.service";
 import { LOGIN_MODULE_SETTINGS } from "../../login/login-module-settings";
-import {APP_CONFIG} from "../../app_config";
+import { APP_CONFIG } from "../../app_config";
 
 @Component({
 	selector: "bl-auth-token",
@@ -28,30 +28,33 @@ export class AuthTokenComponent implements OnInit {
 			redirect = this.storageService.get("bl-redirect");
 		} catch (e) {}
 
-
-		this._route.queryParams.subscribe((paramMap: Record<string, string>) => {
-			if (
-				!paramMap ||
-				!paramMap[APP_CONFIG.token.accessTokenName] ||
-				!paramMap[APP_CONFIG.token.refreshTokenName]
-			) {
-				this._authLoginService.logout("auth/login");
-			} else {
-				try {
-					this._tokenService.addAccessToken(
-						paramMap[APP_CONFIG.token.accessTokenName]
-					);
-					this._tokenService.addRefreshToken(
-						paramMap[APP_CONFIG.token.refreshTokenName]
-					);
-					this._authLoginService.login(
-						redirect ? redirect : LOGIN_MODULE_SETTINGS.successPath
-					);
-				} catch (e) {
-					this.addTokensError = true;
+		this._route.queryParams.subscribe(
+			(paramMap: Record<string, string>) => {
+				if (
+					!paramMap ||
+					!paramMap[APP_CONFIG.token.accessTokenName] ||
+					!paramMap[APP_CONFIG.token.refreshTokenName]
+				) {
+					this._authLoginService.logout("auth/login");
+				} else {
+					try {
+						this._tokenService.addAccessToken(
+							paramMap[APP_CONFIG.token.accessTokenName]
+						);
+						this._tokenService.addRefreshToken(
+							paramMap[APP_CONFIG.token.refreshTokenName]
+						);
+						this._authLoginService.login(
+							redirect
+								? redirect
+								: LOGIN_MODULE_SETTINGS.successPath
+						);
+					} catch (e) {
+						this.addTokensError = true;
+					}
 				}
 			}
-		});
+		);
 	}
 
 	onLoginAgainClick() {
